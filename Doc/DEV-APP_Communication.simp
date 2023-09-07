@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<sim-project version="13.15" multi-file="no" uid="simp59614aa04c954ba9bfdf50bb77f40c3a">
+<sim-project version="13.40" multi-file="no" uid="simp59614aa04c954ba9bfdf50bb77f40c3a">
   <meta>
     <name>DEV-APP_Communication</name>
-    <authors>Bachir Hassan</authors>
+    <authors>Nathan Morasse</authors>
     <description />
   </meta>
   <counters models="1">
@@ -98,9 +98,13 @@
     <type-sets>
       <type-set file="UmlTypes.xml" />
     </type-sets>
-    <custom-types />
+    <custom-types>
+      <parameters />
+      <types />
+    </custom-types>
   </types>
   <items>
+    <item id="dib746c192d5b342ef950a0c630c1aa62e1597" cid="CN022" type="comment-connector" name="" style-class="" creator="" creation-date="09/06/2023 21:08:30" from="ed4535b3571847ac9cba5966f96e514f" to="e06aba4ada634f8299221fdc80cbcbd2" />
     <item id="d4c1a138af3b433091ffcdd76a7379ec" cid="CMT001" type="comment" name="Comment" style-class="" creator="" creation-date="09/06/2023 20:44:35">
       <comment>En attente du début de la partie
 </comment>
@@ -109,6 +113,8 @@
     <item id="7c5d29d36ca54f1dbd8a8129788a7613" cid="CMT002" type="comment" name="Comment" style-class="" creator="" creation-date="09/06/2023 20:45:04">
       <comment>Commence la partie de Tic-Tac-Toe</comment>
     </item>
+    <item id="f2d2b7f08b5a4b4db8324f035875c388" cid="CMT016" type="comment" name="Comment" style-class="" creator="" creation-date="09/06/2023 21:01:59">
+      <comment>Valide le coup joué par le serveur</comment>
     <item id="di85f16cf4de4140dfb3f4f4abfc3747a36186" cid="CN002" type="comment-connector" name="" style-class="" creator="" creation-date="09/06/2023 20:45:04" from="7c5d29d36ca54f1dbd8a8129788a7613" to="64ac98f2c75b40e1a9890761bec1dd61" />
     <item id="a6082a8fcf9644b084fcc0e6dab03336" cid="CMT003" type="comment" name="Comment" style-class="" creator="" creation-date="09/06/2023 20:45:50">
       <comment>Reçois la notification du début de la partie</comment>
@@ -129,11 +135,13 @@
     <item id="e48ad068877f47399bf27918a15c282f" cid="CMT007" type="comment" name="Comment" style-class="" creator="" creation-date="09/06/2023 20:53:28">
       <comment>Encoder les informations du tour joué</comment>
     </item>
-    <item id="di2bbdc85096094c4782038b03fdd94d545868" cid="CN007" type="comment-connector" name="" style-class="" creator="" creation-date="09/06/2023 20:53:28" from="e48ad068877f47399bf27918a15c282f" to="10a70e7ef36b42ca936231322e01042c" />
+    <item id="diec8951c681544ff09a5c29dd5252b07a2858" cid="CN023" type="comment-connector" name="" style-class="" creator="" creation-date="09/06/2023 21:09:05" from="838d99d15e0b46e1b1dea2717a8edaf9" to="1540ffde57174612968e7342b1ddd12f" />
     <item id="aaa6cb7444ec4a96a0de0119a39d24c8" cid="CMT008" type="comment" name="Comment" style-class="" creator="" creation-date="09/06/2023 20:54:14">
       <comment>Envoie les informations du tour
 </comment>
     </item>
+    <item id="1f0eaf3088854b0cb61d3587e073a261" cid="CMT004" type="comment" name="Comment" style-class="" creator="" creation-date="09/06/2023 20:51:02">
+      <comment>En attente d'un message du client</comment>
     <item id="dic4963ad976a748acb2f4cdfac8ea571d3735" cid="CN008" type="comment-connector" name="" style-class="" creator="" creation-date="09/06/2023 20:54:14" from="aaa6cb7444ec4a96a0de0119a39d24c8" to="e1ab911a2e104b7c8a32d0a9784a587c" />
     <item id="55b4c11ce6d94857baf1bf6907c814c5" cid="CMT009" type="comment" name="Comment" style-class="" creator="" creation-date="09/06/2023 20:55:25">
       <comment>Reçoit les information du tour joué par le client</comment>
@@ -148,23 +156,34 @@
     <item id="af719ce25fa54842ba583ff8bfed51c7" cid="CMT012" type="comment" name="Comment" style-class="" creator="" creation-date="09/06/2023 20:58:28">
       <comment>Reçoit les informations du tour du client</comment>
     </item>
-    <item id="di5aa357262cd546929dd524f9349d49ba6702" cid="CN012" type="comment-connector" name="" style-class="" creator="" creation-date="09/06/2023 20:58:28" from="af719ce25fa54842ba583ff8bfed51c7" to="d7dac50ff91545609a19e79c24f54bd0" />
-    <item id="41173772a1b84e51ae6a3916b12cd63f" cid="CMT013" type="comment" name="Comment" style-class="" creator="" creation-date="09/06/2023 21:00:36">
-      <comment>Décode les informations reçues du client</comment>
+    <item id="die693f0bcd13045a19e801c7bab6f3f857881" cid="CN014" type="comment-connector" name="" style-class="" creator="" creation-date="09/06/2023 21:01:11" from="af077e1464544907a9d759144328f2c5" to="e959f85571084c38895b8166176a003b" />
+    <item id="di7c10a42914cf473fb9bf502eeb8ee0507184" cid="CN025" type="comment-connector" name="" style-class="" creator="" creation-date="09/06/2023 21:10:05" from="1f0e25cc972f4600a4bf2f16f153ebdd" to="a9d74ad72a124f508ea09b00f046d8a2" />
+    <item id="di26e03832b20a40629e5d6332a0a33feb8948" cid="CN021" type="comment-connector" name="" style-class="" creator="" creation-date="09/06/2023 21:07:20" from="defb2dd7092841738fd8317a1a729660" to="172f6f6acd70419bae43de8bd4bb805f" />
+    <item id="a6082a8fcf9644b084fcc0e6dab03336" cid="CMT003" type="comment" name="Comment" style-class="" creator="" creation-date="09/06/2023 20:45:50">
+      <comment>Reçois la notification du début de la partie</comment>
     </item>
+    <item id="di2bbdc85096094c4782038b03fdd94d545868" cid="CN007" type="comment-connector" name="" style-class="" creator="" creation-date="09/06/2023 20:53:28" from="e48ad068877f47399bf27918a15c282f" to="10a70e7ef36b42ca936231322e01042c" />
     <item id="di74d1682b1d914ae0b851039400bf3f842979" cid="CN013" type="comment-connector" name="" style-class="" creator="" creation-date="09/06/2023 21:00:36" from="41173772a1b84e51ae6a3916b12cd63f" to="56810e210cc740f88458b70caa5b9f47" />
-    <item id="af077e1464544907a9d759144328f2c5" cid="CMT014" type="comment" name="Comment" style-class="" creator="" creation-date="09/06/2023 21:01:11">
-      <comment>Enregistres les informations reçues du client</comment>
+    <item id="dice0068ede2b147ee8f7c80342267a5a34838" cid="CN003" type="comment-connector" name="" style-class="" creator="" creation-date="09/06/2023 20:45:50" from="a6082a8fcf9644b084fcc0e6dab03336" to="2510c19f56a6463bbb5b9a82cf9bd244" />
+    <item id="di85f16cf4de4140dfb3f4f4abfc3747a36186" cid="CN002" type="comment-connector" name="" style-class="" creator="" creation-date="09/06/2023 20:45:04" from="7c5d29d36ca54f1dbd8a8129788a7613" to="64ac98f2c75b40e1a9890761bec1dd61" />
+    <item id="di75c5c94a13224fc5815b866fcb1459cb1420" cid="CN024" type="comment-connector" name="" style-class="" creator="" creation-date="09/06/2023 21:09:36" from="a998f526d7744dd0988086ad17573ead" to="d956424d71d7457985c63043417ddeea" />
+    <item id="838d99d15e0b46e1b1dea2717a8edaf9" cid="CMT023" type="comment" name="Comment" style-class="" creator="" creation-date="09/06/2023 21:09:05">
+      <comment>Enregistrer les informations reçûes du serveur</comment>
     </item>
     <item id="die693f0bcd13045a19e801c7bab6f3f857881" cid="CN014" type="comment-connector" name="" style-class="" creator="" creation-date="09/06/2023 21:01:11" from="af077e1464544907a9d759144328f2c5" to="e959f85571084c38895b8166176a003b" />
     <item id="ee3c20a7eb6e4d24a1e5777049e4109e" cid="CMT015" type="comment" name="Comment" style-class="" creator="" creation-date="09/06/2023 21:01:42">
       <comment>Selectionne une case pour jouer son tour</comment>
     </item>
-    <item id="di968ed421c7b9420fa2d52ecaebc164216344" cid="CN015" type="comment-connector" name="" style-class="" creator="" creation-date="09/06/2023 21:01:42" from="ee3c20a7eb6e4d24a1e5777049e4109e" to="d4c3b68b9a9c4b0884a0f11c2f63979f" />
-    <item id="f2d2b7f08b5a4b4db8324f035875c388" cid="CMT016" type="comment" name="Comment" style-class="" creator="" creation-date="09/06/2023 21:01:59">
-      <comment>Valide le coup jouer par le serveur</comment>
+    <item id="di5aa357262cd546929dd524f9349d49ba6702" cid="CN012" type="comment-connector" name="" style-class="" creator="" creation-date="09/06/2023 20:58:28" from="af719ce25fa54842ba583ff8bfed51c7" to="d7dac50ff91545609a19e79c24f54bd0" />
+    <item id="di47e48b0702fa4b95b5e8909f75c6bb0f9103" cid="CN006" type="comment-connector" name="" style-class="" creator="" creation-date="09/06/2023 20:53:01" from="fd2eca6c4c5242d18eda373f71cdd683" to="4b9b65db03aa423d816f43c2e1589a57" />
+    <item id="7033a6ac732b4a61b1a0b83b03c22867" cid="CMT019" type="comment" name="Comment" style-class="" creator="" creation-date="09/06/2023 21:03:22">
+      <comment>Envoie les informations du tour</comment>
     </item>
-    <item id="di33d505afc3194dfea5073974acb73cb71645" cid="CN016" type="comment-connector" name="" style-class="" creator="" creation-date="09/06/2023 21:01:59" from="f2d2b7f08b5a4b4db8324f035875c388" to="05424920d51440ffbf90d283bd117fea" />
+    <item id="d4c1a138af3b433091ffcdd76a7379ec" cid="CMT001" type="comment" name="Comment" style-class="" creator="" creation-date="09/06/2023 20:44:35">
+      <comment>En attente du début de la partie
+</comment>
+    </item>
+    <item id="dic4963ad976a748acb2f4cdfac8ea571d3735" cid="CN008" type="comment-connector" name="" style-class="" creator="" creation-date="09/06/2023 20:54:14" from="aaa6cb7444ec4a96a0de0119a39d24c8" to="e1ab911a2e104b7c8a32d0a9784a587c" />
     <item id="2320d3bdb8914592aca9f01e605f7c57" cid="CMT017" type="comment" name="Comment" style-class="" creator="" creation-date="09/06/2023 21:02:30">
       <comment>Enregistrer les informations du tour joué</comment>
     </item>
@@ -173,38 +192,57 @@
       <comment>Encoder les informations  du tour joué</comment>
     </item>
     <item id="diedae361d5f1b442cb042c088ecbf0e095726" cid="CN018" type="comment-connector" name="" style-class="" creator="" creation-date="09/06/2023 21:03:03" to="0f382ffc96944d3caa4e99d763da0c83" />
-    <item id="7033a6ac732b4a61b1a0b83b03c22867" cid="CMT019" type="comment" name="Comment" style-class="" creator="" creation-date="09/06/2023 21:03:22">
-      <comment>Envoie les informations du tour</comment>
+      <comment>Enregistres les informations reçues du client</comment>
+    </item>
+    <item id="di0d6aeff45b53481692aa8a59d775e0d23337" cid="CN001" type="comment-connector" name="" style-class="" creator="" creation-date="09/06/2023 20:44:35" from="d4c1a138af3b433091ffcdd76a7379ec" to="0d017be3737140e68f687e582ea451f3" />
+    <item id="dib10f1adcd07747b69ea4895e303f62963308" cid="CN017" type="comment-connector" name="" style-class="" creator="" creation-date="09/06/2023 21:02:30" from="2320d3bdb8914592aca9f01e605f7c57" to="a5d378b9a7714ec9bdf88ffc05912843" />
+    <item id="a998f526d7744dd0988086ad17573ead" cid="CMT024" type="comment" name="Comment" style-class="" creator="" creation-date="09/06/2023 21:09:36">
+      <comment>Se déconnecte du serveur</comment>
+    </item>
+    <item id="ed4535b3571847ac9cba5966f96e514f" cid="CMT022" type="comment" name="Comment" style-class="" creator="" creation-date="09/06/2023 21:08:30">
+      <comment>Décoder les informations reçues du serveur</comment>
+    </item>
+    <item id="384d45e144354ab6a33b6e3cf3355267" cid="CMT010" type="comment" name="Comment" style-class="" creator="" creation-date="09/06/2023 20:56:06">
+      <comment>Décoder les informations reçues par le client</comment>
+    </item>
+    <item id="200aa94fbdf741eeb2153ce5952d8c4e" cid="CMT011" type="comment" name="Comment" style-class="" creator="" creation-date="09/06/2023 20:57:48">
+      <comment>Valide le coup joué par l'utilisateur</comment>
     </item>
     <item id="di7e1e543fbe6548c6a4ac4db328fb78cf2598" cid="CN019" type="comment-connector" name="" style-class="" creator="" creation-date="09/06/2023 21:03:22" from="7033a6ac732b4a61b1a0b83b03c22867" to="ff287c30e90c41ebaa10450f69bf5b1f" />
-    <item id="0979b6a6ae074e04bcedff478a127121" cid="CMT020" type="comment" name="Comment" style-class="" creator="" creation-date="09/06/2023 21:03:51">
-      <comment>En attente d'une réponse du serveur</comment>
+    <item id="1f0e25cc972f4600a4bf2f16f153ebdd" cid="CMT025" type="comment" name="Comment" style-class="" creator="" creation-date="09/06/2023 21:10:05">
+      <comment>En attente d'un message du client</comment>
     </item>
     <item id="di4ab73865f1c34d749832e50a6749e9046920" cid="CN020" type="comment-connector" name="" style-class="" creator="" creation-date="09/06/2023 21:03:51" from="0979b6a6ae074e04bcedff478a127121" to="f5b4c317a3794f49b1b8a26e80873e80" />
+    <item id="di19059f1d3b2349628aa83a1bd8a6c2722431" cid="CN026" type="comment-connector" name="" style-class="" creator="" creation-date="09/06/2023 21:10:58" from="bb37d57ee07f4d50a8b38b479d2b6e90" to="c840821e854b427ea2a6f46d2f480ba6" />
+    <item id="di968ed421c7b9420fa2d52ecaebc164216344" cid="CN015" type="comment-connector" name="" style-class="" creator="" creation-date="09/06/2023 21:01:42" from="ee3c20a7eb6e4d24a1e5777049e4109e" to="d4c3b68b9a9c4b0884a0f11c2f63979f" />
     <item id="defb2dd7092841738fd8317a1a729660" cid="CMT021" type="comment" name="Comment" style-class="" creator="" creation-date="09/06/2023 21:07:20">
       <comment>Reçoit les informations du tour du client</comment>
     </item>
+    <item id="55b4c11ce6d94857baf1bf6907c814c5" cid="CMT009" type="comment" name="Comment" style-class="" creator="" creation-date="09/06/2023 20:55:25">
+      <comment>Reçoit les information du tour joué par le client</comment>
     <item id="di26e03832b20a40629e5d6332a0a33feb8948" cid="CN021" type="comment-connector" name="" style-class="" creator="" creation-date="09/06/2023 21:07:20" from="defb2dd7092841738fd8317a1a729660" to="172f6f6acd70419bae43de8bd4bb805f" />
     <item id="ed4535b3571847ac9cba5966f96e514f" cid="CMT022" type="comment" name="Comment" style-class="" creator="" creation-date="09/06/2023 21:08:30">
       <comment>Décoder les informations reçues du serveur</comment>
     </item>
-    <item id="dib746c192d5b342ef950a0c630c1aa62e1597" cid="CN022" type="comment-connector" name="" style-class="" creator="" creation-date="09/06/2023 21:08:30" from="ed4535b3571847ac9cba5966f96e514f" to="e06aba4ada634f8299221fdc80cbcbd2" />
-    <item id="838d99d15e0b46e1b1dea2717a8edaf9" cid="CMT023" type="comment" name="Comment" style-class="" creator="" creation-date="09/06/2023 21:09:05">
-      <comment>Enregistrer les informations reçûes du serveur</comment>
+    <item id="di33d505afc3194dfea5073974acb73cb71645" cid="CN016" type="comment-connector" name="" style-class="" creator="" creation-date="09/06/2023 21:01:59" from="f2d2b7f08b5a4b4db8324f035875c388" to="05424920d51440ffbf90d283bd117fea" />
+    <item id="41173772a1b84e51ae6a3916b12cd63f" cid="CMT013" type="comment" name="Comment" style-class="" creator="" creation-date="09/06/2023 21:00:36">
+      <comment>Décode les informations reçues du client</comment>
     </item>
+    <item id="e48ad068877f47399bf27918a15c282f" cid="CMT007" type="comment" name="Comment" style-class="" creator="" creation-date="09/06/2023 20:53:28">
+      <comment>Encoder les informations du tour joué</comment>
     <item id="diec8951c681544ff09a5c29dd5252b07a2858" cid="CN023" type="comment-connector" name="" style-class="" creator="" creation-date="09/06/2023 21:09:05" from="838d99d15e0b46e1b1dea2717a8edaf9" to="1540ffde57174612968e7342b1ddd12f" />
     <item id="a998f526d7744dd0988086ad17573ead" cid="CMT024" type="comment" name="Comment" style-class="" creator="" creation-date="09/06/2023 21:09:36">
       <comment>Se déconnecte du serveur</comment>
     </item>
-    <item id="di75c5c94a13224fc5815b866fcb1459cb1420" cid="CN024" type="comment-connector" name="" style-class="" creator="" creation-date="09/06/2023 21:09:36" from="a998f526d7744dd0988086ad17573ead" to="d956424d71d7457985c63043417ddeea" />
-    <item id="1f0e25cc972f4600a4bf2f16f153ebdd" cid="CMT025" type="comment" name="Comment" style-class="" creator="" creation-date="09/06/2023 21:10:05">
-      <comment>En attente d'un message du client</comment>
+    <item id="di3502989cfcb04f0e97bdec09b252610e8297" cid="CN005" type="comment-connector" name="" style-class="" creator="" creation-date="09/06/2023 20:51:32" from="4a158e650ae84a119a8b81ce5f7b7322" to="a2f4b7a7047a41df82abedfa1782fd0e" />
+    <item id="0979b6a6ae074e04bcedff478a127121" cid="CMT020" type="comment" name="Comment" style-class="" creator="" creation-date="09/06/2023 21:03:51">
+      <comment>En attente d'une réponse du serveur</comment>
     </item>
     <item id="di7c10a42914cf473fb9bf502eeb8ee0507184" cid="CN025" type="comment-connector" name="" style-class="" creator="" creation-date="09/06/2023 21:10:05" from="1f0e25cc972f4600a4bf2f16f153ebdd" to="a9d74ad72a124f508ea09b00f046d8a2" />
     <item id="bb37d57ee07f4d50a8b38b479d2b6e90" cid="CMT026" type="comment" name="Comment" style-class="" creator="" creation-date="09/06/2023 21:10:58">
       <comment>Le serveur se met en attente d'une connection</comment>
     </item>
-    <item id="di19059f1d3b2349628aa83a1bd8a6c2722431" cid="CN026" type="comment-connector" name="" style-class="" creator="" creation-date="09/06/2023 21:10:58" from="bb37d57ee07f4d50a8b38b479d2b6e90" to="c840821e854b427ea2a6f46d2f480ba6" />
+    <item id="fd2eca6c4c5242d18eda373f71cdd683" cid="CMT006" type="comment" name="Comment" style-class="" creator="" creation-date="09/06/2023 20:53:01">
     <item id="fd2cf22467dd4c16b7e6a3ca15e548c8" cid="CMT027" type="comment" name="Comment" style-class="" creator="" creation-date="09/06/2023 23:51:01">
       <comment>Valider le coup jouer par le client</comment>
     </item>
@@ -250,6 +288,18 @@
         </meta>
         <abstract-items>
           <item id="2e4df05c74304383b9355eea9e34c678" cid="AC001" type="actor" name="Client" style-class="" change-tracking-state="added" creator="" creation-date="09/06/2023 20:44:06" visibility="undefined">
+          <item id="0f382ffc96944d3caa4e99d763da0c83" cid="AB018" type="activation-bar" name="ExecutionOccurrence18" style-class="" owner="6ed55156cf4644faa186471fd75e43b2" change-tracking-state="added" creator="" creation-date="09/06/2023 21:03:02" visibility="undefined" />
+          <item id="a2f4b7a7047a41df82abedfa1782fd0e" cid="AB005" type="activation-bar" name="ExecutionOccurrence5" style-class="" owner="2e4df05c74304383b9355eea9e34c678" change-tracking-state="added" creator="" creation-date="09/06/2023 20:51:31" visibility="undefined" />
+          <item id="a5d378b9a7714ec9bdf88ffc05912843" cid="AB017" type="activation-bar" name="ExecutionOccurrence17" style-class="" owner="6ed55156cf4644faa186471fd75e43b2" change-tracking-state="added" creator="" creation-date="09/06/2023 21:02:24" visibility="undefined" />
+          <item id="10a70e7ef36b42ca936231322e01042c" cid="AB007" type="activation-bar" name="ExecutionOccurrence7" style-class="" owner="2e4df05c74304383b9355eea9e34c678" change-tracking-state="added" creator="" creation-date="09/06/2023 20:53:27" visibility="undefined" />
+          <item id="c38d5db048804fcaa26fd1b02d849a5f" cid="AB011" type="activation-bar" name="ExecutionOccurrence11" style-class="" owner="2e4df05c74304383b9355eea9e34c678" change-tracking-state="added" creator="" creation-date="09/06/2023 20:57:39" visibility="undefined" />
+          <item id="ff287c30e90c41ebaa10450f69bf5b1f" cid="AB019" type="activation-bar" name="ExecutionOccurrence19" style-class="" owner="6ed55156cf4644faa186471fd75e43b2" change-tracking-state="added" creator="" creation-date="09/06/2023 21:03:21" visibility="undefined" />
+          <item id="1540ffde57174612968e7342b1ddd12f" cid="AB023" type="activation-bar" name="ExecutionOccurrence23" style-class="" owner="2e4df05c74304383b9355eea9e34c678" change-tracking-state="added" creator="" creation-date="09/06/2023 21:08:57" visibility="undefined" />
+          <item id="551a4594713f4fcc92552df4a77f2259" cid="AB009" type="activation-bar" name="ExecutionOccurrence9" style-class="" owner="6ed55156cf4644faa186471fd75e43b2" change-tracking-state="added" creator="" creation-date="09/06/2023 20:54:43" visibility="undefined" />
+          <item id="c40356e77eaa461fbe9d45c491f23c92" cid="SM005" type="sequence-action" name="Message5" style-class="" change-tracking-state="added" creator="" creation-date="09/06/2023 21:11:17" from="d956424d71d7457985c63043417ddeea" to="c840821e854b427ea2a6f46d2f480ba6" visibility="package">
+            <sequence-action type="call" message="Le client se déconnecte du serveur" is-asynchronous="false" return-value="" assign-to-variable="">
+              <parameters />
+            </sequence-action>
             <owned-items>
               <owned-item ref="0d017be3737140e68f687e582ea451f3" />
               <owned-item ref="2510c19f56a6463bbb5b9a82cf9bd244" />
@@ -267,6 +317,13 @@
             </owned-items>
           </item>
           <item id="6ed55156cf4644faa186471fd75e43b2" cid="AC002" type="actor" name="Serveur" style-class="" change-tracking-state="added" creator="" creation-date="09/06/2023 20:44:12" visibility="undefined">
+            <sequence-action type="call" message="Envoie des informations du tour du client" is-asynchronous="false" return-value="" assign-to-variable="">
+              <parameters />
+            </sequence-action>
+          </item>
+          <item id="e1ab911a2e104b7c8a32d0a9784a587c" cid="AB008" type="activation-bar" name="ExecutionOccurrence8" style-class="" owner="2e4df05c74304383b9355eea9e34c678" change-tracking-state="added" creator="" creation-date="09/06/2023 20:54:13" visibility="undefined" />
+          <item id="172f6f6acd70419bae43de8bd4bb805f" cid="AB021" type="activation-bar" name="ExecutionOccurrence21" style-class="" owner="2e4df05c74304383b9355eea9e34c678" change-tracking-state="added" creator="" creation-date="09/06/2023 21:07:19" visibility="undefined" />
+          <item id="6ed55156cf4644faa186471fd75e43b2" cid="AC002" type="actor" name="Serveur" style-class="" change-tracking-state="added" creator="" creation-date="09/06/2023 20:44:12" visibility="undefined">
             <owned-items>
               <owned-item ref="64ac98f2c75b40e1a9890761bec1dd61" />
               <owned-item ref="c6a74e33f03341e1bb14966d428d2926" />
@@ -282,11 +339,16 @@
               <owned-item ref="a9d74ad72a124f508ea09b00f046d8a2" />
               <owned-item ref="c840821e854b427ea2a6f46d2f480ba6" />
               <owned-item ref="57f9d4586074472bbaeb6f741aa227a9" />
+              <owned-item ref="0f382ffc96944d3caa4e99d763da0c83" />
+              <owned-item ref="a5d378b9a7714ec9bdf88ffc05912843" />
+              <owned-item ref="ff287c30e90c41ebaa10450f69bf5b1f" />
+              <owned-item ref="551a4594713f4fcc92552df4a77f2259" />
             </owned-items>
           </item>
           <item id="0d017be3737140e68f687e582ea451f3" cid="AB001" type="activation-bar" name="ExecutionOccurrence1" style-class="" owner="2e4df05c74304383b9355eea9e34c678" change-tracking-state="added" creator="" creation-date="09/06/2023 20:44:32" visibility="undefined" />
           <item id="64ac98f2c75b40e1a9890761bec1dd61" cid="AB002" type="activation-bar" name="ExecutionOccurrence2" style-class="" owner="6ed55156cf4644faa186471fd75e43b2" change-tracking-state="added" creator="" creation-date="09/06/2023 20:44:57" visibility="undefined" />
           <item id="2510c19f56a6463bbb5b9a82cf9bd244" cid="AB003" type="activation-bar" name="ExecutionOccurrence3" style-class="" owner="2e4df05c74304383b9355eea9e34c678" change-tracking-state="added" creator="" creation-date="09/06/2023 20:45:26" visibility="undefined" />
+          <item id="d956424d71d7457985c63043417ddeea" cid="AB024" type="activation-bar" name="ExecutionOccurrence24" style-class="" owner="2e4df05c74304383b9355eea9e34c678" change-tracking-state="added" creator="" creation-date="09/06/2023 21:09:36" visibility="undefined" />
           <item id="fc627eb05b504fe888ff3995ca3341f8" cid="SM001" type="sequence-action" name="Message1" style-class="" change-tracking-state="added" creator="" creation-date="09/06/2023 20:45:30" from="64ac98f2c75b40e1a9890761bec1dd61" to="2510c19f56a6463bbb5b9a82cf9bd244" visibility="package">
             <sequence-action type="call" message="Envoie une notification du début de la partie" is-asynchronous="false" return-value="" assign-to-variable="">
               <parameters />
@@ -332,6 +394,38 @@
           </item>
           <item id="57f9d4586074472bbaeb6f741aa227a9" cid="AB027" type="activation-bar" name="ExecutionOccurrence27" style-class="" owner="6ed55156cf4644faa186471fd75e43b2" change-tracking-state="added" creator="" creation-date="09/06/2023 23:50:58" />
           <item id="d12c29d8e4f84a3c89692fd373efbaa8" cid="AB028" type="activation-bar" name="ExecutionOccurrence28" style-class="" owner="2e4df05c74304383b9355eea9e34c678" change-tracking-state="added" creator="" creation-date="09/06/2023 23:56:30" />
+          <item id="64ac98f2c75b40e1a9890761bec1dd61" cid="AB002" type="activation-bar" name="ExecutionOccurrence2" style-class="" owner="6ed55156cf4644faa186471fd75e43b2" change-tracking-state="added" creator="" creation-date="09/06/2023 20:44:57" visibility="undefined" />
+          <item id="05424920d51440ffbf90d283bd117fea" cid="AB016" type="activation-bar" name="ExecutionOccurrence16" style-class="" owner="6ed55156cf4644faa186471fd75e43b2" change-tracking-state="added" creator="" creation-date="09/06/2023 21:01:58" visibility="undefined" />
+          <item id="2e4df05c74304383b9355eea9e34c678" cid="AC001" type="actor" name="Client" style-class="" change-tracking-state="added" creator="" creation-date="09/06/2023 20:44:06" visibility="undefined">
+            <owned-items>
+              <owned-item ref="0d017be3737140e68f687e582ea451f3" />
+              <owned-item ref="2510c19f56a6463bbb5b9a82cf9bd244" />
+              <owned-item ref="a2f4b7a7047a41df82abedfa1782fd0e" />
+              <owned-item ref="4b9b65db03aa423d816f43c2e1589a57" />
+              <owned-item ref="10a70e7ef36b42ca936231322e01042c" />
+              <owned-item ref="e1ab911a2e104b7c8a32d0a9784a587c" />
+              <owned-item ref="c38d5db048804fcaa26fd1b02d849a5f" />
+              <owned-item ref="f5b4c317a3794f49b1b8a26e80873e80" />
+              <owned-item ref="172f6f6acd70419bae43de8bd4bb805f" />
+              <owned-item ref="e06aba4ada634f8299221fdc80cbcbd2" />
+              <owned-item ref="1540ffde57174612968e7342b1ddd12f" />
+              <owned-item ref="d956424d71d7457985c63043417ddeea" />
+              <owned-item ref="a2f4b7a7047a41df82abedfa1782fd0e" />
+              <owned-item ref="10a70e7ef36b42ca936231322e01042c" />
+              <owned-item ref="c38d5db048804fcaa26fd1b02d849a5f" />
+              <owned-item ref="1540ffde57174612968e7342b1ddd12f" />
+              <owned-item ref="e1ab911a2e104b7c8a32d0a9784a587c" />
+              <owned-item ref="172f6f6acd70419bae43de8bd4bb805f" />
+              <owned-item ref="0d017be3737140e68f687e582ea451f3" />
+              <owned-item ref="d956424d71d7457985c63043417ddeea" />
+              <owned-item ref="2510c19f56a6463bbb5b9a82cf9bd244" />
+              <owned-item ref="f5b4c317a3794f49b1b8a26e80873e80" />
+            </owned-items>
+          </item>
+          <item id="e06aba4ada634f8299221fdc80cbcbd2" cid="AB022" type="activation-bar" name="ExecutionOccurrence22" style-class="" owner="2e4df05c74304383b9355eea9e34c678" change-tracking-state="added" creator="" creation-date="09/06/2023 21:08:29" visibility="undefined" />
+          <item id="4b9b65db03aa423d816f43c2e1589a57" cid="AB006" type="activation-bar" name="ExecutionOccurrence6" style-class="" owner="2e4df05c74304383b9355eea9e34c678" change-tracking-state="added" creator="" creation-date="09/06/2023 20:52:59" visibility="undefined" />
+          <item id="56810e210cc740f88458b70caa5b9f47" cid="AB013" type="activation-bar" name="ExecutionOccurrence13" style-class="" owner="6ed55156cf4644faa186471fd75e43b2" change-tracking-state="added" creator="" creation-date="09/06/2023 21:00:35" visibility="undefined" />
+          <item id="a9d74ad72a124f508ea09b00f046d8a2" cid="AB025" type="activation-bar" name="ExecutionOccurrence25" style-class="" owner="6ed55156cf4644faa186471fd75e43b2" change-tracking-state="added" creator="" creation-date="09/06/2023 21:10:01" visibility="undefined" />
         </abstract-items>
         <layer id="0225145f1fff439aaccad9c49fa90268" name="Default" visible="true" enabled="true" locked="false">
           <item id="2e4df05c74304383b9355eea9e34c678" iid="b0e617b19ad34932bde6c5bd7e05d606" creation-date="09/06/2023 20:44:06" order-index="0" type="lifeline">
