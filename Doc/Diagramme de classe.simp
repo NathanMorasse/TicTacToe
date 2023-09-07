@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<sim-project version="12.75" multi-file="no" uid="simp3b3186c766d14ca38305e31b59faed8a">
+  <meta>
+    <name>Diagramme de classe</name>
+    <authors>Raphael Gagnon</authors>
+    <description />
+  </meta>
+  <counters models="1">
+    <entity-names>
+      <counter>
+        <item-type type-id="class" type="Class" />
+        <value>4</value>
+      </counter>
+    </entity-names>
+    <entity-ids>
+      <counter>
+        <item-type type-id="group" type="Group" />
+        <value>1254</value>
+      </counter>
+      <counter>
+        <item-type type-id="class" type="Class" />
+        <value>5</value>
+      </counter>
+      <counter>
+        <item-type type-id="property" type="Property" />
+        <value>8</value>
+      </counter>
+    </entity-ids>
+    <diagrams>
+      <counter>
+        <type>SoftwareIdeasModeler.Core.Diagrams.UmlDiagrams.UmlClassDiagram</type>
+        <value>1</value>
+      </counter>
+    </diagrams>
+    <fields>
+      <counter>
+        <type>SoftwareIdeasModeler.Core.DiagramItems.Fields.OperationField</type>
+        <value>10</value>
+      </counter>
+    </fields>
+  </counters>
+  <alias-groups />
+  <management uid="md-393dd50a1d7843a3bc64b9920564504b" name="" task-id-sequence="0">
+    <persons>
+      <person id="">
+        <first-name>Raphael</first-name>
+        <last-name>Gagnon</last-name>
+        <role />
+        <e-mail>raphaelgagnon@cegep-chicoutimi.qc.ca</e-mail>
+        <phone-number />
+        <description />
+        <color>#00000000</color>
+      </person>
+    </persons>
+    <teams />
+    <sprints />
+    <projects />
+    <modules />
+    <tasks />
+    <to-dos />
+  </management>
+  <glossary id="glsr-1c5599bef2b24773a6a2977cd087bcd0" />
+  <types default="UML">
+    <type-sets>
+      <type-set file="UmlTypes.xml" />
+    </type-sets>
+    <custom-types>
+      <type id="Class:742f324623284fa8ad4392642611741a" tid="" name="Move" description="" class-ref="742f324623284fa8ad4392642611741a" />
+      <type id="bool" tid="" name="bool" description="" />
+      <type id="int" tid="" name="int" description="" />
+      <type id="Class:ff6ad9d9ce954f81aa84faf07dc6b97f" tid="" name="Board" description="" class-ref="ff6ad9d9ce954f81aa84faf07dc6b97f" />
+      <type id="string" tid="" name="string" description="" />
+    </custom-types>
+  </types>
+  <items />
+  <models>
+    <model id="pebf7fe64a2c64014abf065e04be0fc95_490867825" name="Model1" namespace="" order-index="1">
+      <meta>
+        <authors>
+          <author> </author>
+        </authors>
+        <description />
+        <creation-date>09/06/2023 14:54:29</creation-date>
+        <change-date>01/01/0001 00:00:00</change-date>
+        <revision-count>0</revision-count>
+        <version />
+      </meta>
+      <abstract-items />
+      <sub-models />
+      <diagram type="uml-class" id="p95b9e86952b94c97a238ef0b30b45e7c_572234235" name="ClassDiagram1" order-index="1" uid="" show-id="false" show-name="true" show-parent-name="false" name-style="local-auto-parents" show-stereotypes="true" show-tagged-values="false" show-template-parameters="true" show-fields="true" show-field-tags="true" show-empty-compartments="true" show-special-indicators="false" show-rules="true" show-attributes="true" show-attribute-visibility="true" show-operations="true" show-operation-parameters="true" show-operation-visibility="true" show-visibility-sign="true" show-nullability="true" show-sequence-number="false" show-extension-points="false" show-relationship-texts="true" show-data="true" show-description="false" show-field-description="false" auto-routed-paths="false" default-line-style="default" view-location="-211,-196">
+        <style>
+          <background-color index="1" color="#FFFFFFFF" />
+          <background-color index="2" color="#FFFFFFFF" />
+          <background-type type="solid" />
+        </style>
+        <meta>
+          <authors>
+            <author> </author>
+          </authors>
+          <description />
+          <creation-date>09/06/2023 14:54:29</creation-date>
+          <change-date>09/06/2023 15:14:34</change-date>
+          <revision-count>0</revision-count>
+          <version />
+        </meta>
+        <abstract-items>
+          <item id="ff6ad9d9ce954f81aa84faf07dc6b97f" cid="C001" type="class" name="Board" style-class="" change-tracking-state="added" creator="" creation-date="09/06/2023 14:56:01" visibility="package">
+            <owned-items>
+              <owned-item ref="6f93ce82fd2c48f1be4daa22ace2024e" />
+            </owned-items>
+            <attributes>
+              <attribute id="ad5d9e3a1cc11456e913e791198c2d69a13" cid="PROP002" name="Moves" creation-date="09/06/2023 15:09:00" property-ref="6f93ce82fd2c48f1be4daa22ace2024e" />
+            </attributes>
+            <operations>
+              <operation id="o3a1f480a674a44f0b954a202135783c1426" cid="ELEM002" name="SaveMove" creation-date="09/06/2023 15:13:46" type="" type-id="" visibility="public">
+                <parameters>
+                  <parameter id="p6ba313fb3cfe4e2e8fc001290bc1211a" name="move" type="Move" type-id="Class:742f324623284fa8ad4392642611741a" />
+                </parameters>
+              </operation>
+              <operation id="o37a10f51c0354521b4fb4a7cc5600842394" cid="ELEM008" name="Clear" creation-date="09/06/2023 15:39:27" type="" type-id="" visibility="public" />
+            </operations>
+          </item>
+          <item id="742f324623284fa8ad4392642611741a" cid="C002" type="class" name="Move" style-class="" change-tracking-state="added" creator="" creation-date="09/06/2023 14:57:04" visibility="package">
+            <owned-items>
+              <owned-item ref="1aa107eb03954a4b85cb3b7dfd36486a" />
+              <owned-item ref="224b6f280ec4476383347ca3f08b1fe1" />
+              <owned-item ref="f3ce4e78a69144cd8fe21f90f9a51e82" />
+            </owned-items>
+            <attributes>
+              <attribute id="a3cec21394bbb4293a3c82a32a32629ed694" cid="PROP003" name="IsMyMove" creation-date="09/06/2023 15:12:15" property-ref="1aa107eb03954a4b85cb3b7dfd36486a" />
+              <attribute id="a0283557c227547e98b49fa57a5d7a88628" cid="PROP004" name="CoordinateX" creation-date="09/06/2023 15:12:34" property-ref="224b6f280ec4476383347ca3f08b1fe1" />
+              <attribute id="a9dc7661eab2a42ca9997c65c8693c22b628" cid="PROP005" name="CoordinateY" creation-date="09/06/2023 15:12:50" property-ref="f3ce4e78a69144cd8fe21f90f9a51e82" />
+            </attributes>
+          </item>
+          <item id="db16abac794b47b09a2af418ceb995cb" cid="C003" type="class" name="Turn" style-class="" change-tracking-state="added" creator="" creation-date="09/06/2023 14:57:11" visibility="package" />
+          <item id="c6b186b62ee54bfc97d861411f30a6b1" cid="C004" type="class" name="Game" style-class="" change-tracking-state="added" creator="" creation-date="09/06/2023 15:02:23" visibility="package">
+            <owned-items>
+              <owned-item ref="89146bcd86d44e18862c5d1891abde30" />
+              <owned-item ref="f9c59fd5333d47749480cfedefcd8fe5" />
+              <owned-item ref="b53d70c9c70143f4a85335d8024f8642" />
+            </owned-items>
+            <attributes>
+              <attribute id="aa792984cb67a40f6b1fe7fa1294b2fb4670" cid="PROP001" name="CurrentBoard" creation-date="09/06/2023 15:04:55" property-ref="89146bcd86d44e18862c5d1891abde30" />
+              <attribute id="a6d0ddf19ab0543b08ba219f97dc75b37360" cid="PROP006" name="IsMyTurn" creation-date="09/06/2023 15:14:36" property-ref="f9c59fd5333d47749480cfedefcd8fe5" />
+              <attribute id="a2ab96af4d6b74af291c2bbb5fdcf422b540" cid="PROP007" name="Socket" creation-date="09/06/2023 15:43:09" property-ref="b53d70c9c70143f4a85335d8024f8642" />
+            </attributes>
+            <operations>
+              <operation id="ob43cf7779beb45ca907342e79c7d53ce746" cid="ELEM009" name="Game" creation-date="09/06/2023 15:41:54" type="" type-id="" visibility="public">
+                <stereotypes>
+                  <stereotype>create</stereotype>
+                </stereotypes>
+              </operation>
+              <operation id="ofa2ac58b0e604a33a0a774748af8155c844" cid="ELEM003" name="ConnectToServer" creation-date="09/06/2023 15:19:14" type="" type-id="" visibility="public">
+                <parameters>
+                  <parameter id="p8321fc57cb15434dbee34a7abb1cea42" name="ip" type="string" type-id="string" />
+                  <parameter id="pe1ba60c3d9f246c89f9ed1345cf136ab" name="port" type="int" type-id="int" />
+                </parameters>
+              </operation>
+              <operation id="o065011e7e7434252ac52fcbcb20a703b815" cid="ELEM004" name="ValidateMove" creation-date="09/06/2023 15:32:31" type="bool" type-id="bool" visibility="public">
+                <parameters>
+                  <parameter id="pda03c65b0ffe4da3831eefbc79b09681" name="move" type="Move" type-id="Class:742f324623284fa8ad4392642611741a" />
+                </parameters>
+              </operation>
+              <operation id="o26e7f02401454e259d683b029220ef8c645" cid="ELEM005" name="SendMove" creation-date="09/06/2023 15:33:29" type="" type-id="" visibility="public">
+                <parameters>
+                  <parameter id="p32bb21ea86b64fada58d7169a41cd0a3" name="move" type="Move" type-id="Class:742f324623284fa8ad4392642611741a" />
+                </parameters>
+              </operation>
+              <operation id="oca31afd9ee4f49639a8ff3e2add284dc996" cid="ELEM006" name="NextTurn" creation-date="09/06/2023 15:35:03" type="" type-id="" visibility="public" />
+              <operation id="obdcce99fc70e489481923d7e875f7568646" cid="ELEM007" name="StartNewGame" creation-date="09/06/2023 15:37:13" type="" type-id="" visibility="public">
+                <parameters>
+                  <parameter id="p46a71c8e7d6b4dbfa018e762fa2cbba9" name="isClientTurn" type="bool" type-id="bool" />
+                </parameters>
+              </operation>
+            </operations>
+          </item>
+          <item id="89146bcd86d44e18862c5d1891abde30" cid="PROP001" type="property" name="CurrentBoard" style-class="" owner="c6b186b62ee54bfc97d861411f30a6b1" creator="" creation-date="09/06/2023 15:04:55" visibility="private">
+            <feature />
+            <structural-feature type="Board" type-id="Class:ff6ad9d9ce954f81aa84faf07dc6b97f" />
+            <property />
+          </item>
+          <item id="6f93ce82fd2c48f1be4daa22ace2024e" cid="PROP002" type="property" name="Moves" style-class="" owner="ff6ad9d9ce954f81aa84faf07dc6b97f" creator="" creation-date="09/06/2023 15:09:00" visibility="private">
+            <feature />
+            <structural-feature multiplicity="3,3" type="Move" type-id="Class:742f324623284fa8ad4392642611741a" />
+            <property />
+          </item>
+          <item id="1aa107eb03954a4b85cb3b7dfd36486a" cid="PROP003" type="property" name="IsMyMove" style-class="" owner="742f324623284fa8ad4392642611741a" creator="" creation-date="09/06/2023 15:12:15" visibility="private">
+            <feature />
+            <structural-feature type="bool" type-id="bool" />
+            <property />
+          </item>
+          <item id="224b6f280ec4476383347ca3f08b1fe1" cid="PROP004" type="property" name="CoordinateX" style-class="" owner="742f324623284fa8ad4392642611741a" creator="" creation-date="09/06/2023 15:12:34" visibility="private">
+            <feature />
+            <structural-feature type="int" type-id="int" />
+            <property />
+          </item>
+          <item id="f3ce4e78a69144cd8fe21f90f9a51e82" cid="PROP005" type="property" name="CoordinateY" style-class="" owner="742f324623284fa8ad4392642611741a" creator="" creation-date="09/06/2023 15:12:50" visibility="private">
+            <feature />
+            <structural-feature type="int" type-id="int" />
+            <property />
+          </item>
+          <item id="f9c59fd5333d47749480cfedefcd8fe5" cid="PROP006" type="property" name="IsMyTurn" style-class="" owner="c6b186b62ee54bfc97d861411f30a6b1" creator="" creation-date="09/06/2023 15:14:36" visibility="private">
+            <feature />
+            <structural-feature type="bool" type-id="bool" />
+            <property />
+          </item>
+          <item id="b53d70c9c70143f4a85335d8024f8642" cid="PROP007" type="property" name="Socket" style-class="" owner="c6b186b62ee54bfc97d861411f30a6b1" creator="" creation-date="09/06/2023 15:43:09" visibility="private">
+            <feature />
+            <structural-feature type="" type-id="" />
+            <property />
+          </item>
+        </abstract-items>
+        <layer id="6b89dfed80094e2cb81e1e921ce5952a" name="Default" visible="true" enabled="true" locked="false">
+          <item id="ff6ad9d9ce954f81aa84faf07dc6b97f" iid="206d08201faa44ec8c181d21d0f1047f" creation-date="09/06/2023 14:56:01" order-index="0" type="entity">
+            <layout ax="455" ay="57" awidth="171" aheight="160" x="455" y="57" width="171" height="160" rotation-center="-15.5,0" />
+            <class />
+          </item>
+          <item id="742f324623284fa8ad4392642611741a" iid="b767723d7ace4528aca94986f8c3fe2e" creation-date="09/06/2023 14:57:04" order-index="1" type="entity">
+            <layout ax="702" ay="57" awidth="140" aheight="160" x="702" y="49" width="140" height="160" />
+            <class />
+          </item>
+          <item id="c6b186b62ee54bfc97d861411f30a6b1" iid="8b81319fedd84e8c8552f1c3a500de81" creation-date="09/06/2023 15:02:23" order-index="3" type="entity">
+            <layout ax="98" ay="57" awidth="250" aheight="241" x="98" y="57" width="250" height="241" rotation-center="-55,-40.5" />
+            <class />
+          </item>
+        </layer>
+      </diagram>
+    </model>
+  </models>
+</sim-project>
