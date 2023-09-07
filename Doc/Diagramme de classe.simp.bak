@@ -23,7 +23,7 @@
     <entity-ids>
       <counter>
         <item-type type-id="group" type="Group" />
-        <value>3904</value>
+        <value>3762</value>
       </counter>
       <counter>
         <item-type type-id="class" type="Class" />
@@ -31,7 +31,7 @@
       </counter>
       <counter>
         <item-type type-id="property" type="Property" />
-        <value>47</value>
+        <value>46</value>
       </counter>
       <counter>
         <item-type type-id="enumeration" type="Enumeration" />
@@ -100,17 +100,16 @@
       <types>
         <type id="Class:c6b186b62ee54bfc97d861411f30a6b1" tid="" name="Game" description="" class-ref="c6b186b62ee54bfc97d861411f30a6b1" />
         <type id="Class:5ccecaa31d254e53991e973a692fac1b" tid="" name="SocketManager(Static)" description="" class-ref="5ccecaa31d254e53991e973a692fac1b" />
-        <type id="Move" tid="Class:742f324623284fa8ad4392642611741a" name="Move" description="" class-ref="742f324623284fa8ad4392642611741a" />
-        <type id="Bool" tid="" name="Bool" description="" />
-        <type id="Class:ff6ad9d9ce954f81aa84faf07dc6b97f" tid="Class:ff6ad9d9ce954f81aa84faf07dc6b97f" name="Board" description="" class-ref="ff6ad9d9ce954f81aa84faf07dc6b97f" />
-        <type id="IPHostEntry" tid="" name="IPHostEntry" description="" />
-        <type id="bool" tid="" name="bool" description="" />
-        <type id="string" tid="" name="string" description="" />
-        <type id="Class:742f324623284fa8ad4392642611741a" tid="Class:742f324623284fa8ad4392642611741a" name="Move" description="" class-ref="742f324623284fa8ad4392642611741a" />
-        <type id="IPEndPoint" tid="" name="IPEndPoint" description="" />
-        <type id="IPAddress" tid="" name="IPAddress" description="" />
         <type id="Class:b53d70c9c70143f4a85335d8024f8642" tid="" name="Socket" description="" class-ref="b53d70c9c70143f4a85335d8024f8642" />
         <type id="int" tid="" name="int" description="" />
+        <type id="Move" tid="Class:742f324623284fa8ad4392642611741a" name="Move" description="" class-ref="742f324623284fa8ad4392642611741a" />
+        <type id="IPEndPoint" tid="" name="IPEndPoint" description="" />
+        <type id="IPAddress" tid="" name="IPAddress" description="" />
+        <type id="Class:ff6ad9d9ce954f81aa84faf07dc6b97f" tid="Class:ff6ad9d9ce954f81aa84faf07dc6b97f" name="Board" description="" class-ref="ff6ad9d9ce954f81aa84faf07dc6b97f" />
+        <type id="string" tid="" name="string" description="" />
+        <type id="Class:742f324623284fa8ad4392642611741a" tid="Class:742f324623284fa8ad4392642611741a" name="Move" description="" class-ref="742f324623284fa8ad4392642611741a" />
+        <type id="bool" tid="" name="bool" description="" />
+        <type id="IPHostEntry" tid="" name="IPHostEntry" description="" />
       </types>
     </custom-types>
   </types>
@@ -160,7 +159,7 @@
       </meta>
       <abstract-items />
       <sub-models />
-      <diagram type="uml-class" id="p95b9e86952b94c97a238ef0b30b45e7c_572234235" name="ClassDiagram1" order-index="1" uid="" auto-routed-paths="false" default-line-style="default" view-location="-210,-78" zoom="1.4">
+      <diagram type="uml-class" id="p95b9e86952b94c97a238ef0b30b45e7c_572234235" name="ClassDiagram1" order-index="1" uid="" auto-routed-paths="false" default-line-style="default" view-location="-211,-196">
         <style>
           <background-color index="1" color="#FFFFFFFF" />
           <background-color index="2" color="#FFFFFFFF" />
@@ -281,7 +280,6 @@
             <owned-items>
               <owned-item ref="d7a551117c2e46578ead3c50d9a0cc48" />
               <owned-item ref="4f244c99046a44108d2a26c810ee4389" />
-              <owned-item ref="8ea291f9d3244569bf5e29c04a87e70a" />
             </owned-items>
             <attributes>
               <attribute id="a3cec21394bbb4293a3c82a32a32629ed694" cid="PROP035" name="IsMyMove" creation-date="09/06/2023 15:12:15" property-ref="did0dbf8149e1b4588a0d15c49b2182a539005" />
@@ -289,7 +287,6 @@
               <attribute id="a9dc7661eab2a42ca9997c65c8693c22b628" cid="PROP037" name="CoordinateY" creation-date="09/06/2023 15:12:50" property-ref="di49a4352a7ceb41e2ac31e9d8daa6cab29005" />
               <attribute id="a2deb3aa255474a7f8479dbd4660af8c4162" cid="PROP042" name="XImage" creation-date="09/06/2023 22:18:43" property-ref="d7a551117c2e46578ead3c50d9a0cc48" />
               <attribute id="affecd5f51aaf48bcb3e235089d555765110" cid="PROP043" name="OImage" creation-date="09/06/2023 22:18:52" property-ref="4f244c99046a44108d2a26c810ee4389" />
-              <attribute id="a77fe422bbb8d488d800fbd8920746baf716" cid="PROP046" name="PossibleWin" creation-date="09/06/2023 23:28:32" property-ref="8ea291f9d3244569bf5e29c04a87e70a" />
             </attributes>
             <operations>
               <operation id="o8a4981644c74465f9c9ff5e74147b159108" cid="OP011" name="Move" creation-date="09/06/2023 20:18:14" type="" type-id="" visibility="public">
@@ -352,7 +349,7 @@
               <attribute id="a9dc7661eab2a42ca9997c65c8693c22b628" cid="PROP005" name="CoordinateY" creation-date="09/06/2023 15:12:50" property-ref="f3ce4e78a69144cd8fe21f90f9a51e82" />
               <attribute id="a719c01e273dd484d80522016b88aa1e5165" cid="PROP040" name="XImage" creation-date="09/06/2023 22:18:04" property-ref="f3fad110cff94d6ba274db68da8f0d8c" />
               <attribute id="a5314aa76eba4409ba841a37693b2c653591" cid="PROP041" name="OImage" creation-date="09/06/2023 22:18:21" property-ref="b109853c83b14a53a740f012bf0eb263" />
-              <attribute id="a67e88ca0df25407d8c18b1070030dce3538" cid="PROP045" name="PossibleWin" creation-date="09/06/2023 23:23:26" property-ref="42b336e3aec344d4bc7b15a279902455" />
+              <attribute id="a67e88ca0df25407d8c18b1070030dce3538" cid="PROP045" name="NewAttribute6" creation-date="09/06/2023 23:23:26" property-ref="42b336e3aec344d4bc7b15a279902455" />
             </attributes>
             <operations>
               <operation id="o8a4981644c74465f9c9ff5e74147b159108" cid="OP011" name="Move" creation-date="09/06/2023 20:18:14" type="" type-id="" visibility="public">
@@ -438,11 +435,6 @@
             <structural-feature type="Socket" type-id="Class:b53d70c9c70143f4a85335d8024f8642" />
             <property />
           </item>
-          <item id="8ea291f9d3244569bf5e29c04a87e70a" cid="PROP046" type="property" name="PossibleWin" style-class="" owner="di56d1d67b7467437a9f2e7e9fa0198e1c7249" creator="" creation-date="09/06/2023 23:28:32" visibility="private">
-            <feature />
-            <structural-feature type="bool" type-id="bool" />
-            <property />
-          </item>
           <item id="di222cd5a1879a48aa8178ab5c1823d75e1479" cid="REL005" type="relationship" name="" style-class="" owner="di853571b6b5e346678d1a1e6c9bdeda9c7249" change-tracking-state="added" creator="" creation-date="09/06/2023 20:15:38" from="di2344ad8f8b79475a8fbae6984362d57f7249" to="di56d1d67b7467437a9f2e7e9fa0198e1c7249" visibility="package">
             <relation from="ff6ad9d9ce954f81aa84faf07dc6b97f" to="742f324623284fa8ad4392642611741a" derived="false">
               <start-role id="umlar-efad7ac8-a6db-49a5-bf6c-32baa266daa2" name="" navigability="" association-type="composition" visibility="private" property-ref="di0527e750ec4c4d0ea438e0257e20321e9005" />
@@ -497,9 +489,9 @@
             <structural-feature type="IPHostEntry" type-id="IPHostEntry" />
             <property />
           </item>
-          <item id="42b336e3aec344d4bc7b15a279902455" cid="PROP045" type="property" name="PossibleWin" style-class="" owner="742f324623284fa8ad4392642611741a" creator="" creation-date="09/06/2023 23:23:26" visibility="private">
+          <item id="42b336e3aec344d4bc7b15a279902455" cid="PROP045" type="property" name="NewAttribute6" style-class="" owner="742f324623284fa8ad4392642611741a" creator="" creation-date="09/06/2023 23:23:26" visibility="private">
             <feature />
-            <structural-feature type="Bool" type-id="Bool" />
+            <structural-feature type="" type-id="" />
             <property />
           </item>
           <item id="c3d1bcbd256741008215b3c939c03b14" cid="PROP018" type="property" name="endpoint" style-class="" owner="5ccecaa31d254e53991e973a692fac1b" creator="" creation-date="09/06/2023 20:35:52" visibility="private">
@@ -736,7 +728,7 @@
             <relation from="di2344ad8f8b79475a8fbae6984362d57f7249" from-iid="ae723553fbfa4e17b403fa388d264c0e" to="di91d8cbf026a846faabbdb797d41505be7249" to-iid="6631f02879ae438fb7fcfa3cca89e7ca" />
           </item>
           <item id="di222cd5a1879a48aa8178ab5c1823d75e1479" iid="0d4e8428626b4c44bb64c837b37e8e8b" container="di853571b6b5e346678d1a1e6c9bdeda9c7249" container-iid="1624a5639bd14c5faf6f191850f111be" creation-date="09/06/2023 20:15:38" order-index="4" type="relation">
-            <layout start-role-position="25,15" end-role-position="25,-15" start-multiplicity-position="21,14" end-multiplicity-position="25,-18" line-style="oblique" lock-to-fields="false" auto-path="" x1="1241" y1="242" x2="1240" y2="409" start-border-pos="0.625291595458984" end-border-pos="0.125214652781106" name-position="0,20">
+            <layout start-role-position="25,15" end-role-position="25,-15" start-multiplicity-position="21,14" end-multiplicity-position="25,-18" line-style="oblique" lock-to-fields="false" auto-path="" x1="1241" y1="242" x2="1240" y2="409" start-border-pos="0.625299377441406" end-border-pos="0.125199768440855" name-position="0,20">
               <points>
                 <point x="1241" y="242" />
                 <point x="1240" y="409" />
@@ -750,7 +742,7 @@
             <class />
           </item>
           <item id="di56d1d67b7467437a9f2e7e9fa0198e1c7249" iid="0db94432cbc543a09a4ba6fab45a4334" container="di853571b6b5e346678d1a1e6c9bdeda9c7249" container-iid="1624a5639bd14c5faf6f191850f111be" creation-date="09/06/2023 14:57:04" order-index="1" type="entity">
-            <layout ax="1077" ay="409" awidth="326" aheight="192" x="1144.5" y="414" width="140" height="160" />
+            <layout ax="1077" ay="409" awidth="326" aheight="173" x="1144.5" y="414" width="140" height="160" />
             <classifier />
             <class />
           </item>
