@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Tic-Tac-Toe" Height="1080" Width="1920"
         WindowState="Maximized"
-        Background="#8D99AE">
+        Background="#8D99AE" FontFamily="Cascadia Code">
     <Grid>
         <Frame x:Name="Holder"></Frame>
     </Grid>

@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:TicTacToe_Server.Views"
       mc:Ignorable="d" 
       d:DesignHeight="1080" d:DesignWidth="1920"
-      Title="WaitingPage">
+      Title="WaitingPage"
+      FontFamily="Cascadia Code">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -31,15 +32,26 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="3*"/>
-                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2.5*"/>
                     <RowDefinition Height="4*"/>
                     <RowDefinition Height="1*"/>
-                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="1.5*"/>
                 </Grid.RowDefinitions>
 
-                <Viewbox Grid.Row="0">
+                <Viewbox Grid.Row="0" Margin="0 30" MaxHeight="70">
                     <TextBlock>Bienvenue</TextBlock>
                 </Viewbox>
+                <Border BorderThickness="0 0 0 1" BorderBrush="Black" Margin="10"></Border>
+
+                <TextBlock Grid.Row="1" VerticalAlignment="Center" TextAlignment="Center" FontSize="25" TextWrapping="Wrap">
+                    Le serveur est en attente d'une connexion pour lancer la partie.
+                </TextBlock>
+
+                <TextBlock Grid.Row="3" VerticalAlignment="Center" TextAlignment="Center" FontSize="25" TextWrapping="Wrap">Patientez...</TextBlock>
+
+                <Border Grid.Row="4" Margin="5">
+                    <Button IsEnabled="False" FontSize="35" Background="Transparent" BorderBrush="Transparent">Lancer la partie</Button>
+                </Border>
             </Grid>
         </Border>
     </Grid>

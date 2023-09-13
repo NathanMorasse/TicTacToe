@@ -10,21 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace TicTacToe_Server.Views
 {
     /// <summary>
-    /// Logique d'interaction pour PageHolder.xaml
+    /// Logique d'interaction pour GamePage.xaml
     /// </summary>
-    public partial class PageHolder : Window
+    public partial class GamePage : Page
     {
-        public PageHolder()
+        public GamePage()
         {
             InitializeComponent();
-
-            //Holder.NavigationService.Navigate(new WaitingPage());
-            Holder.NavigationService.Navigate(new GamePage());
         }
     }
 }
