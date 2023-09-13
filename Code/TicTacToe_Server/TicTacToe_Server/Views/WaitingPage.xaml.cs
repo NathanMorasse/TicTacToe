@@ -23,6 +23,13 @@ namespace TicTacToe_Server.Views
         public WaitingPage()
         {
             InitializeComponent();
+
+
+        }
+
+        private void Launch_Game_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
