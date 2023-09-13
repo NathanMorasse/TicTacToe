@@ -1,0 +1,76 @@
+﻿<Page x:Class="TicTacToe_Server.Views.GamePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TicTacToe_Server.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="GamePage"
+      FontFamily="Cascadia Code">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Column="1" 
+                Grid.Row="1" 
+                Background="#EDF2F4" 
+                BorderBrush="#2B2D42" 
+                BorderThickness="2" 
+                CornerRadius="15" 
+                MaxHeight="900" 
+                MaxWidth="1400">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="10*"/>
+                </Grid.RowDefinitions>
+
+                <Viewbox Grid.Row="0" Margin="0 30" MaxHeight="70">
+                    <TextBlock>Tic-Tac-Toe</TextBlock>
+                </Viewbox>
+                <Border BorderThickness="0 0 0 1" BorderBrush="Black" Margin="10 0"></Border>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border BorderThickness="0 0 1 0" BorderBrush="Black" Margin="0 0 0 10"></Border>
+
+                        <Grid Background="Blue">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                        </Grid>
+
+                        <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="4*"/>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>
