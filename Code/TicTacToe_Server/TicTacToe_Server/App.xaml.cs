@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using TicTacToe_Server.Models;
 
 namespace TicTacToe_Server
 {
@@ -13,5 +14,9 @@ namespace TicTacToe_Server
     /// </summary>
     public partial class App : Application
     {
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            SocketManager.WaitingForConnection();
+        }
     }
 }
