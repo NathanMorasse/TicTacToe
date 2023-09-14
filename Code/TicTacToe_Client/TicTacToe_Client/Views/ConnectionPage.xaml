@@ -1,12 +1,12 @@
-﻿<Page x:Class="TicTacToe_Server.Views.WaitingPage"
+﻿<Page x:Class="TicTacToe_Client.Views.ConnectionPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:TicTacToe_Server.Views"
+      xmlns:local="clr-namespace:TicTacToe_Client.Views"
       mc:Ignorable="d" 
       d:DesignHeight="1080" d:DesignWidth="1920"
-      Title="WaitingPage"
+      Title="ConnectionPage"
       FontFamily="Cascadia Code">
 
     <Grid>
@@ -43,11 +43,11 @@
                 </Viewbox>
                 <Border BorderThickness="0 0 0 1" BorderBrush="Black" Margin="10"></Border>
 
-                <TextBlock x:Name="Hint"  Grid.Row="1" VerticalAlignment="Center" TextAlignment="Center" FontSize="25" TextWrapping="Wrap">
+                <TextBlock Grid.Row="1" VerticalAlignment="Center" TextAlignment="Center" FontSize="25" TextWrapping="Wrap">
                     Le serveur est en attente d'une connexion pour lancer la partie.
                 </TextBlock>
 
-                <TextBlock x:Name="Message" Grid.Row="3" VerticalAlignment="Center" TextAlignment="Center" FontSize="25" TextWrapping="Wrap">Patientez...</TextBlock>
+                <TextBlock Grid.Row="3" VerticalAlignment="Center" TextAlignment="Center" FontSize="25" TextWrapping="Wrap">Patientez...</TextBlock>
 
                 <Border Grid.Row="4" Margin="5">
                     <Button x:Name="Launch_Game" Click="Launch_Game_Click" IsEnabled="False" FontSize="35" Background="Transparent" BorderBrush="Transparent">Lancer la partie</Button>

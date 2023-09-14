@@ -129,8 +129,18 @@
                             <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
 
-                        <Border>
-                            
+                        <Border Grid.Row="0" Margin=" 5">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0"></TextBlock>
+                                <TextBlock Grid.Row="0"></TextBlock>
+                                <TextBlock Grid.Row="0"></TextBlock>
+                            </Grid>
                         </Border>
 
                         <Border Grid.Row="1" Margin="5">
