@@ -5,6 +5,8 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using Newtonsoft.Json;
 
 namespace TicTacToe_Server.Models
 {
@@ -14,6 +16,7 @@ namespace TicTacToe_Server.Models
         private static IPAddress ip = host.AddressList[0];
         private static IPEndPoint endPoint = new IPEndPoint(ip, 11000);
         private static Socket socket;
+        private static Socket handler;
 
         public static void WaitingForConnection()
         {
@@ -22,17 +25,29 @@ namespace TicTacToe_Server.Models
                 socket = new Socket(ip.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
                 socket.Bind(endPoint);
                 socket.Listen(10);
-                Socket handler = socket.Accept();
+                handler = socket.Accept();
+
+                string confirmationMessage = "Connexion établie";
+                byte[] confirmationBytes = Encoding.UTF8.GetBytes(confirmationMessage);
+                handler.Send(confirmationBytes);
+
+                if (true)
+                {
+
+                }
+                //Connected need to update page
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                throw;
+                MessageBox.Show("Connexion impossible: \n" + e.Message);
             }
         }
 
         public static void SendMove(Move move)
         {
-
+            string jsonMove = JsonConvert.SerializeObject(move);
+            byte[] moveBytes = Encoding.UTF8.GetBytes(jsonMove);
+            handler.Send(moveBytes);
         }
 
         public static void NotifyClientNewGame(bool isClientTurn)

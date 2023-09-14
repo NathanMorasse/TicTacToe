@@ -16,9 +16,24 @@ namespace TicTacToe_Server.Models
 
         }
 
-        public static void ValidateMove()
+        public static void ValidateMove(Move move)
         {
+            bool valid = true;
 
+            if (move.IsClientMove == IsMyTurn)
+            {
+                valid = false;
+            }
+
+            if ( move.CoordinateX < 1 || move.CoordinateX > 3)
+            {
+                valid = false;
+            }
+
+            if (move.CoordinateY < 1 || move.CoordinateY > 3)
+            {
+                valid = false;
+            }
         }
 
         public static void NextTurn()
