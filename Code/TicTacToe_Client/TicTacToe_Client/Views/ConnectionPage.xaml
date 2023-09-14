@@ -49,9 +49,9 @@
 
                 <TextBlock Grid.Row="3" VerticalAlignment="Center" TextAlignment="Center" FontSize="25" TextWrapping="Wrap">Patientez...</TextBlock>
 
-                <Border Grid.Row="4" Margin="5">
+                <!--<Border Grid.Row="4" Margin="5">
                     <Button x:Name="Launch_Game" Click="Launch_Game_Click" IsEnabled="False" FontSize="35" Background="Transparent" BorderBrush="Transparent">Lancer la partie</Button>
-                </Border>
+                </Border>-->
             </Grid>
         </Border>
     </Grid>
