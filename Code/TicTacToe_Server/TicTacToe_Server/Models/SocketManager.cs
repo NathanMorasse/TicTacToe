@@ -12,8 +12,9 @@ namespace TicTacToe_Server.Models
 {
     public static class SocketManager
     {
-        private static IPHostEntry host = Dns.GetHostEntry("localhost");
-        private static IPAddress ip = host.AddressList[0];
+        //private static IPHostEntry host = Dns.GetHostEntry("localhost");
+        //private static IPAddress ip = host.AddressList[1];
+        private static IPAddress ip = IPAddress.Parse("10.99.62.143");
         private static IPEndPoint endPoint = new IPEndPoint(ip, 11000);
         private static Socket socket;
         private static Socket handler;
@@ -31,10 +32,6 @@ namespace TicTacToe_Server.Models
                 byte[] confirmationBytes = Encoding.UTF8.GetBytes(confirmationMessage);
                 handler.Send(confirmationBytes);
 
-                if (true)
-                {
-
-                }
                 //Connected need to update page
             }
             catch (Exception e)
