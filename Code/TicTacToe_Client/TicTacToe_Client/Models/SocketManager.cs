@@ -19,9 +19,9 @@ namespace TicTacToe_Client.Models
         {
             if (!string.IsNullOrEmpty(IpAddress) && Port != 0)
             {
-                IPHostEntry host = Dns.GetHostEntry("localhost");
+                IPHostEntry host = Dns.GetHostEntry(IpAddress);
                 IPAddress ipAddress = host.AddressList[0];
-                IPEndPoint remoteEp = new IPEndPoint(ipAddress, 11000);
+                IPEndPoint remoteEp = new IPEndPoint(ipAddress, Port);
 
                 Socket clientSocket = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
 
