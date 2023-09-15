@@ -43,11 +43,11 @@
                 </Viewbox>
                 <Border BorderThickness="0 0 0 1" BorderBrush="Black" Margin="10"></Border>
 
-                <TextBlock Grid.Row="1" VerticalAlignment="Center" TextAlignment="Center" FontSize="25" TextWrapping="Wrap">
-                    Le serveur est en attente d'une connexion pour lancer la partie.
+                <TextBlock x:Name="Message_TextBlock" Grid.Row="1" VerticalAlignment="Center" TextAlignment="Center" FontSize="25" TextWrapping="Wrap">
+                    Entrez les informations de connexion
                 </TextBlock>
 
-                <Grid Grid.Row="2" Margin="5">
+                <Grid x:Name="Connection_Informations" Grid.Row="2" Margin="5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition/>
@@ -59,18 +59,22 @@
 
                     <Label Grid.Row="0" Grid.Column="0" Margin="5" VerticalAlignment="Center" FontSize="30">IP:</Label>
 
-                    <TextBox Grid.Row="0" Grid.Column="1" Margin="5"></TextBox>
+                    <TextBox x:Name="IP_Input" Grid.Row="0" Grid.Column="1" Margin="5" Style="{StaticResource CustomTextBoxStyle}"></TextBox>
 
                     <Label Grid.Row="1" Grid.Column="0" Margin="5" VerticalAlignment="Center" FontSize="30">Port:</Label>
 
-                    <TextBox Grid.Row="1" Grid.Column="1" Margin="5"></TextBox>
+                    <TextBox x:Name="Port_Input" Grid.Row="1" Grid.Column="1" Margin="5" Style="{StaticResource CustomTextBoxStyle}"></TextBox>
                 </Grid>
 
-                <TextBlock Grid.Row="3" VerticalAlignment="Center" TextAlignment="Center" FontSize="25" TextWrapping="Wrap">Patientez...</TextBlock>
+                <Image x:Name="Waiting_Image" Grid.Row="2" Margin="20 0 20 20" Visibility="Hidden">
+                    <Image.Source>
+                        <BitmapImage UriSource="../Img/Waiting.png"/>
+                    </Image.Source>
+                </Image>
 
-                <Border Grid.Row="4" Margin="5">
-                    <Button x:Name="Connect" Click="Connect_Click" IsEnabled="False" FontSize="35" Background="Transparent" BorderBrush="Transparent">Connexion</Button>
-                </Border>
+                <TextBlock x:Name="Waiting_Textblock" Grid.Row="3" VerticalAlignment="Center" TextAlignment="Center" FontSize="25" TextWrapping="Wrap" Visibility="Hidden">Patientez...</TextBlock>
+
+                <Button x:Name="Connect" Click="Connect_Click" Grid.Row="4" IsEnabled="False" Background="#40ACE2" Margin="5" Style="{StaticResource CustomButtonStyle}">Connexion</Button>
             </Grid>
         </Border>
     </Grid>

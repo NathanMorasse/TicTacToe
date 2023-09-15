@@ -144,11 +144,11 @@
                         </Border>
 
                         <Border Grid.Row="1" Margin="5">
-                            <Button>Recommencer</Button>
+                            <Button FontSize="35">Recommencer</Button>
                         </Border>
 
                         <Border Grid.Row="2" Margin="5">
-                            <Button>Quitter</Button>
+                            <Button FontSize="35">Quitter</Button>
                         </Border>
                     </Grid>
                 </Grid>
