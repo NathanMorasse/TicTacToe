@@ -11,10 +11,10 @@ using System.Windows.Controls;
 
 namespace TicTacToe_Client.Models
 {
-    internal class Board
+    public class Board
     {
-        Move[,] Moves { get; set; }
-        Move LastMove { get; set; }
+        public Move[,] Moves { get; set; }
+        public Move LastMove { get; set; }
 
         public Board()
         {
@@ -54,6 +54,7 @@ namespace TicTacToe_Client.Models
                 return winnerString;
             }
 
+            
             return "aucun";
         }
 
