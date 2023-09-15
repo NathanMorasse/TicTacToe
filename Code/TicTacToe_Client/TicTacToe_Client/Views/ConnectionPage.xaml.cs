@@ -24,5 +24,10 @@ namespace TicTacToe_Client.Views
         {
             InitializeComponent();
         }
+
+        private void Connect_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

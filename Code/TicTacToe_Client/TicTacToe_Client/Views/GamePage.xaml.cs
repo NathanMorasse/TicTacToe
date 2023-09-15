@@ -20,9 +20,33 @@ namespace TicTacToe_Client.Views
     /// </summary>
     public partial class GamePage : Page
     {
+        Button selected = null;
+
         public GamePage()
         {
             InitializeComponent();
+        }
+
+        private void Case_Click(object sender, RoutedEventArgs e)
+        {
+            Button clicked = ((Button)sender);
+
+            if (clicked.Content != "X" || clicked.Content != "O")
+            {
+                if (selected != null)
+                {
+                    selected.Background = Brushes.Transparent;
+                }
+
+                clicked.Background = new SolidColorBrush(Color.FromRgb(210,255,137));
+                selected = clicked;
+                Confirm_Move.IsEnabled = true;
+            }
+        }
+
+        private void Confirm_Move_Click(object sender, RoutedEventArgs e)
+        {
+            selected.Background = Brushes.Transparent;
         }
     }
 }

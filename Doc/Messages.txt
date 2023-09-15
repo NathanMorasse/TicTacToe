@@ -1,0 +1,8 @@
+Types de messages
+
+"Move": contient un move
+"Connected" serveur envoie au client pour signifier une connexion réussie
+"GameStarted" Serveur envoie au client avec un bool isClientTurn pour dire que la partie est commencée
+"InvalidMove" Le client ou le serveur envoie ce message pour dire a l'adversaire que son dernier move est invalide
+"ValidateWin" Le client ou le serveur envoie ce message pour dire a l'adversaire Quil à gagné(apres avoir validé son dernier move)
+"Tied" Le client ou le serveur envoie ce message pour dire a l'adversaire la grille est remplie et ils sont à égalité

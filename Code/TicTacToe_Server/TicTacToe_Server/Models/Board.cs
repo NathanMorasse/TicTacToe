@@ -16,6 +16,7 @@ namespace TicTacToe_Server.Models
         public void SaveNewMove(Move move)
         {
             Moves[move.CoordinateY - 1, move.CoordinateX - 1] = move;
+            LastMove = move;
         }
 
         // Change le dernier move pour le move de l'adversaire quand un message de move invalide est recu.
@@ -87,14 +88,15 @@ namespace TicTacToe_Server.Models
                 }
             }
 
-            if (isWinner)
+            foreach (Move move in Moves)
             {
-                return winner;
+                if (move == null)
+                {
+                    winner = "Tied";
+                }
             }
-            else
-            {
-                return "Aucun";
-            }
+
+            return winner;
         }
     }
 }
