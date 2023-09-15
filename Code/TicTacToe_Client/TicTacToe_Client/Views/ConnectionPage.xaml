@@ -47,11 +47,30 @@
                     Le serveur est en attente d'une connexion pour lancer la partie.
                 </TextBlock>
 
+                <Grid Grid.Row="2" Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Margin="5" VerticalAlignment="Center" FontSize="30">IP:</Label>
+
+                    <TextBox Grid.Row="0" Grid.Column="1" Margin="5"></TextBox>
+
+                    <Label Grid.Row="1" Grid.Column="0" Margin="5" VerticalAlignment="Center" FontSize="30">Port:</Label>
+
+                    <TextBox Grid.Row="1" Grid.Column="1" Margin="5"></TextBox>
+                </Grid>
+
                 <TextBlock Grid.Row="3" VerticalAlignment="Center" TextAlignment="Center" FontSize="25" TextWrapping="Wrap">Patientez...</TextBlock>
 
-                <!--<Border Grid.Row="4" Margin="5">
-                    <Button x:Name="Launch_Game" Click="Launch_Game_Click" IsEnabled="False" FontSize="35" Background="Transparent" BorderBrush="Transparent">Lancer la partie</Button>
-                </Border>-->
+                <Border Grid.Row="4" Margin="5">
+                    <Button x:Name="Connect" Click="Connect_Click" IsEnabled="False" FontSize="35" Background="Transparent" BorderBrush="Transparent">Connexion</Button>
+                </Border>
             </Grid>
         </Border>
     </Grid>
