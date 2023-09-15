@@ -29,11 +29,6 @@ namespace TicTacToe_Server.Models
                 socket.Listen(10);
                 handler = socket.Accept();
 
-                Message message = new Message("Connexion réussie");
-                string jsonMessage = JsonConvert.SerializeObject(message);
-                byte[] messageBytes = Encoding.UTF8.GetBytes(jsonMessage+"<EOF>");
-                handler.Send(messageBytes);
-
                 //Connected need to update page
             }
             catch (Exception e)
@@ -42,19 +37,11 @@ namespace TicTacToe_Server.Models
             }
         }
 
-        public static void SendMove(Move move)
-        {
-            Message moveMessage = new Message("Move", move);
-            string jsonMove = JsonConvert.SerializeObject(moveMessage);
-            byte[] moveBytes = Encoding.UTF8.GetBytes(jsonMove + "<EOF>");
-            handler.Send(moveBytes);
-        }
-
         public static void NotifyClientNewGame(bool isClientTurn)
         {
             Message message = new Message("GameStarted", isClientTurn);
             string jsonMessage = JsonConvert.SerializeObject(message);
-            byte[] messageBytes = Encoding.UTF8.GetBytes(jsonMessage + "<EOF>");
+            byte[] messageBytes = Encoding.UTF8.GetBytes(jsonMessage);
             handler.Send(messageBytes);
         }
 
@@ -82,24 +69,50 @@ namespace TicTacToe_Server.Models
                 case "Move":
                     Game.ValidateMove(messageRecu.MoveMessage);
                     break;
+                case "InvalidMove":
+                    Game.CurrentBoard.DeleteMove();
+                    break;
+                case "ValidateWin":
+                    Game.EndGame("Win");
+                    break;
+                case "Tied":
+                    Game.EndGame("Tie");
+                    break;
                 default:
                     break;
             }
         }
 
+        public static void SendMove(Move move)
+        {
+            Message moveMessage = new Message("Move", move);
+            string jsonMove = JsonConvert.SerializeObject(moveMessage);
+            byte[] moveBytes = Encoding.UTF8.GetBytes(jsonMove);
+            handler.Send(moveBytes);
+        }
+
         public static void SendInvalidMoveMessage()
         {
-
+            Message message = new Message("InvalidMove");
+            string jsonMessage = JsonConvert.SerializeObject(message);
+            byte[] messageBytes = Encoding.UTF8.GetBytes(jsonMessage);
+            handler.Send(messageBytes);
         }
 
         public static void ValidateOpponentWin()
         {
-
+            Message message = new Message("ValidateWin");
+            string jsonMessage = JsonConvert.SerializeObject(message);
+            byte[] messageBytes = Encoding.UTF8.GetBytes(jsonMessage);
+            handler.Send(messageBytes);
         }
 
         public static void SendTieMessage()
         {
-
+            Message message = new Message("Tied");
+            string jsonMessage = JsonConvert.SerializeObject(message);
+            byte[] messageBytes = Encoding.UTF8.GetBytes(jsonMessage);
+            handler.Send(messageBytes);
         }
     }
 }

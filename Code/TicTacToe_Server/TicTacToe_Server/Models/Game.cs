@@ -28,9 +28,8 @@ namespace TicTacToe_Server.Models
 
             if (!IsMyTurn)
             {
-                SocketManager.WaitForOpponentMove();
+                SocketManager.WaitForOpponentMessage();
             }
-
         }
 
         /// <summary>
@@ -68,7 +67,7 @@ namespace TicTacToe_Server.Models
                             move.PossibleWin = true;
                             Game.NextTurn();
                             SocketManager.SendMove(move);
-                            SocketManager.WaitForOpponentMove();
+                            SocketManager.WaitForOpponentMessage();
                             break;
                         case "Tied":
                             SocketManager.SendTieMessage();
@@ -112,7 +111,18 @@ namespace TicTacToe_Server.Models
 
         public static void EndGame(string result)
         {
-            //
+            switch (result)
+            {
+                case "Win":
+                    break;
+                case "Lose":
+                    break;
+                case "Tie":
+                    break;
+                default:
+                    break;
+            }
+            // Update view
         }
     }
 }
