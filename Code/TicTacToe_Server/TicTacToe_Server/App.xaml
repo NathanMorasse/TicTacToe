@@ -73,5 +73,40 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <Style x:Key="CaseSelectionStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="BorderBrush" Value="#2B2D42" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="FontSize" Value="35" />
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="15">
+                            <Border Name="border_over" Background="Transparent" BorderBrush="Transparent" CornerRadius="15">
+                                <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center" />
+                            </Border>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="border" Property="Background" Value="LightGray" />
+                                <Setter TargetName="border" Property="BorderBrush" Value="Gray" />
+                                <Setter Property="Foreground" Value="DarkGray" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border_over" Property="Background" Value="#55CECECE" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Application.Resources>
 </Application>
