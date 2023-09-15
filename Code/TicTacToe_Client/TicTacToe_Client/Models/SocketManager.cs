@@ -24,6 +24,7 @@ namespace TicTacToe_Client.Models
                 IPEndPoint remoteEp = new IPEndPoint(ipAddress, Port);
 
                 Socket clientSocket = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+                clientSocket.Connect(remoteEp);
 
                 string data = null;
                 byte[] bytes = null;
