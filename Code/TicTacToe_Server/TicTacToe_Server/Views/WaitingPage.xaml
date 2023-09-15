@@ -43,15 +43,19 @@
                 </Viewbox>
                 <Border BorderThickness="0 0 0 1" BorderBrush="Black" Margin="10"></Border>
 
-                <TextBlock x:Name="Hint"  Grid.Row="1" VerticalAlignment="Center" TextAlignment="Center" FontSize="25" TextWrapping="Wrap">
+                <TextBlock x:Name="Message_TextBlock"  Grid.Row="1" VerticalAlignment="Center" TextAlignment="Center" FontSize="25" TextWrapping="Wrap">
                     Le serveur est en attente d'une connexion pour lancer la partie.
                 </TextBlock>
 
-                <TextBlock x:Name="Message" Grid.Row="3" VerticalAlignment="Center" TextAlignment="Center" FontSize="25" TextWrapping="Wrap">Patientez...</TextBlock>
+                <Image x:Name="Status_Image" Grid.Row="2" Margin="20 0 20 20">
+                    <Image.Source>
+                        <BitmapImage UriSource="../Img/Waiting.png"/>
+                    </Image.Source>
+                </Image>
 
-                <Border Grid.Row="4" Margin="5">
-                    <Button x:Name="Launch_Game" Click="Launch_Game_Click" IsEnabled="False" FontSize="35" Background="Transparent" BorderBrush="Transparent">Lancer la partie</Button>
-                </Border>
+                <TextBlock x:Name="Waiting_TextBlock" Grid.Row="3" VerticalAlignment="Center" TextAlignment="Center" FontSize="25" TextWrapping="Wrap">Patientez...</TextBlock>
+
+                <Button x:Name="Launch_Game" Click="Launch_Game_Click" IsEnabled="False" Background="#40ACE2" Grid.Row="4" FontSize="35" Margin="5" Style="{StaticResource CustomButtonStyle}">Lancer la partie</Button>
             </Grid>
         </Border>
     </Grid>

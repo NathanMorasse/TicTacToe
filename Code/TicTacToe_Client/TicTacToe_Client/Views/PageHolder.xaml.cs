@@ -24,7 +24,7 @@ namespace TicTacToe_Client.Views
             InitializeComponent();
 
             //Holder.NavigationService.Navigate(new WaitingPage());
-            Holder.NavigationService.Navigate(new GamePage());
+            Holder.NavigationService.Navigate(new ConnectionPage());
         }
     }
 }
