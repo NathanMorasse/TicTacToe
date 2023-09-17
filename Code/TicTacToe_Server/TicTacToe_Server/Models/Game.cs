@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Navigation;
+using TicTacToe_Server.ViewModels;
 using TicTacToe_Server.Views;
 
 namespace TicTacToe_Server.Models
@@ -24,12 +25,7 @@ namespace TicTacToe_Server.Models
 
             SocketManager.NotifyClientNewGame(!IsMyTurn);
 
-            //switch to game page
-
-            if (!IsMyTurn)
-            {
-                SocketManager.WaitForOpponentMessage();
-            }
+            ViewLink.NavigateToGame();
         }
 
         /// <summary>

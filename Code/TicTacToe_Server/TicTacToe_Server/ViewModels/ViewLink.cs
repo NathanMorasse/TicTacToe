@@ -32,5 +32,10 @@ namespace TicTacToe_Server.ViewModels
             get { return _PageHolder; }
             set { _PageHolder = value; }
         }
+
+        public static void NavigateToGame()
+        {
+            PageHolder.Holder.NavigationService.Navigate(GamePage);
+        }
     }
 }
