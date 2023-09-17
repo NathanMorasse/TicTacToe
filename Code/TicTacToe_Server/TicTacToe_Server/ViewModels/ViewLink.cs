@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using TicTacToe_Server.Views;
+using System.Windows;
+using TicTacToe_Server.Models;
 
 namespace TicTacToe_Server.ViewModels
 {
@@ -36,6 +38,27 @@ namespace TicTacToe_Server.ViewModels
         public static void NavigateToGame()
         {
             PageHolder.Holder.NavigationService.Navigate(GamePage);
+        }
+
+        public static void SwitchReward(bool win)
+        {
+            if (win)
+            {
+                _GamePage.Reward_ViewBox.Visibility = Visibility.Hidden;
+                _GamePage.Reward_Image.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                _GamePage.Reward_Image.Visibility = Visibility.Hidden;
+                _GamePage.Reward_ViewBox.Visibility = Visibility.Visible;
+            }
+        }
+
+        public static void ApplyResult(string exclamation, string status, string message)
+        {
+            _GamePage.Exclamation_TextBlock.Text = exclamation;
+            _GamePage.Result_textBlock.Text = status;
+            _GamePage.Reward_TextBlock.Text = message;
         }
     }
 }

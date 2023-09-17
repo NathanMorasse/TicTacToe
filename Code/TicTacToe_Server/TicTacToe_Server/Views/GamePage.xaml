@@ -140,7 +140,7 @@
                                 <RowDefinition Height="2*"/>
                             </Grid.RowDefinitions>
 
-                            <Border Grid.Row="0" Margin=" 5" Background="#FFD056" CornerRadius="15" BorderBrush="#2B2D42" BorderThickness="2">
+                            <Border x:Name="Finished_Color" Grid.Row="0" Margin=" 5" Background="#FFD056" CornerRadius="15" BorderBrush="#2B2D42" BorderThickness="2">
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition MinHeight="80" Height="*"/>

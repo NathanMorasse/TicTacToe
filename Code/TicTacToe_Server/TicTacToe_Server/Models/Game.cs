@@ -120,8 +120,7 @@ namespace TicTacToe_Server.Models
                     {
                         exclamation = "Félicitation!!";
                         status = "Vous avez gagné cette partie de tic-tac-toe.";
-                        ViewLink.GamePage.Reward_TextBlock.Visibility = Visibility.Hidden;
-                        ViewLink.GamePage.Reward_Image.Visibility = Visibility.Visible;
+                        ViewLink.SwitchReward(true);
                         break;
                     }
                 case "Lose":
@@ -132,9 +131,7 @@ namespace TicTacToe_Server.Models
                     break;
             }
 
-            ViewLink.GamePage.Exclamation_TextBlock.Text = exclamation;
-            ViewLink.GamePage.Result_textBlock.Text = status;
-            ViewLink.GamePage.Reward_TextBlock.Text = message;
+            ViewLink.ApplyResult(exclamation, status, message);
             // Update view
         }
     }
