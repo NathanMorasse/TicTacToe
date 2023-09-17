@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TicTacToe_Server.ViewModels;
 
 namespace TicTacToe_Server.Views
 {
@@ -23,7 +24,12 @@ namespace TicTacToe_Server.Views
         {
             InitializeComponent();
 
-            Holder.NavigationService.Navigate(new WaitingPage());
+            ViewLink.GamePage = new GamePage();
+            ViewLink.WaitingPage = new WaitingPage();
+
+            ViewLink.PageHolder = this;
+
+            Holder.NavigationService.Navigate(ViewLink.WaitingPage);
         }
     }
 }
