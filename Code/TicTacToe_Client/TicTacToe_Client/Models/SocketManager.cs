@@ -20,31 +20,31 @@ namespace TicTacToe_Client.Models
         private static Socket clientSocket;
         private static IPAddress ipAddress;
 
-        public static void ConnectToServer(string IpAddress,  int Port)
+        public static bool ConnectToServer(string IpAddress,  int Port)
         {
             if (!string.IsNullOrEmpty(IpAddress) && Port != 0)
             {
                 clientSocket = CreateSocket(IpAddress, Port);
                 clientSocket.Connect(remoteEp);
             }
+            return clientSocket.Connected;
         }
 
         private static Socket CreateSocket(string IpAddress, int Port)
         {
             ipAddress = IPAddress.Parse(IpAddress);
             remoteEp = new IPEndPoint(ipAddress, Port);
-
             Socket clientSocket = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
             return clientSocket;
         }
 
-        public static void SendMessage(Message message)
+        public static async void SendMessage(Message message)
         {
             try
             {
                 string Json = JsonConvert.SerializeObject(message);
                 byte[] moveMsg = Encoding.ASCII.GetBytes(Json);
-                int bytesSent = clientSocket.Send(moveMsg);
+                int bytesSent = await clientSocket.SendAsync(moveMsg, SocketFlags.None);
                 WaitForOpponentMove();
             }catch(Exception ex)
             {

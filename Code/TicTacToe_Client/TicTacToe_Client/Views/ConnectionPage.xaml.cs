@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -30,7 +31,8 @@ namespace TicTacToe_Client.Views
         private void Connect_Click(object sender, RoutedEventArgs e)
         {
             int Port_Number = 0;
-            if(!int.TryParse(Port_Input.Text, out Port_Number))
+            IPAddress IpAddress = null;
+            if(!int.TryParse(Port_Input.Text, out Port_Number) && IPAddress.TryParse(IP_Input.Text, out IpAddress))
             {
                 MessageBox.Show("Le port saisi est invalide", "Port Invalide", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
@@ -38,16 +40,22 @@ namespace TicTacToe_Client.Views
             {
                 try
                 {
-                    SocketManager.ConnectToServer(IP_Input.Text, Port_Number);
-                    //ViewLink.PageHolder.Holder.NavigationService.Navigate(ViewLink.GamePage);
-                    ViewLink.PageHolder.SwitchToGamePage();
+                    bool connectionSuccess;
+                    connectionSuccess = SocketManager.ConnectToServer(IP_Input.Text, Port_Number);
+                    if (connectionSuccess)
+                    {
+                        Waiting_Image.Visibility = Visibility.Visible;
+                        Waiting_Textblock.Visibility = Visibility.Visible;
+                        Message_TextBlock.Visibility = Visibility.Hidden;
+                        Connection_Informations.Visibility = Visibility.Hidden;
+                        Connect.Visibility = Visibility.Hidden;
+                    }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, ex.GetType().ToString(), MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
-                
         }
 
         private void EnableConnect(object sender, TextChangedEventArgs e)
