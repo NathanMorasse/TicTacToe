@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TicTacToe_Client.Models;
+using TicTacToe_Client.ViewModels;
 
 namespace TicTacToe_Client.Views
 {
@@ -38,6 +39,8 @@ namespace TicTacToe_Client.Views
                 try
                 {
                     SocketManager.ConnectToServer(IP_Input.Text, Port_Number);
+                    //ViewLink.PageHolder.Holder.NavigationService.Navigate(ViewLink.GamePage);
+                    ViewLink.PageHolder.SwitchToGamePage();
                 }
                 catch(Exception ex)
                 {

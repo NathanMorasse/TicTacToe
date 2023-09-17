@@ -28,21 +28,21 @@ namespace TicTacToe_Client.Models
                 clientSocket = CreateSocket(IpAddress, Port);
                 clientSocket.Connect(remoteEp);
 
-                string data = null;
-                byte[] bytes = null;
-                while (true)
-                {
-                    bytes = new byte[1024];
-                    int bytesRec = clientSocket.Receive(bytes);
-                    data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
-                    string connectionResponse = data.Trim();
+                //string data = null;
+                //byte[] bytes = null;
+                //while (true)
+                //{
+                //    bytes = new byte[1024];
+                //    int bytesRec = clientSocket.Receive(bytes);
+                //    data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
+                //    string connectionResponse = data.Trim();
 
-                    if (connectionResponse != null)
-                    {
-                        break;
-                    }
+                //    if (connectionResponse != null)
+                //    {
+                //        break;
+                //    }
 
-                }
+                //}
             }
         }
 
