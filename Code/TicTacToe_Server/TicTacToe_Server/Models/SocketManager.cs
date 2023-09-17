@@ -4,36 +4,40 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using TicTacToe_Server.ViewModels;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using Newtonsoft.Json;
+using System.Windows.Media.Imaging;
 
 namespace TicTacToe_Server.Models
 {
     public static class SocketManager
     {
-        //private static IPHostEntry host = Dns.GetHostEntry("localhost");
-        //private static IPAddress ip = host.AddressList[1];
-        private static IPAddress ip = IPAddress.Parse("10.99.62.143");
+        private static IPAddress ip = IPAddress.Any;
         private static IPEndPoint endPoint = new IPEndPoint(ip, 11000);
         private static Socket socket;
         private static Socket handler;
 
-        public static void WaitingForConnection()
+        public async static void WaitingForConnection()
         {
             try
             {
                 socket = new Socket(ip.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
                 socket.Bind(endPoint);
                 socket.Listen(10);
-                handler = socket.Accept();
+                handler = await socket.AcceptAsync();
 
-                //Connected need to update page
+                ViewLink.WaitingPage.Message_TextBlock.Text = "Un joueur s'est connecté.";
+                ViewLink.WaitingPage.Status_Image.Source = new BitmapImage(new Uri("../Img/Connected.png", UriKind.Relative));
+                ViewLink.WaitingPage.Waiting_TextBlock.Text = "Vous pouvez lancer la partie";
+                ViewLink.WaitingPage.Launch_Game.IsEnabled = true;
             }
             catch (Exception e)
             {
                 MessageBox.Show("Connexion impossible: \n" + e.Message);
+                WaitingForConnection();
             }
         }
 

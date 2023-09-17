@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using TicTacToe_Server.Models;
 
 namespace TicTacToe_Server.Views
@@ -24,6 +26,11 @@ namespace TicTacToe_Server.Views
         public WaitingPage()
         {
             InitializeComponent();
+        }
+
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            SocketManager.WaitingForConnection();
         }
 
         private void Launch_Game_Click(object sender, RoutedEventArgs e)
