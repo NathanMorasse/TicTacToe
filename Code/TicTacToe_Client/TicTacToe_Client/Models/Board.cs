@@ -35,32 +35,46 @@ namespace TicTacToe_Client.Models
         public string IsWinner()
         {
             string winnerString = ValidateBoardLine();
-            if(winnerString != "aucun")
+            bool noTie = true;
+            if (winnerString != "Aucun")
             {
                 return winnerString;
             }
 
             winnerString = ValidateBoardColumn();
 
-            if(winnerString != "aucun")
+            if(winnerString != "Aucun")
             {
                 return winnerString;
             }
 
             winnerString = ValidateBoardDiagonals();
 
-            if(winnerString != "aucun")
+            if(winnerString != "Aucun")
             {
                 return winnerString;
             }
 
-            
-            return "aucun";
+            foreach(Move move in Moves)
+            {
+                if(move == null)
+                {
+                    noTie = false;
+                }
+            }
+
+            if (noTie)
+            {
+                SocketManager.SendMessage(new Message("Tied"));
+                Game.EndGame("Tied");
+                return "Tied";
+            }
+            return "Aucun";
         }
 
         private string ValidateBoardLine()
         {
-            string winner = "aucun";
+            string winner = "Aucun";
             for(int x = 0; x < 3 ; x++)
             {
                 if (Moves[x,0] == Moves[x,1] && Moves[x,1] == Moves[x, 2])
@@ -72,7 +86,7 @@ namespace TicTacToe_Client.Models
                     }
                     else
                     {
-                        winner = "client";
+                        winner = "Client";
                         break;
                     }
                 }
@@ -82,7 +96,7 @@ namespace TicTacToe_Client.Models
 
         private string ValidateBoardColumn()
         {
-            string winner = "aucun";
+            string winner = "Aucun";
             for(int y = 0; y < 3 ; y++)
             {
                 if (Moves[0,y] == Moves[1,y] && Moves[1,y] == Moves[2, y])
@@ -93,7 +107,7 @@ namespace TicTacToe_Client.Models
                     }
                     else
                     {
-                        winner = "client";
+                        winner = "Client";
                     }
                 }
             }
@@ -102,7 +116,7 @@ namespace TicTacToe_Client.Models
 
         private string ValidateBoardDiagonals()
         {
-            string winnerString = "aucun";
+            string winnerString = "Aucun";
             if (Moves[0,0] == Moves[1,1] && Moves[1,1] == Moves[3, 3]
                 || Moves[1,3] == Moves[1,1] && Moves[1,1] == Moves[0,3])
             {
@@ -112,7 +126,7 @@ namespace TicTacToe_Client.Models
                 }
                 else
                 {
-                    winnerString = "client";
+                    winnerString = "Client";
                 }
             }
 
