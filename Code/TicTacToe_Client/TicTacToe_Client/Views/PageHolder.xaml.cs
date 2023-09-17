@@ -28,7 +28,7 @@ namespace TicTacToe_Client.Views
             ViewLink.ConnectionPage = new ConnectionPage();
             ViewLink.PageHolder = this;
 
-            Holder.NavigationService.Navigate(new ConnectionPage());
+            Holder.NavigationService.Navigate(new GamePage());
         }
     }
 }
