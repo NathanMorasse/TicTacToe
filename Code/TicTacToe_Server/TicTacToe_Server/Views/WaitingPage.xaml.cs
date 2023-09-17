@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using TicTacToe_Server.Models;
+using TicTacToe_Server.ViewModels;
 
 namespace TicTacToe_Server.Views
 {
@@ -35,7 +36,7 @@ namespace TicTacToe_Server.Views
 
         private void Launch_Game_Click(object sender, RoutedEventArgs e)
         {
-
+            Game.StartNewGame();
         }
     }
 }

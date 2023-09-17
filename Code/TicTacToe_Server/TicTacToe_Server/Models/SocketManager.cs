@@ -49,16 +49,16 @@ namespace TicTacToe_Server.Models
             handler.Send(messageBytes);
         }
 
-        public static void WaitForOpponentMessage()
+        public async static void WaitForOpponentMessage()
         {
             string data = null;
             byte[] bytes = null;
 
             while (true)
             {
-                bytes = new byte[1024];
-                int bytesRec = handler.Receive(bytes);
-                data += Encoding.UTF8.GetString(bytes, 0, bytesRec);
+                var buffer = new byte[1_024];
+                var received = await handler.ReceiveAsync(buffer, SocketFlags.None);
+                data += Encoding.UTF8.GetString(buffer, 0, received);
                 string response = data.Trim();
 
                 if (response != null)
