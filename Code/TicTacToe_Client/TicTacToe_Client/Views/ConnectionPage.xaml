@@ -59,11 +59,11 @@
 
                     <Label Grid.Row="0" Grid.Column="0" Margin="5" VerticalAlignment="Center" FontSize="30">IP:</Label>
 
-                    <TextBox x:Name="IP_Input" Grid.Row="0" Grid.Column="1" Margin="5" Style="{StaticResource CustomTextBoxStyle}"></TextBox>
+                    <TextBox x:Name="IP_Input" Grid.Row="0" Grid.Column="1" Margin="5" Style="{StaticResource CustomTextBoxStyle}" TextChanged="EnableConnect"></TextBox>
 
                     <Label Grid.Row="1" Grid.Column="0" Margin="5" VerticalAlignment="Center" FontSize="30">Port:</Label>
 
-                    <TextBox x:Name="Port_Input" Grid.Row="1" Grid.Column="1" Margin="5" Style="{StaticResource CustomTextBoxStyle}"></TextBox>
+                    <TextBox x:Name="Port_Input" Grid.Row="1" Grid.Column="1" Margin="5,5,5,0" Style="{StaticResource CustomTextBoxStyle}" Height="76" VerticalAlignment="Top" TextChanged="EnableConnect"></TextBox>
                 </Grid>
 
                 <Image x:Name="Waiting_Image" Grid.Row="2" Margin="20 0 20 20" Visibility="Hidden">

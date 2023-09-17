@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TicTacToe_Client.Models;
 
 namespace TicTacToe_Client.Views
 {
@@ -21,6 +22,8 @@ namespace TicTacToe_Client.Views
     public partial class GamePage : Page
     {
         Button selected = null;
+        int CoordX;
+        int CoordY;
 
         public GamePage()
         {
@@ -30,6 +33,8 @@ namespace TicTacToe_Client.Views
         private void Case_Click(object sender, RoutedEventArgs e)
         {
             Button clicked = ((Button)sender);
+            CoordX = clicked.Name[1];
+            CoordY = clicked.Name[2];
 
             if (clicked.Content != "X" || clicked.Content != "O")
             {
@@ -47,6 +52,20 @@ namespace TicTacToe_Client.Views
         private void Confirm_Move_Click(object sender, RoutedEventArgs e)
         {
             selected.Background = Brushes.Transparent;
+            Move move = new Move(false, CoordX, CoordY, false);
+            if (Game.ValidateMove(move))
+            {
+                Game.CurrentBoard.SaveNewMove(move);
+                if(Game.CurrentBoard.IsWinner() == "client")
+                {
+                    move.PossibleWin = true;
+                }
+                SocketManager.SendMessage(new Message("Move", move));
+            }
+            else
+            {
+                MessageBox.Show("Votre Tour est invalide. Veuillez recommencer", "Move Invalide", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
     }
 }

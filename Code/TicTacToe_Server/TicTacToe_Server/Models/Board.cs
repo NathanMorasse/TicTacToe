@@ -15,7 +15,7 @@ namespace TicTacToe_Server.Models
 
         public void SaveNewMove(Move move)
         {
-            Moves[move.CoordinateY - 1, move.CoordinateX - 1] = move;
+            Moves[move.CoordinateY, move.CoordinateX] = move;
             LastMove = move;
         }
 
@@ -32,6 +32,7 @@ namespace TicTacToe_Server.Models
             //Détermine si il y a un gagnant
             bool isWinner = false;
             string winner = "Aucun";
+            bool Tied = true;
 
             // Horizontals
             for (int y = 0; y < Moves.GetLength(0); y++)
@@ -92,8 +93,13 @@ namespace TicTacToe_Server.Models
             {
                 if (move == null)
                 {
-                    winner = "Tied";
+                    Tied = false;
                 }
+            }
+
+            if (Tied)
+            {
+                winner = "Tied";
             }
 
             return winner;
