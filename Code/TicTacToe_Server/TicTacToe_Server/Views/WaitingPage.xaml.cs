@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TicTacToe_Server.Models;
 
 namespace TicTacToe_Server.Views
 {
@@ -23,8 +24,6 @@ namespace TicTacToe_Server.Views
         public WaitingPage()
         {
             InitializeComponent();
-
-
         }
 
         private void Launch_Game_Click(object sender, RoutedEventArgs e)

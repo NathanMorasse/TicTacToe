@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TicTacToe_Client.ViewModels;
 
 namespace TicTacToe_Client.Views
 {
@@ -22,6 +23,10 @@ namespace TicTacToe_Client.Views
         public PageHolder()
         {
             InitializeComponent();
+
+            ViewLink.GamePage = new GamePage();
+            ViewLink.ConnectionPage = new ConnectionPage();
+            ViewLink.PageHolder = this;
 
             Holder.NavigationService.Navigate(new ConnectionPage());
         }
