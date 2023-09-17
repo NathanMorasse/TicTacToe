@@ -43,7 +43,7 @@
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition MinWidth="300" Width="*"/>
                     </Grid.ColumnDefinitions>
 
                     <Border BorderThickness="0 0 1 0" BorderBrush="Black" Margin="0 0 0 10"></Border>
@@ -85,15 +85,15 @@
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
 
-                            <Button x:Name="A1" Click="Case_Click" Grid.Row="0" Grid.Column="0" Style="{StaticResource CaseSelectionStyle}"></Button>
-                            <Button x:Name="A2" Click="Case_Click" Grid.Row="0" Grid.Column="1" Style="{StaticResource CaseSelectionStyle}"></Button>
-                            <Button x:Name="A3" Click="Case_Click" Grid.Row="0" Grid.Column="2" Style="{StaticResource CaseSelectionStyle}"></Button>
-                            <Button x:Name="B1" Click="Case_Click" Grid.Row="1" Grid.Column="0" Style="{StaticResource CaseSelectionStyle}"></Button>
-                            <Button x:Name="B2" Click="Case_Click" Grid.Row="1" Grid.Column="1" Style="{StaticResource CaseSelectionStyle}"></Button>
-                            <Button x:Name="B3" Click="Case_Click" Grid.Row="1" Grid.Column="2" Style="{StaticResource CaseSelectionStyle}"></Button>
-                            <Button x:Name="C1" Click="Case_Click" Grid.Row="2" Grid.Column="0" Style="{StaticResource CaseSelectionStyle}"></Button>
-                            <Button x:Name="C2" Click="Case_Click" Grid.Row="2" Grid.Column="1" Style="{StaticResource CaseSelectionStyle}"></Button>
-                            <Button x:Name="C3" Click="Case_Click" Grid.Row="2" Grid.Column="2" Style="{StaticResource CaseSelectionStyle}"></Button>
+                            <Button x:Name="C00" Click="Case_Click" Grid.Row="0" Grid.Column="0" Style="{StaticResource CaseSelectionStyle}"></Button>
+                            <Button x:Name="C01" Click="Case_Click" Grid.Row="0" Grid.Column="1" Style="{StaticResource CaseSelectionStyle}"></Button>
+                            <Button x:Name="C02" Click="Case_Click" Grid.Row="0" Grid.Column="2" Style="{StaticResource CaseSelectionStyle}"></Button>
+                            <Button x:Name="C10" Click="Case_Click" Grid.Row="1" Grid.Column="0" Style="{StaticResource CaseSelectionStyle}"></Button>
+                            <Button x:Name="C11" Click="Case_Click" Grid.Row="1" Grid.Column="1" Style="{StaticResource CaseSelectionStyle}"></Button>
+                            <Button x:Name="C12" Click="Case_Click" Grid.Row="1" Grid.Column="2" Style="{StaticResource CaseSelectionStyle}"></Button>
+                            <Button x:Name="C20" Click="Case_Click" Grid.Row="2" Grid.Column="0" Style="{StaticResource CaseSelectionStyle}"></Button>
+                            <Button x:Name="C21" Click="Case_Click" Grid.Row="2" Grid.Column="1" Style="{StaticResource CaseSelectionStyle}"></Button>
+                            <Button x:Name="C22" Click="Case_Click" Grid.Row="2" Grid.Column="2" Style="{StaticResource CaseSelectionStyle}"></Button>
                         </Grid>
                     </Grid>
 
@@ -126,25 +126,37 @@
                             <Button x:Name="Confirm_Move" Click="Confirm_Move_Click" Grid.Row="3" Margin="5" IsEnabled="False" Background="#40ACE2" Style="{StaticResource CustomButtonStyle}">Confirmer</Button>
                         </Grid>
 
-                        <Grid x:Name="Finished_Layout" Grid.Row="1" Grid.Column="1" Visibility="Hidden" Margin="5">
+                        <Grid x:Name="Finished_Layout" Grid.Row="1" Grid.Column="1" Visibility="Visible" Margin="5">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="8*"/>
+                                <RowDefinition Height="8*" MinHeight="200"/>
                                 <RowDefinition Height="2*"/>
                                 <RowDefinition Height="2*"/>
-                                <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
 
                             <Border Grid.Row="0" Margin=" 5" Background="#FFD056" CornerRadius="15" BorderBrush="#2B2D42" BorderThickness="2">
                                 <Grid>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition/>
-                                        <RowDefinition/>
-                                        <RowDefinition/>
+                                        <RowDefinition MinHeight="80" Height="*"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="2*"/>
                                     </Grid.RowDefinitions>
 
-                                    <TextBlock Grid.Row="0"></TextBlock>
-                                    <TextBlock Grid.Row="0"></TextBlock>
-                                    <TextBlock Grid.Row="0"></TextBlock>
+                                    <Viewbox Grid.Row="0" Margin="0 30" MaxHeight="70">
+                                        <TextBlock x:Name="Exclamation_TextBlock">Félicitation!!</TextBlock>
+                                    </Viewbox>
+                                    <Border BorderThickness="0 0 0 1" BorderBrush="Black" Margin="10"></Border>
+
+                                    <TextBlock x:Name="Result_textBlock" Grid.Row="1" VerticalAlignment="Center" TextAlignment="Center" FontSize="20" TextWrapping="Wrap" Margin="20">Vous avez gagné cette partie de tic-tac-toe.</TextBlock>
+
+                                    <Viewbox x:Name="Reward_ViewBox" Grid.Row="2" Margin="20" Visibility="Hidden">
+                                        <TextBlock x:Name="Reward_TextBlock" Height="80" VerticalAlignment="Center" TextAlignment="Center" FontSize="20" TextWrapping="Wrap" Width="300">Meilleur chance la prochaine fois!</TextBlock>
+                                    </Viewbox>
+
+                                    <Image x:Name="Reward_Image" Grid.Row="2" Margin="20 0 20 20" Visibility="Visible">
+                                        <Image.Source>
+                                            <BitmapImage UriSource="../Img/Crown.png"/>
+                                        </Image.Source>
+                                    </Image>
                                 </Grid>
                             </Border>
 
