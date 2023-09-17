@@ -111,22 +111,29 @@
 
                         <Grid x:Name="Ingame_Layout" Grid.Row="1" Grid.Column="1" Visibility="Visible" Margin="5">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="4*"/>
-                                <RowDefinition Height="5*"/>
+                                <RowDefinition Height="10*" MinHeight="200"/>
                                 <RowDefinition Height="2*"/>
                             </Grid.RowDefinitions>
 
-                            <TextBlock x:Name="YourSide_TextBlock" Grid.Row="0" VerticalAlignment="Center" TextAlignment="Center" FontSize="25" TextWrapping="Wrap">Vous jouez les <TextBlock Foreground="#40ACE2">X</TextBlock> bleu</TextBlock>
+                            <Grid Grid.Row="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <TextBlock x:Name="YourSide_TextBlock" Grid.Row="1" VerticalAlignment="Center" TextAlignment="Center" FontSize="15" TextWrapping="Wrap">Vous jouez les <TextBlock x:Name="Side_Color" Foreground="#40ACE2">X</TextBlock> bleu</TextBlock>
 
-                            <TextBlock x:Name="YourTurn_TextBlock" Grid.Row="1" VerticalAlignment="Center" TextAlignment="Center" FontSize="40" TextWrapping="Wrap">C'est à votre tour</TextBlock>
+                                <TextBlock x:Name="YourTurn_TextBlock" Grid.Row="0" VerticalAlignment="Center" TextAlignment="Center" FontSize="35" TextWrapping="Wrap" Margin="0">C'est à votre tour</TextBlock>
 
-                            <TextBlock x:Name="Instruction_TextBlock" Grid.Row="2" VerticalAlignment="Center" TextAlignment="Center" FontSize="20" TextWrapping="Wrap" Width="300">Sélectionner un emplacement libre puis appuyer sur confirmer pour jouer votre coup.</TextBlock>
+                                <Viewbox x:Name="Instruction_ViewBox" Grid.Row="2" Margin="20">
+                                    <TextBlock x:Name="Instruction_TextBlock" Height="100" VerticalAlignment="Center" TextAlignment="Center" FontSize="20" TextWrapping="Wrap" Width="300">Sélectionner un emplacement libre puis appuyer sur confirmer pour jouer votre coup.</TextBlock>
+                                </Viewbox>
+                            </Grid>
 
-                            <Button x:Name="Confirm_Move" Click="Confirm_Move_Click" Grid.Row="3" Margin="5" IsEnabled="False" Background="#40ACE2" Style="{StaticResource CustomButtonStyle}">Confirmer</Button>
+                            <Button x:Name="Confirm_Move" Click="Confirm_Move_Click" Grid.Row="2" Margin="5" IsEnabled="False" Background="#40ACE2" Style="{StaticResource CustomButtonStyle}">Confirmer</Button>
                         </Grid>
 
-                        <Grid x:Name="Finished_Layout" Grid.Row="1" Grid.Column="1" Visibility="Visible" Margin="5">
+                        <Grid x:Name="Finished_Layout" Grid.Row="1" Grid.Column="1" Visibility="Hidden" Margin="5">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="8*" MinHeight="200"/>
                                 <RowDefinition Height="2*"/>
