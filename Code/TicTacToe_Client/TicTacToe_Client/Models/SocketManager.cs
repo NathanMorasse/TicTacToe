@@ -18,7 +18,6 @@ namespace TicTacToe_Client.Models
     {
         private static IPEndPoint remoteEp;
         private static Socket clientSocket;
-        private static IPHostEntry host;
         private static IPAddress ipAddress;
 
         public static void ConnectToServer(string IpAddress,  int Port)
@@ -27,29 +26,12 @@ namespace TicTacToe_Client.Models
             {
                 clientSocket = CreateSocket(IpAddress, Port);
                 clientSocket.Connect(remoteEp);
-
-                //string data = null;
-                //byte[] bytes = null;
-                //while (true)
-                //{
-                //    bytes = new byte[1024];
-                //    int bytesRec = clientSocket.Receive(bytes);
-                //    data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
-                //    string connectionResponse = data.Trim();
-
-                //    if (connectionResponse != null)
-                //    {
-                //        break;
-                //    }
-
-                //}
             }
         }
 
         private static Socket CreateSocket(string IpAddress, int Port)
         {
-            host = Dns.GetHostEntry(IpAddress);
-            ipAddress = host.AddressList[0];
+            ipAddress = IPAddress.Parse(IpAddress);
             remoteEp = new IPEndPoint(ipAddress, Port);
 
             Socket clientSocket = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);

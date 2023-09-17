@@ -29,7 +29,7 @@ namespace TicTacToe_Server.Views
 
             ViewLink.PageHolder = this;
 
-            Holder.NavigationService.Navigate(ViewLink.GamePage);
+            Holder.NavigationService.Navigate(ViewLink.WaitingPage);
         }
     }
 }
