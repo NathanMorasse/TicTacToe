@@ -89,6 +89,14 @@ namespace TicTacToe_Client.Models
                     {
                         if (Game.ValidateMove(message.MoveToSend))
                         {
+                            if(message.MoveToSend.PossibleWin)
+                            {
+                                if(Game.CurrentBoard.IsWinner() == "serveur")
+                                {
+                                    Game.EndGame("Lose");
+                                    SocketManager.SendMessage(new Message("ValidateWin"));
+                                }
+                            }
                             Game.CurrentBoard.SaveNewMove(message.MoveToSend);
                         }
                         else
@@ -99,7 +107,7 @@ namespace TicTacToe_Client.Models
                     //Partie Commencée
                     else if (message.Type == "GameStarted")
                     {
-
+                        Game.StartNewGame(message.IsClientTurn);
                     }
                     //Move Invalide
                     else if (message.Type == "InvalidMove")
@@ -109,23 +117,15 @@ namespace TicTacToe_Client.Models
                     //Validation Gagnant
                     else if (message.Type == "ValidateWin")
                     {
-                        string Gagnant = Game.CurrentBoard.IsWinner();
-                        if(Gagnant != "aucun" && Gagnant != "Égalité")
-                        {
-
-                        }
+                        Game.EndGame("Win");
                     }
                     //Égalitée
                     else if (message.Type == "Tied")
                     {
-
+                        Game.EndGame("Tie");
                     }
                 }
             }
-        }
-        public static string ValidateOppenentWin()
-        {
-            return Game.CurrentBoard.IsWinner();
         }
     }
 }

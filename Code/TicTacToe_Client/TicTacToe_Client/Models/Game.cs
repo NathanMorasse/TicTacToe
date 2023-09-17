@@ -12,10 +12,17 @@ namespace TicTacToe_Client.Models
         public static Board CurrentBoard { get; set; }
         public static bool IsMyTurn { get; set; }
 
-        public static void StartNewGame(bool IsServerTurn)
+        public static void StartNewGame(bool IsClientTurn)
         {
             CurrentBoard = new Board();
-            IsMyTurn = IsServerTurn;
+            IsMyTurn = IsClientTurn;
+
+            //Switch to game page
+
+            if (!IsMyTurn)
+            {
+                SocketManager.WaitForOpponentMove();
+            }
         }
         
         public static bool ValidateMove (Move move)
@@ -44,6 +51,24 @@ namespace TicTacToe_Client.Models
         public static void NextTurn()
         {
             IsMyTurn = false;
+        }
+
+        public static void EndGame(string result)
+        {
+            if(result == "Win")
+            {
+
+            }else if(result == "Lose")
+            {
+
+            }else if(result == "Tie")
+            {
+
+            }
+            else
+            {
+
+            }
         }
     }
 }
