@@ -92,8 +92,10 @@
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 CornerRadius="15">
                             <Border Name="border_over" Background="Transparent" BorderBrush="Transparent" CornerRadius="15">
-                                <ContentPresenter HorizontalAlignment="Center"
+                                <Viewbox>
+                                    <ContentPresenter HorizontalAlignment="Center"
                                               VerticalAlignment="Center" />
+                                </Viewbox>
                             </Border>
                         </Border>
                         <ControlTemplate.Triggers>
