@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Navigation;
+using TicTacToe_Server.ViewModels;
 using TicTacToe_Server.Views;
 
 namespace TicTacToe_Server.Models
@@ -111,10 +112,23 @@ namespace TicTacToe_Server.Models
 
         public static void EndGame(string result)
         {
+            ViewLink.GamePage.Ingame_Layout.Visibility = Visibility.Hidden;
+            ViewLink.GamePage.Finished_Layout.Visibility = Visibility.Visible;
+
+            string exclamation = string.Empty;
+            string status = string.Empty;
+            string message = string.Empty;
+
             switch (result)
             {
                 case "Win":
-                    break;
+                    {
+                        exclamation = "Félicitation!!";
+                        status = "Vous avez gagné cette partie de tic-tac-toe.";
+                        ViewLink.GamePage.Reward_TextBlock.Visibility = Visibility.Hidden;
+                        ViewLink.GamePage.Reward_Image.Visibility = Visibility.Visible;
+                        break;
+                    }
                 case "Lose":
                     break;
                 case "Tie":
@@ -122,6 +136,10 @@ namespace TicTacToe_Server.Models
                 default:
                     break;
             }
+
+            ViewLink.GamePage.Exclamation_TextBlock.Text = exclamation;
+            ViewLink.GamePage.Result_textBlock.Text = status;
+            ViewLink.GamePage.Reward_TextBlock.Text = message;
             // Update view
         }
     }
