@@ -25,12 +25,7 @@ namespace TicTacToe_Server.Models
 
             SocketManager.NotifyClientNewGame(!IsMyTurn);
 
-            //switch to game page
-
-            if (!IsMyTurn)
-            {
-                SocketManager.WaitForOpponentMessage();
-            }
+            ViewLink.NavigateToGame();
         }
 
         /// <summary>
