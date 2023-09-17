@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Img\Crown.png" />
     <None Remove="Img\Grid.png" />
     <None Remove="Img\Waiting.png" />
   </ItemGroup>
@@ -17,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Img\Crown.png" />
     <Resource Include="Img\Grid.png" />
     <Resource Include="Img\Waiting.png" />
   </ItemGroup>

@@ -35,7 +35,7 @@ namespace TicTacToe_Client.Models
         public string IsWinner()
         {
             string winnerString = ValidateBoardLine();
-            bool noTie = true;
+            bool Tie = true;
             if (winnerString != "Aucun")
             {
                 return winnerString;
@@ -59,11 +59,11 @@ namespace TicTacToe_Client.Models
             {
                 if(move == null)
                 {
-                    noTie = false;
+                    Tie = false;
                 }
             }
 
-            if (noTie)
+            if (Tie)
             {
                 SocketManager.SendMessage(new Message("Tied"));
                 Game.EndGame("Tied");

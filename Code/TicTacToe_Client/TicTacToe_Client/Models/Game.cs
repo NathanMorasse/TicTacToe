@@ -50,7 +50,7 @@ namespace TicTacToe_Client.Models
 
         public static void NextTurn()
         {
-            IsMyTurn = false;
+            IsMyTurn = !IsMyTurn;
         }
 
         public static void EndGame(string result)
