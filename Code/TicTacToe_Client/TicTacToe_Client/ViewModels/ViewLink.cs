@@ -56,9 +56,20 @@ namespace TicTacToe_Client.ViewModels
             _GamePage.Finished_Color.Background = color;
         }
 
+        public static void NavigateToGame()
+        {
+            PageHolder.Holder.NavigationService.Navigate(GamePage);
+        }
+
         public static void ResetGamePage()
         {
             _GamePage = new GamePage();
+        }
+
+        public static void ToggleRestartButton()
+        {
+            GamePage.Restart_Game.IsEnabled = true;
+            GamePage.Restart_Game.Content = "Recommencer";
         }
     }
 }

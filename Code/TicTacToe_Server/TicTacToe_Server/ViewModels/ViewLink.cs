@@ -43,6 +43,7 @@ namespace TicTacToe_Server.ViewModels
 
         public static void NavigateToWait()
         {
+            ResetGamePage();
             _PageHolder.Holder.NavigationService.Navigate(_WaitingPage);
         }
 

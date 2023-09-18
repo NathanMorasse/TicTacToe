@@ -70,5 +70,10 @@ namespace TicTacToe_Client.Views
                 MessageBox.Show("Votre Tour est invalide. Veuillez recommencer", "Move Invalide", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
+
+        private void Restart_Game_Click(object sender, RoutedEventArgs e)
+        {
+            SocketManager.SendRedo();
+        }
     }
 }

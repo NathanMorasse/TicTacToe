@@ -82,6 +82,9 @@ namespace TicTacToe_Server.Models
                 case "Tied":
                     Game.EndGame("Tie");
                     break;
+                case "Redo!":
+                    Game.StartNewGame();
+                    break;
                 default:
                     break;
             }
@@ -114,6 +117,14 @@ namespace TicTacToe_Server.Models
         public static void SendTieMessage()
         {
             Message message = new Message("Tied");
+            string jsonMessage = JsonConvert.SerializeObject(message);
+            byte[] messageBytes = Encoding.UTF8.GetBytes(jsonMessage);
+            handler.Send(messageBytes);
+        }
+
+        public static void SendRedo()
+        {
+            Message message = new Message("Redo?");
             string jsonMessage = JsonConvert.SerializeObject(message);
             byte[] messageBytes = Encoding.UTF8.GetBytes(jsonMessage);
             handler.Send(messageBytes);
