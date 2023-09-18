@@ -34,14 +34,17 @@ namespace TicTacToe_Client.Models
 
         private static Socket CreateSocket(string IpAddress, int Port)
         {
-            if(IpAddress != "127.0.0.1")
+            /*if(IpAddress != "127.0.0.1")
             {
-                ipAddress = (Dns.GetHostEntry(IpAddress).AddressList[0]);
+                ipAddress = parseIpAddress;// (Dns.GetHostEntry(IpAddress).AddressList[0]);
             }
             else
             {
                 ipAddress = IPAddress.Parse(IpAddress);
-            }
+            }*/
+
+            ipAddress = IPAddress.Parse(IpAddress);
+
             remoteEp = new IPEndPoint(ipAddress, Port);
             Socket clientSocket = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
             return clientSocket;
