@@ -27,6 +27,7 @@ namespace TicTacToe_Client.Models
                 clientSocket = CreateSocket(IpAddress, Port);
                 clientSocket.Connect(remoteEp);
             }
+            WaitForOpponentMessage();
             return clientSocket.Connected;
         }
 
@@ -45,7 +46,7 @@ namespace TicTacToe_Client.Models
                 string Json = JsonConvert.SerializeObject(message);
                 byte[] moveMsg = Encoding.ASCII.GetBytes(Json);
                 int bytesSent = await clientSocket.SendAsync(moveMsg, SocketFlags.None);
-                WaitForOpponentMove();
+                WaitForOpponentMessage();
             }catch(Exception ex)
             {
                 Console.WriteLine(ex.ToString());
@@ -53,15 +54,15 @@ namespace TicTacToe_Client.Models
             }
         }
 
-        public static void WaitForOpponentMove()
+        public static async void WaitForOpponentMessage()
         {
             while (true)
             {
                 byte[] bytes = null;
                 string data = null;
                 Message message;
-                bytes = new byte[1024];
-                int bytesRec = clientSocket.Receive(bytes);
+                bytes = new byte[1_024];
+                int bytesRec = await clientSocket.ReceiveAsync(bytes, SocketFlags.None);
                 data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
                 message = JsonConvert.DeserializeObject<Message>(data);
                 if(message != null)
@@ -106,6 +107,7 @@ namespace TicTacToe_Client.Models
                     {
                         Game.EndGame("Tie");
                     }
+                    break;
                 }
             }
         }
