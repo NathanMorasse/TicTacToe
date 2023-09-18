@@ -52,7 +52,7 @@ namespace TicTacToe_Client.Views
         private void Confirm_Move_Click(object sender, RoutedEventArgs e)
         {
             selected.Background = Brushes.Transparent;
-            Move move = new Move(false, CoordX, CoordY, false);
+            Move move = new Move(true, CoordX, CoordY, false);
             if (Game.ValidateMove(move))
             {
                 Game.CurrentBoard.SaveNewMove(move);

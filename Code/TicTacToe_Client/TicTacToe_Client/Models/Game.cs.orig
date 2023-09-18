@@ -4,8 +4,11 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+<<<<<<< HEAD
+=======
 using System.Windows.Media;
 using System.Windows;
+>>>>>>> 87cbae1fcda29ce8a216c60a9529e7c52f3fafae
 using TicTacToe_Client.ViewModels;
 
 namespace TicTacToe_Client.Models
@@ -35,11 +38,11 @@ namespace TicTacToe_Client.Models
             {
                 return false;
             }
-            else if (move.coordY < 0 || move.coordX > 2)
+            else if (move.coordY < 1 || move.coordX > 3)
             {
                 return false;
             }
-            else if (move.coordY < 0 || move.coordY > 2)
+            else if (move.coordY < 1 || move.coordY > 3)
             {
                 return false;
             }else if (CurrentBoard.Moves[move.coordX, move.coordY] != null)
