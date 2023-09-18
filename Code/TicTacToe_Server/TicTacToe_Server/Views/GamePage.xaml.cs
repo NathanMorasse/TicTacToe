@@ -54,7 +54,7 @@ namespace TicTacToe_Server.Views
             selected.Background = Brushes.Transparent;
             int x = int.Parse(selected.Name[1].ToString());
             int y = int.Parse(selected.Name[2].ToString());
-            Move move = new Move(false, x, y);
+            Move move = new Move(false, x, y, false);
             Game.ValidateMove(move);
         }
     }

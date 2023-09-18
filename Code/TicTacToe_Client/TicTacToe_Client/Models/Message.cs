@@ -11,7 +11,7 @@ namespace TicTacToe_Client.Models
         public string Type { get; set; }
         public bool Isvalid { get; set; }
         public bool IsClientTurn { get; set; }
-        public Move MoveToSend { get; set; } = null;
+        public Move MoveMessage { get; set; } = null;
 
         public Message() { }
 
@@ -29,7 +29,7 @@ namespace TicTacToe_Client.Models
         public Message(string type, Move move)
         {
             Type = type;
-            MoveToSend = move;
+            MoveMessage = move;
         }
     }
 }

@@ -70,9 +70,9 @@ namespace TicTacToe_Client.Models
                     //Move 
                     if (message.Type == "Move")
                     {
-                        if (Game.ValidateMove(message.MoveToSend))
+                        if (Game.ValidateMove(message.MoveMessage))
                         {
-                            if(message.MoveToSend.PossibleWin)
+                            if(message.MoveMessage.PossibleWin)
                             {
                                 if(Game.CurrentBoard.IsWinner() == "serveur")
                                 {
@@ -80,7 +80,7 @@ namespace TicTacToe_Client.Models
                                     SocketManager.SendMessage(new Message("ValidateWin"));
                                 }
                             }
-                            Game.CurrentBoard.SaveNewMove(message.MoveToSend);
+                            Game.CurrentBoard.SaveNewMove(message.MoveMessage);
                         }
                         else
                         {

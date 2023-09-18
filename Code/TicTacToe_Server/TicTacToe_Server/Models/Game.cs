@@ -42,12 +42,12 @@ namespace TicTacToe_Server.Models
                 valid = false;
             }
 
-            if ( move.CoordinateX < 0 || move.CoordinateX > 2)
+            if ( move.coordX < 0 || move.coordX > 2)
             {
                 valid = false;
             }
 
-            if (move.CoordinateY < 0 || move.CoordinateY > 2)
+            if (move.coordY < 0 || move.coordY > 2)
             {
                 valid = false;
             }

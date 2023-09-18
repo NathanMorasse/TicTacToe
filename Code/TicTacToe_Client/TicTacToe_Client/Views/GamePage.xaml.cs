@@ -45,7 +45,10 @@ namespace TicTacToe_Client.Views
 
                 clicked.Background = new SolidColorBrush(Color.FromRgb(210,255,137));
                 selected = clicked;
-                Confirm_Move.IsEnabled = true;
+                if (Game.IsMyTurn)
+                {
+                    Confirm_Move.IsEnabled = true;
+                }
             }
         }
 

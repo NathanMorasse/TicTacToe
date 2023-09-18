@@ -9,15 +9,17 @@ namespace TicTacToe_Server.Models
     public class Move
     {
         public bool IsClientMove { get; set; }
-        public int CoordinateX { get; set; }
-        public int CoordinateY { get; set; }
+        public int coordX { get; set; }
+        public int coordY { get; set; }
         public bool PossibleWin { get; set; }
 
-        public Move(bool isClientMove, int coordinateX, int coordinateY)
+        public Move(bool isClientMove, int coordinateX, int coordinateY, bool possibleWin)
         {
             IsClientMove = isClientMove;
-            CoordinateX = coordinateX;
-            CoordinateY = coordinateY;
+            coordX = coordinateX;
+            coordY = coordinateY;
+            PossibleWin = possibleWin;
+
         }
 
         public Move() { }
