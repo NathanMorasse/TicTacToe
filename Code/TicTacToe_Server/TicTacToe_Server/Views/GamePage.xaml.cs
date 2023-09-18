@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TicTacToe_Server.Models;
+using TicTacToe_Server.ViewModels;
 
 namespace TicTacToe_Server.Views
 {
@@ -56,6 +57,18 @@ namespace TicTacToe_Server.Views
             int y = int.Parse(selected.Name[2].ToString());
             Move move = new Move(false, x, y, false);
             Game.ValidateMove(move);
+        }
+
+        private void Restart_Game_Click(object sender, RoutedEventArgs e)
+        {
+            SocketManager.SendRedo();
+        }
+
+        private void Quit_Game_Click(object sender, RoutedEventArgs e)
+        {
+            SocketManager.SendQuittingMessage();
+            ViewLink.NavigateToWait();
+
         }
     }
 }
