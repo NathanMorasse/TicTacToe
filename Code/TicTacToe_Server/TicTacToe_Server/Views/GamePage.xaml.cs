@@ -57,5 +57,10 @@ namespace TicTacToe_Server.Views
             Move move = new Move(false, x, y, false);
             Game.ValidateMove(move);
         }
+
+        private void Restart_Game_Click(object sender, RoutedEventArgs e)
+        {
+            SocketManager.SendRedo();
+        }
     }
 }

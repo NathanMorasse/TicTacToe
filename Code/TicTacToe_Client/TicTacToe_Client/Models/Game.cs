@@ -75,7 +75,7 @@ namespace TicTacToe_Client.Models
                     {
                         exclamation = "Félicitation!!";
                         status = "Vous avez gagné cette partie de tic-tac-toe.";
-                        color = new SolidColorBrush(Color.FromRgb(210, 255, 137));
+                        color = new SolidColorBrush(Color.FromRgb(255, 208, 86));
                         ViewLink.SwitchReward(true);
                         break;
                     }
@@ -95,7 +95,7 @@ namespace TicTacToe_Client.Models
                         exclamation = "Bravo!!";
                         status = "La partie s'est terminée sur une égalité.";
                         message = "Vous l'aurez la prochaine fois!";
-                        color = new SolidColorBrush(Color.FromRgb(198, 198, 198));
+                        color = new SolidColorBrush(Color.FromRgb(210, 255, 137);
                         ViewLink.SwitchReward(false);
                         break;
                     }

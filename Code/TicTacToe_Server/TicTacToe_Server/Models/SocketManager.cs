@@ -128,6 +128,8 @@ namespace TicTacToe_Server.Models
             string jsonMessage = JsonConvert.SerializeObject(message);
             byte[] messageBytes = Encoding.UTF8.GetBytes(jsonMessage);
             handler.Send(messageBytes);
+
+            WaitForOpponentMessage();
         }
     }
 }
