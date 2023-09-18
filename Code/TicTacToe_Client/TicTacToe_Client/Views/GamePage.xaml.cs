@@ -33,8 +33,8 @@ namespace TicTacToe_Client.Views
         private void Case_Click(object sender, RoutedEventArgs e)
         {
             Button clicked = ((Button)sender);
-            CoordX = clicked.Name[1];
-            CoordY = clicked.Name[2];
+            CoordX = Convert.ToInt32(clicked.Name[1].ToString());
+            CoordY = Convert.ToInt32(clicked.Name[2].ToString());
 
             if (clicked.Content != "X" || clicked.Content != "O")
             {

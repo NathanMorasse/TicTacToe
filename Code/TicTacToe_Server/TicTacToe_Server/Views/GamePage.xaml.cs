@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TicTacToe_Server.Models;
 
 namespace TicTacToe_Server.Views
 {
@@ -41,13 +42,20 @@ namespace TicTacToe_Server.Views
 
                 clicked.Background = new SolidColorBrush(Color.FromRgb(210, 255, 137));
                 selected = clicked;
-                Confirm_Move.IsEnabled = true;
+                if (Game.IsMyTurn)
+                {
+                    Confirm_Move.IsEnabled = true;
+                }
             }
         }
 
         private void Confirm_Move_Click(object sender, RoutedEventArgs e)
         {
             selected.Background = Brushes.Transparent;
+            int x = int.Parse(selected.Name[1].ToString());
+            int y = int.Parse(selected.Name[2].ToString());
+            Move move = new Move(false, x, y);
+            Game.ValidateMove(move);
         }
     }
 }

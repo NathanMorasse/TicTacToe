@@ -21,16 +21,17 @@ namespace TicTacToe_Client.Models
             IsMyTurn = IsClientTurn;
 
             //Switch to game page
+            ViewLink.PageHolder.SwitchToGamePage();
 
             if (!IsMyTurn)
             {
-                SocketManager.WaitForOpponentMove();
+                SocketManager.WaitForOpponentMessage();
             }
         }
         
         public static bool ValidateMove (Move move)
         {
-            if (move.IsServerMove == IsMyTurn)
+            if (move.IsMyMove != IsMyTurn)
             {
                 return false;
             }

@@ -10,6 +10,6 @@
         WindowState="Maximized"
         Background="#8D99AE">
     <Grid>
-        <Frame x:Name="Holder"></Frame>
+        <Frame NavigationUIVisibility="Hidden" x:Name="Holder"></Frame>
     </Grid>
 </Window>

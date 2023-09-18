@@ -20,8 +20,8 @@ namespace TicTacToe_Server.Models
         public static void StartNewGame()
         {
             Random rnd = new Random();
-            bool IsMyTurn = rnd.Next(0,2) == 0;
-
+            //IsMyTurn = rnd.Next(0,2) == 0;
+            IsMyTurn = true;
             CurrentBoard = new Board();
 
             SocketManager.NotifyClientNewGame(!IsMyTurn);
@@ -42,12 +42,12 @@ namespace TicTacToe_Server.Models
                 valid = false;
             }
 
-            if ( move.CoordinateX < 1 || move.CoordinateX > 3)
+            if ( move.CoordinateX < 0 || move.CoordinateX > 2)
             {
                 valid = false;
             }
 
-            if (move.CoordinateY < 1 || move.CoordinateY > 3)
+            if (move.CoordinateY < 0 || move.CoordinateY > 2)
             {
                 valid = false;
             }
