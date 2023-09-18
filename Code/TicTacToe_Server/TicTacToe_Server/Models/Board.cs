@@ -15,14 +15,14 @@ namespace TicTacToe_Server.Models
 
         public void SaveNewMove(Move move)
         {
-            Moves[move.CoordinateY, move.CoordinateX] = move;
+            Moves[move.CoordinateX, move.CoordinateY] = move;
             LastMove = move;
         }
 
         // Change le dernier move pour le move de l'adversaire quand un message de move invalide est recu.
         public void DeleteMove()
         {
-            Moves[LastMove.CoordinateY - 1, LastMove.CoordinateX - 1].IsClientMove = true;
+            Moves[LastMove.CoordinateX, LastMove.CoordinateY].IsClientMove = true;
         }
 
         //Cette fonction détermine si il y a un gagnant
@@ -35,18 +35,19 @@ namespace TicTacToe_Server.Models
             bool Tied = true;
 
             // Horizontals
-            for (int y = 0; y < Moves.GetLength(0); y++)
+            for (int x = 0; x < 3; x++)
             {
-                if (Moves[y, 0] == Moves[y, 1] && Moves[y, 0] == Moves[y, 2])
+                if (Moves[x, 0] == Moves[x, 1] && Moves[x, 1] == Moves[x, 2])
                 {
-                    isWinner = true;
-                    if (Moves[y,0].IsClientMove)
+                    if (Moves[x, 0].IsClientMove)
                     {
                         winner = "Client";
+                        break;
                     }
                     else
                     {
                         winner = "server";
+                        break;
                     }
                 }
             }
@@ -54,18 +55,17 @@ namespace TicTacToe_Server.Models
             // Verticals
             if (isWinner == false)
             {
-                for (int x = 0; x < Moves.GetLength(0); x++)
+                for (int y = 0; y < 3; y++)
                 {
-                    if (Moves[0, x] == Moves[1, x] && Moves[0, x] == Moves[2, x])
+                    if (Moves[0, y] == Moves[1, y] && Moves[1, y] == Moves[2, y])
                     {
-                        isWinner = true;
-                        if (Moves[0, x].IsClientMove)
+                        if (Moves[0, y].IsClientMove)
                         {
                             winner = "Client";
                         }
                         else
                         {
-                            winner = "Server";
+                            winner = "server";
                         }
                     }
                 }
@@ -74,17 +74,16 @@ namespace TicTacToe_Server.Models
             // Diagonals
             if (isWinner == false)
             {
-                if ((Moves[0, 0] == Moves[1, 1] && Moves[0,0] == Moves[2, 2])
-                    || (Moves[2, 0] == Moves[1, 1] && Moves[2, 0] == Moves[0, 2]))
+                if (Moves[0, 0] == Moves[1, 1] && Moves[1, 1] == Moves[3, 3]
+                    || Moves[1, 3] == Moves[1, 1] && Moves[1, 1] == Moves[0, 3])
                 {
-                    isWinner = true;
-                    if (Moves[1,1].IsClientMove)
+                    if (Moves[1, 1].IsClientMove)
                     {
                         winner = "Client";
                     }
                     else
                     {
-                        winner = "Server";
+                        winner = "server";
                     }
                 }
             }

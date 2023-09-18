@@ -19,7 +19,7 @@ namespace TicTacToe_Server.Models
         public static void StartNewGame()
         {
             Random rnd = new Random();
-            bool IsMyTurn = rnd.Next(0,1) == 0;
+            bool IsMyTurn = rnd.Next(0,2) == 0;
 
             CurrentBoard = new Board();
 
