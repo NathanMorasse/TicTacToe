@@ -22,7 +22,7 @@ namespace TicTacToe_Server.Views
     /// </summary>
     public partial class GamePage : Page
     {
-        Button selected = null;
+        public Button selected = null;
 
         public GamePage()
         {

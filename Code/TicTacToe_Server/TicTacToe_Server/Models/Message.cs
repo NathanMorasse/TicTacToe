@@ -12,6 +12,7 @@ namespace TicTacToe_Server.Models
         public bool IsClientTurn { get; set; }
         public Move MoveMessage { get; set; } = null;
 
+        public Message() { }
         public Message(string type)
         {
             Type = type;

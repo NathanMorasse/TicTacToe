@@ -29,21 +29,21 @@ namespace TicTacToe_Client.Models
             LastMove = move;
             object moveCase = ViewLink.GamePage.FindName("C" + move.coordX + "" + move.coordY);
             Button moveButton = moveCase as Button;
-            if (move.IsMyMove)
+            if (move.IsClientMove)
             {
                 moveButton.Content = "X"; 
                 moveButton.Foreground = new SolidColorBrush(Color.FromRgb(64, 172, 226));
             }
             else
             {
-                moveButton.Content = "Y";
+                moveButton.Content = "O";
                 moveButton.Foreground = new SolidColorBrush(Color.FromRgb(239, 35, 60));
             }
         }
 
         public void DeleteMove()
         {
-            Moves[LastMove.coordX, LastMove.coordY].IsMyMove = false;
+            Moves[LastMove.coordX, LastMove.coordY].IsClientMove = false;
         }
 
         public string IsWinner()
@@ -95,9 +95,9 @@ namespace TicTacToe_Client.Models
             {
                 if (Moves[x, y - 1] != null && Moves[x, y] != null && Moves[x, y+1] != null)
                 {
-                    if (Moves[x, y -1].IsMyMove == Moves[x, y].IsMyMove && Moves[x, y].IsMyMove == Moves[x, y + 1].IsMyMove)
+                    if (Moves[x, y -1].IsClientMove == Moves[x, y].IsClientMove && Moves[x, y].IsClientMove == Moves[x, y + 1].IsClientMove)
                     {
-                        if (Moves[x, y].IsMyMove)
+                        if (Moves[x, y].IsClientMove)
                         {
                             return "Client";
                         }
@@ -124,9 +124,9 @@ namespace TicTacToe_Client.Models
             {
                 if (Moves[x - 1, y] != null && Moves[x, y] != null && Moves[x + 1, y] != null)
                 {
-                    if(Moves[x - 1, y].IsMyMove == Moves[x, y].IsMyMove && Moves[x, y].IsMyMove == Moves[x + 1, y].IsMyMove)
+                    if(Moves[x - 1, y].IsClientMove == Moves[x, y].IsClientMove && Moves[x, y].IsClientMove == Moves[x + 1, y].IsClientMove)
                     {
-                        if (Moves[x, y].IsMyMove)
+                        if (Moves[x, y].IsClientMove)
                         {
                             return "Client";
                         }
@@ -152,9 +152,9 @@ namespace TicTacToe_Client.Models
 
             if (Moves[x - 1, y - 1] != null && Moves[x, y] != null && Moves[x + 1, y + 1] != null)
             {
-                if (Moves[x - 1, y - 1].IsMyMove == Moves[x, y].IsMyMove && Moves[x, y].IsMyMove == Moves[x + 1, y + 1].IsMyMove)
+                if (Moves[x - 1, y - 1].IsClientMove == Moves[x, y].IsClientMove && Moves[x, y].IsClientMove == Moves[x + 1, y + 1].IsClientMove)
                 {
-                    if (Moves[x, y].IsMyMove)
+                    if (Moves[x, y].IsClientMove)
                     {
                         return "Client";
                     }
@@ -170,9 +170,9 @@ namespace TicTacToe_Client.Models
             }
             else if (Moves[x - 1, y + 1] != null && Moves[x, y] != null && Moves[x + 1, y - 1] != null)
             {
-                if (Moves[x - 1, y - 1].IsMyMove == Moves[x, y].IsMyMove && Moves[x, y].IsMyMove == Moves[x + 1, y - 1].IsMyMove)
+                if (Moves[x - 1, y - 1].IsClientMove == Moves[x, y].IsClientMove && Moves[x, y].IsClientMove == Moves[x + 1, y - 1].IsClientMove)
                 {
-                    if (Moves[x, y].IsMyMove)
+                    if (Moves[x, y].IsClientMove)
                     {
                         return "Client";
                     }

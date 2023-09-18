@@ -20,13 +20,16 @@ namespace TicTacToe_Server.Models
         public static void StartNewGame()
         {
             Random rnd = new Random();
-            //IsMyTurn = rnd.Next(0,2) == 0;
-            IsMyTurn = true;
+            IsMyTurn = rnd.Next(0,2) == 0;
             CurrentBoard = new Board();
 
             SocketManager.NotifyClientNewGame(!IsMyTurn);
-
+            ViewLink.UpdateTurn();
             ViewLink.NavigateToGame();
+            if (!IsMyTurn)
+            {
+                SocketManager.WaitForOpponentMessage();
+            }
         }
 
         /// <summary>
@@ -60,10 +63,10 @@ namespace TicTacToe_Server.Models
                 {
                     switch (winner)
                     {
-                        case "Server":
+                        case "serveur":
                             move.PossibleWin = true;
-                            Game.NextTurn();
                             SocketManager.SendMove(move);
+                            NextTurn();
                             SocketManager.WaitForOpponentMessage();
                             break;
                         case "Tied":
@@ -72,6 +75,8 @@ namespace TicTacToe_Server.Models
                             break;
                         case "Aucun":
                             SocketManager.SendMove(move);
+                            NextTurn();
+                            SocketManager.WaitForOpponentMessage();
                             break;
                         default:
                             break;
@@ -83,6 +88,10 @@ namespace TicTacToe_Server.Models
                     {
                         SocketManager.ValidateOpponentWin();
                         EndGame("Lost");
+                    }
+                    else
+                    {
+                        NextTurn();
                     }
                 }
             }
@@ -102,8 +111,7 @@ namespace TicTacToe_Server.Models
         public static void NextTurn()
         {
             IsMyTurn = !IsMyTurn;
-
-            //update button
+            ViewLink.UpdateTurn();
         }
 
         public static void EndGame(string result)

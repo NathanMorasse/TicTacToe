@@ -20,7 +20,8 @@ namespace TicTacToe_Client.Models
             CurrentBoard = new Board();
             IsMyTurn = IsClientTurn;
 
-            //Switch to game page
+            ViewLink.UpdateTurn();
+
             ViewLink.PageHolder.SwitchToGamePage();
 
             if (!IsMyTurn)
@@ -31,7 +32,7 @@ namespace TicTacToe_Client.Models
         
         public static bool ValidateMove (Move move)
         {
-            if (move.IsMyMove != IsMyTurn)
+            if (move.IsClientMove != IsMyTurn)
             {
                 return false;
             }
@@ -55,6 +56,7 @@ namespace TicTacToe_Client.Models
         public static void NextTurn()
         {
             IsMyTurn = !IsMyTurn;
+            ViewLink.UpdateTurn();
         }
 
         public static void EndGame(string result)

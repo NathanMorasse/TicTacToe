@@ -78,10 +78,11 @@ namespace TicTacToe_Client.Models
                                 if(Game.CurrentBoard.IsWinner() == "serveur")
                                 {
                                     Game.EndGame("Lose");
-                                    SocketManager.SendMessage(new Message("ValidateWin"));
+                                    SendMessage(new Message("ValidateWin"));
                                 }
                             }
                             Game.CurrentBoard.SaveNewMove(message.MoveMessage);
+                            Game.NextTurn();
                         }
                         else
                         {
@@ -130,7 +131,7 @@ namespace TicTacToe_Client.Models
                 ViewLink.ResetGamePage();
                 ViewLink.NavigateToGame();
 
-                WaitForOpponentMove();
+                WaitForOpponentMessage();
             }
             catch (Exception ex)
             {

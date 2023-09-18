@@ -73,5 +73,22 @@ namespace TicTacToe_Server.ViewModels
         {
             _GamePage = new GamePage();
         }
+
+        public static void UpdateTurn()
+        {
+            if (Game.IsMyTurn)
+            {
+                GamePage.YourTurn_TextBlock.Text = "C'est à votre tour";
+                GamePage.YourSide_TextBlock.Text = "Vous jouez les X bleu";
+                GamePage.Instruction_TextBlock.Text = "Sélectionner un emplacement libre puis appuyer sur confirmer pour jouer votre coup.";
+            }
+            else
+            {
+                GamePage.YourTurn_TextBlock.Text = "C'est au tour de votre adversaire";
+                GamePage.YourSide_TextBlock.Text = "Il joue les O rouge";
+                GamePage.Instruction_TextBlock.Text = "Patientez pendant que votre adversaire choisit un coup";
+            }
+            GamePage.Confirm_Move.IsEnabled = Game.IsMyTurn && GamePage.selected != null;
+        }
     }
 }

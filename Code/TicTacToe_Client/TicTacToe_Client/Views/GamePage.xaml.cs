@@ -21,7 +21,7 @@ namespace TicTacToe_Client.Views
     /// </summary>
     public partial class GamePage : Page
     {
-        Button selected = null;
+        public Button selected = null;
         int CoordX;
         int CoordY;
 
@@ -59,10 +59,11 @@ namespace TicTacToe_Client.Views
             if (Game.ValidateMove(move))
             {
                 Game.CurrentBoard.SaveNewMove(move);
-                if(Game.CurrentBoard.IsWinner() == "client")
+                if(Game.CurrentBoard.IsWinner() == "Client")
                 {
                     move.PossibleWin = true;
                 }
+                Game.NextTurn();
                 SocketManager.SendMessage(new Message("Move", move));
             }
             else
