@@ -15,14 +15,14 @@ namespace TicTacToe_Server.Models
 
         public void SaveNewMove(Move move)
         {
-            Moves[move.CoordinateY, move.CoordinateX] = move;
+            Moves[move.CoordinateX, move.CoordinateY] = move;
             LastMove = move;
         }
 
         // Change le dernier move pour le move de l'adversaire quand un message de move invalide est recu.
         public void DeleteMove()
         {
-            Moves[LastMove.CoordinateY - 1, LastMove.CoordinateX - 1].IsClientMove = true;
+            Moves[LastMove.CoordinateX, LastMove.CoordinateY].IsClientMove = true;
         }
 
         //Cette fonction détermine si il y a un gagnant
@@ -84,6 +84,7 @@ namespace TicTacToe_Server.Models
                         else
                         {
                             return "serveur";
+                        break;
                         }
                     }
                     else
