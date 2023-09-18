@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Navigation;
 using TicTacToe_Server.ViewModels;
 using TicTacToe_Server.Views;
+using System.Windows.Media;
 
 namespace TicTacToe_Server.Models
 {
@@ -113,6 +114,7 @@ namespace TicTacToe_Server.Models
             string exclamation = string.Empty;
             string status = string.Empty;
             string message = string.Empty;
+            SolidColorBrush color = Brushes.Transparent;
 
             switch (result)
             {
@@ -120,19 +122,36 @@ namespace TicTacToe_Server.Models
                     {
                         exclamation = "Félicitation!!";
                         status = "Vous avez gagné cette partie de tic-tac-toe.";
+                        color = new SolidColorBrush(Color.FromRgb(210, 255, 137));
                         ViewLink.SwitchReward(true);
                         break;
                     }
+
                 case "Lose":
-                    break;
+                    {
+                        exclamation = "Dommage!!";
+                        status = "Vaous avez perdu cette partie de tic-tac-toe.";
+                        message = "Meilleur chance la prochaine fois!";
+                        color = new SolidColorBrush(Color.FromRgb(198, 198, 198));
+                        ViewLink.SwitchReward(false);
+                        break;
+                    }
+
                 case "Tie":
-                    break;
+                    {
+                        exclamation = "Bravo!!";
+                        status = "La partie s'est terminée sur une égalité.";
+                        message = "Vous l'aurez la prochaine fois!";
+                        color = new SolidColorBrush(Color.FromRgb(198, 198, 198));
+                        ViewLink.SwitchReward(false);
+                        break;
+                    }
+
                 default:
                     break;
             }
 
-            ViewLink.ApplyResult(exclamation, status, message);
-            // Update view
+            ViewLink.ApplyResult(exclamation, status, message, color);
         }
     }
 }

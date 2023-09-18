@@ -23,13 +23,13 @@ namespace TicTacToe_Client.Models
 
         public void SaveNewMove(Move move)
         {
-            Moves[move.coordX - 1, move.coordY - 1] = move;
+            Moves[move.coordX, move.coordY] = move;
             LastMove = move;
         }
 
         public void DeleteMove()
         {
-            Moves[LastMove.coordX - 1, LastMove.coordY - 1].IsServerMove = true;
+            Moves[LastMove.coordX, LastMove.coordY].IsMyMove = false;
         }
 
         public string IsWinner()
@@ -75,19 +75,26 @@ namespace TicTacToe_Client.Models
         private string ValidateBoardLine()
         {
             string winner = "Aucun";
-            for(int x = 0; x < 3 ; x++)
+            int y = 1;
+
+            for (int x = 0; x < 3; x++)
             {
-                if (Moves[x,0] == Moves[x,1] && Moves[x,1] == Moves[x, 2])
+                if (Moves[x, y - 1] != null && Moves[x, y] != null && Moves[x, y+1] != null)
                 {
-                    if (Moves[x, 0].IsServerMove)
+                    if (Moves[x, y -1].IsMyMove == Moves[x, y].IsMyMove && Moves[x, y].IsMyMove == Moves[x, y + 1].IsMyMove)
                     {
-                        winner = "server";
-                        break;
+                        if (Moves[x, y].IsMyMove)
+                        {
+                            return "Client";
+                        }
+                        else
+                        {
+                            return "serveur";
+                        }
                     }
                     else
                     {
-                        winner = "Client";
-                        break;
+                        winner = "Aucun";
                     }
                 }
             }
@@ -97,18 +104,27 @@ namespace TicTacToe_Client.Models
         private string ValidateBoardColumn()
         {
             string winner = "Aucun";
-            for(int y = 0; y < 3 ; y++)
+            int x = 1;
+
+            for (int y = 0; y < 3; y++)
             {
-                if (Moves[0,y] == Moves[1,y] && Moves[1,y] == Moves[2, y])
+                if (Moves[x - 1, y] != null && Moves[x, y] != null && Moves[x + 1, y] != null)
                 {
-                    if (Moves[0, y].IsServerMove)
+                    if(Moves[x - 1, y].IsMyMove == Moves[x, y].IsMyMove && Moves[x, y].IsMyMove == Moves[x + 1, y].IsMyMove)
                     {
-                        winner = "server";
+                        if (Moves[x, y].IsMyMove)
+                        {
+                            return "Client";
+                        }
+                        else
+                        {
+                            return "serveur";
+                        }
                     }
-                    else
-                    {
-                        winner = "Client";
-                    }
+                }
+                else
+                {
+                    winner = "Aucun";
                 }
             }
             return winner;
@@ -117,20 +133,51 @@ namespace TicTacToe_Client.Models
         private string ValidateBoardDiagonals()
         {
             string winnerString = "Aucun";
-            if (Moves[0,0] == Moves[1,1] && Moves[1,1] == Moves[3, 3]
-                || Moves[1,3] == Moves[1,1] && Moves[1,1] == Moves[0,3])
+            int x = 1;
+            int y = 1;
+
+            if (Moves[x - 1, y - 1] != null && Moves[x, y] != null && Moves[x + 1, y + 1] != null)
             {
-                if (Moves[1, 1].IsServerMove)
+                if (Moves[x - 1, y - 1].IsMyMove == Moves[x, y].IsMyMove && Moves[x, y].IsMyMove == Moves[x + 1, y + 1].IsMyMove)
                 {
-                    winnerString = "server";
+                    if (Moves[x, y].IsMyMove)
+                    {
+                        return "Client";
+                    }
+                    else
+                    {
+                        return "serveur";
+                    }
                 }
                 else
                 {
-                    winnerString = "Client";
+                    winnerString = "Aucun";
                 }
             }
+            else if (Moves[x - 1, y + 1] != null && Moves[x, y] != null && Moves[x + 1, y - 1] != null)
+            {
+                if (Moves[x - 1, y - 1].IsMyMove == Moves[x, y].IsMyMove && Moves[x, y].IsMyMove == Moves[x + 1, y - 1].IsMyMove)
+                {
+                    if (Moves[x, y].IsMyMove)
+                    {
+                        return "Client";
+                    }
+                    else
+                    {
+                        return "serveur";
+                    }
+                }
+                else
+                {
+                    winnerString = "Aucun";
+                }
+            }
+            else
+            {
+                winnerString = "Aucun";
+            }
 
-            return winnerString;
+                return winnerString;
         }
     }
 }

@@ -20,32 +20,33 @@ namespace TicTacToe_Client.Models
         private static Socket clientSocket;
         private static IPAddress ipAddress;
 
-        public static void ConnectToServer(string IpAddress,  int Port)
+        public static bool ConnectToServer(string IpAddress,  int Port)
         {
             if (!string.IsNullOrEmpty(IpAddress) && Port != 0)
             {
                 clientSocket = CreateSocket(IpAddress, Port);
                 clientSocket.Connect(remoteEp);
             }
+            WaitForOpponentMessage();
+            return clientSocket.Connected;
         }
 
         private static Socket CreateSocket(string IpAddress, int Port)
         {
             ipAddress = IPAddress.Parse(IpAddress);
             remoteEp = new IPEndPoint(ipAddress, Port);
-
             Socket clientSocket = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
             return clientSocket;
         }
 
-        public static void SendMessage(Message message)
+        public static async void SendMessage(Message message)
         {
             try
             {
                 string Json = JsonConvert.SerializeObject(message);
                 byte[] moveMsg = Encoding.ASCII.GetBytes(Json);
-                int bytesSent = clientSocket.Send(moveMsg);
-                WaitForOpponentMove();
+                int bytesSent = await clientSocket.SendAsync(moveMsg, SocketFlags.None);
+                WaitForOpponentMessage();
             }catch(Exception ex)
             {
                 Console.WriteLine(ex.ToString());
@@ -53,15 +54,15 @@ namespace TicTacToe_Client.Models
             }
         }
 
-        public static void WaitForOpponentMove()
+        public static async void WaitForOpponentMessage()
         {
             while (true)
             {
                 byte[] bytes = null;
                 string data = null;
                 Message message;
-                bytes = new byte[1024];
-                int bytesRec = clientSocket.Receive(bytes);
+                bytes = new byte[1_024];
+                int bytesRec = await clientSocket.ReceiveAsync(bytes, SocketFlags.None);
                 data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
                 message = JsonConvert.DeserializeObject<Message>(data);
                 if(message != null)
@@ -106,6 +107,7 @@ namespace TicTacToe_Client.Models
                     {
                         Game.EndGame("Tie");
                     }
+                    break;
                 }
             }
         }

@@ -44,79 +44,150 @@ namespace TicTacToe_Server.Models
         //et si oui lequel sous forme de string(serveur ou client) et si non retourne "aucun".
         public string IsWinner()
         {
-            //Détermine si il y a un gagnant
-            bool isWinner = false;
-            string winner = "Aucun";
-            bool Tied = true;
-
-            // Horizontals
-            for (int x = 0; x < 3; x++)
+            string winnerString = ValidateBoardLine();
+            bool Tie = true;
+            if (winnerString != "Aucun")
             {
-                if ((Moves[x,0] != null) && Moves[x, 0].IsClientMove == Moves[x, 1].IsClientMove && Moves[x, 1].IsClientMove == Moves[x, 2].IsClientMove)
-                {
-                    if (Moves[x, 0].IsClientMove)
-                    {
-                        winner = "Client";
-                        break;
-                    }
-                    else
-                    {
-                        winner = "server";
-                        break;
-                    }
-                }
+                return winnerString;
             }
 
-            // Verticals
-            if (isWinner == false)
+            winnerString = ValidateBoardColumn();
+
+            if (winnerString != "Aucun")
             {
-                for (int y = 0; y < 3; y++)
-                {
-                    if (Moves[0, y].IsClientMove == Moves[1, y].IsClientMove && Moves[1, y].IsClientMove == Moves[2, y].IsClientMove)
-                    {
-                        if (Moves[0, y].IsClientMove)
-                        {
-                            winner = "Client";
-                        }
-                        else
-                        {
-                            winner = "server";
-                        }
-                    }
-                }
+                return winnerString;
             }
 
-            // Diagonals
-            if (isWinner == false)
+            winnerString = ValidateBoardDiagonals();
+
+            if (winnerString != "Aucun")
             {
-                if (Moves[0, 0].IsClientMove == Moves[1, 1].IsClientMove && Moves[1, 1].IsClientMove == Moves[3, 3].IsClientMove
-                    || Moves[1, 3].IsClientMove == Moves[1, 1].IsClientMove && Moves[1, 1].IsClientMove == Moves[0, 3].IsClientMove)
-                {
-                    if (Moves[1, 1].IsClientMove)
-                    {
-                        winner = "Client";
-                    }
-                    else
-                    {
-                        winner = "server";
-                    }
-                }
+                return winnerString;
             }
 
             foreach (Move move in Moves)
             {
                 if (move == null)
                 {
-                    Tied = false;
+                    Tie = false;
                 }
             }
 
-            if (Tied)
+            if (Tie)
             {
-                winner = "Tied";
+                Game.EndGame("Tied");
+                return "Tied";
+            }
+            return "Aucun";
+        }
+
+        private string ValidateBoardLine()
+        {
+            string winner = "Aucun";
+            int y = 1;
+
+            for (int x = 0; x < 3; x++)
+            {
+                if (Moves[x, y - 1] != null && Moves[x, y] != null && Moves[x, y + 1] != null)
+                {
+                    if (Moves[x, y - 1].IsClientMove == Moves[x, y].IsClientMove && Moves[x, y].IsClientMove == Moves[x, y + 1].IsClientMove)
+                    {
+                        if (Moves[x, y].IsClientMove)
+                        {
+                            return "Client";
+                        }
+                        else
+                        {
+                            return "serveur";
+                        break;
+                        }
+                    }
+                    else
+                    {
+                        winner = "Aucun";
+                    }
+                }
+            }
+            return winner;
+        }
+
+        private string ValidateBoardColumn()
+        {
+            string winner = "Aucun";
+            int x = 1;
+
+            for (int y = 0; y < 3; y++)
+            {
+                if (Moves[x - 1, y] != null && Moves[x, y] != null && Moves[x + 1, y] != null)
+                {
+                    if (Moves[x - 1, y].IsClientMove == Moves[x, y].IsClientMove && Moves[x, y].IsClientMove == Moves[x + 1, y].IsClientMove)
+                    {
+                        if (Moves[x, y].IsClientMove)
+                        {
+                            return "Client";
+                        }
+                        else
+                        {
+                            return "serveur";
+                        }
+                    }
+                }
+                else
+                {
+                    winner = "Aucun";
+                }
+            }
+            return winner;
+        }
+
+        private string ValidateBoardDiagonals()
+        {
+            string winnerString = "Aucun";
+            int x = 1;
+            int y = 1;
+
+            if (Moves[x - 1, y - 1] != null && Moves[x, y] != null && Moves[x + 1, y + 1] != null)
+            {
+                if (Moves[x - 1, y - 1].IsClientMove == Moves[x, y].IsClientMove && Moves[x, y].IsClientMove == Moves[x + 1, y + 1].IsClientMove)
+                {   
+                    if (Moves[x, y].IsClientMove)
+                    {
+                        return "Client";
+                    }
+                    else
+                    {
+                        return "serveur";
+                    }
+                }
+                else
+                {
+                    winnerString = "Aucun";
+                }
+            }
+            else if (Moves[x - 1, y + 1] != null && Moves[x, y] != null && Moves[x + 1, y - 1] != null)
+            {
+                if (Moves[x - 1, y - 1].IsClientMove == Moves[x, y].IsClientMove && Moves[x, y].IsClientMove == Moves[x + 1, y - 1].IsClientMove)
+                {
+                    if (Moves[x, y].IsClientMove)
+                    {
+                        return "Client";
+                    }
+                    else
+                    {
+                        return "serveur";
+                    }
+                }
+                else
+                {
+                    winnerString = "Aucun";
+                }
+            }
+            else
+            {
+                winnerString = "Aucun";
             }
 
-            return winner;
+            return winnerString;
         }
     }
 }
