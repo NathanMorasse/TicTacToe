@@ -134,6 +134,8 @@ namespace TicTacToe_Server.Models
             handler.Send(messageBytes);
 
             WaitForOpponentMessage();
+<<<<<<< HEAD
+=======
         }
 
         public static void SendQuittingMessage()
@@ -142,8 +144,7 @@ namespace TicTacToe_Server.Models
             string jsonMessage = JsonConvert.SerializeObject(message);
             byte[] messageBytes = Encoding.UTF8.GetBytes(jsonMessage);
             handler.Send(messageBytes);
-
-            WaitForOpponentMessage();
+>>>>>>> 00f8f8e1a68792679ded2ec06daec6227f46e213
         }
     }
 }

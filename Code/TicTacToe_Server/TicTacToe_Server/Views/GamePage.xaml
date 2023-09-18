@@ -167,9 +167,9 @@
                                 </Grid>
                             </Border>
 
-                            <Button x:Name="Restart_Game"  Click="Restart_Game_Click"  Grid.Row="1" Margin="5" Background="#40ACE2" Style="{StaticResource CustomButtonStyle}">Recommencer</Button>
+                            <Button x:Name="Restart_Game" Click="Restart_Game_Click" Grid.Row="1" Margin="5" Background="#40ACE2" Style="{StaticResource CustomButtonStyle}">Recommencer</Button>
 
-                            <Button x:Name="Quit_Game" Grid.Row="2" Margin="5" Background="#EF233C" Style="{StaticResource CustomButtonStyle}">Quitter</Button>
+                            <Button x:Name="Quit_Game" Click="Quit_Game_Click" Grid.Row="2" Margin="5" Background="#EF233C" Style="{StaticResource CustomButtonStyle}">Quitter</Button>
                         </Grid>
                     </Grid>
 

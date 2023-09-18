@@ -62,6 +62,11 @@ namespace TicTacToe_Client.ViewModels
             PageHolder.Holder.NavigationService.Navigate(GamePage);
         }
 
+        public static void NavigateToConnection()
+        {
+            PageHolder.Holder.NavigationService.Navigate(ConnectionPage);
+        }
+
         public static void ResetGamePage()
         {
             _GamePage = new GamePage();

@@ -168,7 +168,8 @@ namespace TicTacToe_Client.Models
                     winnerString = "Aucun";
                 }
             }
-            else if (Moves[x - 1, y + 1] != null && Moves[x, y] != null && Moves[x + 1, y - 1] != null)
+
+            if (Moves[x - 1, y + 1] != null && Moves[x, y] != null && Moves[x + 1, y - 1] != null)
             {
                 if (Moves[x - 1, y + 1].IsClientMove == Moves[x, y].IsClientMove && Moves[x, y].IsClientMove == Moves[x + 1, y - 1].IsClientMove)
                 {

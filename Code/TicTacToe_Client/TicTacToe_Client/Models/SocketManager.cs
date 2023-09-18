@@ -124,6 +124,10 @@ namespace TicTacToe_Client.Models
                     {
                         ViewLink.ToggleRestartButton();
                     }
+                    else if (message.Type == "Quitting")
+                    {
+                        ViewLink.NavigateToConnection();
+                    }
                 }
             }
         }
@@ -148,8 +152,14 @@ namespace TicTacToe_Client.Models
                 Console.WriteLine(ex.ToString());
                 Console.WriteLine(ex.Message);
             }
+        }
 
-
+        public static void SendQuittingMessage()
+        {
+            Message message = new Message("Quitting");
+            string jsonMessage = JsonConvert.SerializeObject(message);
+            byte[] messageBytes = Encoding.UTF8.GetBytes(jsonMessage);
+            clientSocket.Send(messageBytes);
         }
     }
 }

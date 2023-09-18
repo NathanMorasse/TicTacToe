@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -12,9 +13,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TicTacToe_Client.Models;
+using TicTacToe_Server.Models;
+using TicTacToe_Server.ViewModels;
 
-namespace TicTacToe_Client.Views
+namespace TicTacToe_Server.Views
 {
     /// <summary>
     /// Logique d'interaction pour GamePage.xaml
@@ -22,8 +24,6 @@ namespace TicTacToe_Client.Views
     public partial class GamePage : Page
     {
         public Button selected = null;
-        int CoordX;
-        int CoordY;
 
         public GamePage()
         {
@@ -33,8 +33,6 @@ namespace TicTacToe_Client.Views
         private void Case_Click(object sender, RoutedEventArgs e)
         {
             Button clicked = ((Button)sender);
-            CoordX = Convert.ToInt32(clicked.Name[1].ToString());
-            CoordY = Convert.ToInt32(clicked.Name[2].ToString());
 
             if (clicked.Content != "X" || clicked.Content != "O")
             {
@@ -43,7 +41,7 @@ namespace TicTacToe_Client.Views
                     selected.Background = Brushes.Transparent;
                 }
 
-                clicked.Background = new SolidColorBrush(Color.FromRgb(210,255,137));
+                clicked.Background = new SolidColorBrush(Color.FromRgb(210, 255, 137));
                 selected = clicked;
                 if (Game.IsMyTurn)
                 {
@@ -55,31 +53,25 @@ namespace TicTacToe_Client.Views
         private void Confirm_Move_Click(object sender, RoutedEventArgs e)
         {
             selected.Background = Brushes.Transparent;
-            Move move = new Move(true, CoordX, CoordY, false);
-            if (Game.ValidateMove(move))
-            {
-                Game.CurrentBoard.SaveNewMove(move);
-                if(Game.CurrentBoard.IsWinner() == "Client")
-                {
-                    move.PossibleWin = true;
-                }
-                Game.NextTurn();
-                SocketManager.SendMessage(new Message("Move", move));
-            }
-            else
-            {
-                MessageBox.Show("Votre Tour est invalide. Veuillez recommencer", "Move Invalide", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
+            int x = int.Parse(selected.Name[1].ToString());
+            int y = int.Parse(selected.Name[2].ToString());
+            Move move = new Move(false, x, y, false);
+            Game.ValidateMove(move);
         }
 
         private void Restart_Game_Click(object sender, RoutedEventArgs e)
         {
             SocketManager.SendRedo();
         }
+<<<<<<< HEAD
+=======
 
         private void Quit_Game_Click(object sender, RoutedEventArgs e)
         {
             SocketManager.SendQuittingMessage();
+            ViewLink.NavigateToWait();
+
         }
+>>>>>>> 00f8f8e1a68792679ded2ec06daec6227f46e213
     }
 }
