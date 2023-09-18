@@ -13,12 +13,11 @@ namespace TicTacToe_Server.Models
         public int CoordinateY { get; set; }
         public bool PossibleWin { get; set; }
 
-        public Move(bool isClientMove, int coordinateX, int coordinateY, bool possibleWin)
+        public Move(bool isClientMove, int coordinateX, int coordinateY)
         {
             IsClientMove = isClientMove;
             CoordinateX = coordinateX;
             CoordinateY = coordinateY;
-            PossibleWin = possibleWin;
         }
 
         public Move() { }

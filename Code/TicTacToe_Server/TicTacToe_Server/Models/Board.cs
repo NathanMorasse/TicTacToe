@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows.Media;
+using TicTacToe_Server.ViewModels;
 
 namespace TicTacToe_Server.Models
 {
@@ -17,6 +20,18 @@ namespace TicTacToe_Server.Models
         {
             Moves[move.CoordinateX, move.CoordinateY] = move;
             LastMove = move;
+            object moveCase = ViewLink.GamePage.FindName("C"+move.CoordinateX+""+move.CoordinateY);
+            Button moveButton = moveCase as Button;
+            if (move.IsClientMove)
+            {
+                moveButton.Content = "O";
+                moveButton.Foreground = new SolidColorBrush(Color.FromRgb(239, 35, 60));
+            }
+            else
+            {
+                moveButton.Content = "X";
+                moveButton.Foreground = new SolidColorBrush(Color.FromRgb(64, 172, 226));
+            }
         }
 
         // Change le dernier move pour le move de l'adversaire quand un message de move invalide est recu.
@@ -37,7 +52,7 @@ namespace TicTacToe_Server.Models
             // Horizontals
             for (int x = 0; x < 3; x++)
             {
-                if (Moves[x, 0] == Moves[x, 1] && Moves[x, 1] == Moves[x, 2])
+                if ((Moves[x,0] != null) && Moves[x, 0].IsClientMove == Moves[x, 1].IsClientMove && Moves[x, 1].IsClientMove == Moves[x, 2].IsClientMove)
                 {
                     if (Moves[x, 0].IsClientMove)
                     {
@@ -57,7 +72,7 @@ namespace TicTacToe_Server.Models
             {
                 for (int y = 0; y < 3; y++)
                 {
-                    if (Moves[0, y] == Moves[1, y] && Moves[1, y] == Moves[2, y])
+                    if (Moves[0, y].IsClientMove == Moves[1, y].IsClientMove && Moves[1, y].IsClientMove == Moves[2, y].IsClientMove)
                     {
                         if (Moves[0, y].IsClientMove)
                         {
@@ -74,8 +89,8 @@ namespace TicTacToe_Server.Models
             // Diagonals
             if (isWinner == false)
             {
-                if (Moves[0, 0] == Moves[1, 1] && Moves[1, 1] == Moves[3, 3]
-                    || Moves[1, 3] == Moves[1, 1] && Moves[1, 1] == Moves[0, 3])
+                if (Moves[0, 0].IsClientMove == Moves[1, 1].IsClientMove && Moves[1, 1].IsClientMove == Moves[3, 3].IsClientMove
+                    || Moves[1, 3].IsClientMove == Moves[1, 1].IsClientMove && Moves[1, 1].IsClientMove == Moves[0, 3].IsClientMove)
                 {
                     if (Moves[1, 1].IsClientMove)
                     {
