@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows.Media;
+using TicTacToe_Server.ViewModels;
 
 namespace TicTacToe_Server.Models
 {
@@ -17,6 +20,18 @@ namespace TicTacToe_Server.Models
         {
             Moves[move.CoordinateX, move.CoordinateY] = move;
             LastMove = move;
+            object moveCase = ViewLink.GamePage.FindName("C"+move.CoordinateX+""+move.CoordinateY);
+            Button moveButton = moveCase as Button;
+            if (move.IsClientMove)
+            {
+                moveButton.Content = "O";
+                moveButton.Foreground = new SolidColorBrush(Color.FromRgb(239, 35, 60));
+            }
+            else
+            {
+                moveButton.Content = "X";
+                moveButton.Foreground = new SolidColorBrush(Color.FromRgb(64, 172, 226));
+            }
         }
 
         // Change le dernier move pour le move de l'adversaire quand un message de move invalide est recu.

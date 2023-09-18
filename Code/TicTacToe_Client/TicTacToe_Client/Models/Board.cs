@@ -8,6 +8,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Media;
+using TicTacToe_Client.ViewModels;
 
 namespace TicTacToe_Client.Models
 {
@@ -25,6 +27,18 @@ namespace TicTacToe_Client.Models
         {
             Moves[move.coordX, move.coordY] = move;
             LastMove = move;
+            object moveCase = ViewLink.GamePage.FindName("C" + move.coordX + "" + move.coordY);
+            Button moveButton = moveCase as Button;
+            if (move.IsMyMove)
+            {
+                moveButton.Content = "X"; 
+                moveButton.Foreground = new SolidColorBrush(Color.FromRgb(64, 172, 226));
+            }
+            else
+            {
+                moveButton.Content = "Y";
+                moveButton.Foreground = new SolidColorBrush(Color.FromRgb(239, 35, 60));
+            }
         }
 
         public void DeleteMove()
