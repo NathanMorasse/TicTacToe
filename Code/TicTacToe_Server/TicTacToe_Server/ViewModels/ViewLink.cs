@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using TicTacToe_Server.Views;
 using System.Windows;
 using TicTacToe_Server.Models;
+using System.Windows.Media;
 
 namespace TicTacToe_Server.ViewModels
 {
@@ -40,6 +41,11 @@ namespace TicTacToe_Server.ViewModels
             PageHolder.Holder.NavigationService.Navigate(GamePage);
         }
 
+        public static void NavigateToWait()
+        {
+            _PageHolder.Holder.NavigationService.Navigate(_WaitingPage);
+        }
+
         public static void SwitchReward(bool win)
         {
             if (win)
@@ -54,11 +60,17 @@ namespace TicTacToe_Server.ViewModels
             }
         }
 
-        public static void ApplyResult(string exclamation, string status, string message)
+        public static void ApplyResult(string exclamation, string status, string message, SolidColorBrush color)
         {
             _GamePage.Exclamation_TextBlock.Text = exclamation;
             _GamePage.Result_textBlock.Text = status;
             _GamePage.Reward_TextBlock.Text = message;
+            _GamePage.Finished_Color.Background = color;
+        }
+
+        public static void ResetGamePage()
+        {
+            _GamePage = new GamePage();
         }
     }
 }

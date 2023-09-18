@@ -4,6 +4,9 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
+using System.Windows;
+using TicTacToe_Client.ViewModels;
 
 namespace TicTacToe_Client.Models
 {
@@ -55,20 +58,50 @@ namespace TicTacToe_Client.Models
 
         public static void EndGame(string result)
         {
-            if(result == "Win")
-            {
+            ViewLink.GamePage.Ingame_Layout.Visibility = Visibility.Hidden;
+            ViewLink.GamePage.Finished_Layout.Visibility = Visibility.Visible;
 
-            }else if(result == "Lose")
-            {
+            string exclamation = string.Empty;
+            string status = string.Empty;
+            string message = string.Empty;
+            SolidColorBrush color = Brushes.Transparent;
 
-            }else if(result == "Tie")
+            switch (result)
             {
+                case "Win":
+                    {
+                        exclamation = "Félicitation!!";
+                        status = "Vous avez gagné cette partie de tic-tac-toe.";
+                        color = new SolidColorBrush(Color.FromRgb(210, 255, 137));
+                        ViewLink.SwitchReward(true);
+                        break;
+                    }
 
+                case "Lose":
+                    {
+                        exclamation = "Dommage!!";
+                        status = "Vaous avez perdu cette partie de tic-tac-toe.";
+                        message = "Meilleur chance la prochaine fois!";
+                        color = new SolidColorBrush(Color.FromRgb(198, 198, 198));
+                        ViewLink.SwitchReward(false);
+                        break;
+                    }
+
+                case "Tie":
+                    {
+                        exclamation = "Bravo!!";
+                        status = "La partie s'est terminée sur une égalité.";
+                        message = "Vous l'aurez la prochaine fois!";
+                        color = new SolidColorBrush(Color.FromRgb(198, 198, 198));
+                        ViewLink.SwitchReward(false);
+                        break;
+                    }
+
+                default:
+                    break;
             }
-            else
-            {
 
-            }
+            ViewLink.ApplyResult(exclamation, status, message, color);
         }
     }
 }
