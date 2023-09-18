@@ -11,6 +11,7 @@ using System.Text.Json.Serialization;
 using System.Text.Json;
 using Newtonsoft.Json;
 using System.Security.Cryptography;
+using TicTacToe_Client.ViewModels;
 
 namespace TicTacToe_Client.Models
 {
@@ -106,8 +107,37 @@ namespace TicTacToe_Client.Models
                     {
                         Game.EndGame("Tie");
                     }
+                    //Invitation de relancement de partie
+                    else if (message.Type == "Redo?")
+                    {
+                        ViewLink.ToggleRestartButton();
+                    }
                 }
             }
+        }
+
+        public static void SendRedo()
+        {
+            Message message = new Message("Redo!");
+
+            try
+            {
+                string Json = JsonConvert.SerializeObject(message);
+                byte[] moveMsg = Encoding.ASCII.GetBytes(Json);
+                int bytesSent = clientSocket.Send(moveMsg);
+
+                ViewLink.ResetGamePage();
+                ViewLink.NavigateToGame();
+
+                WaitForOpponentMove();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                Console.WriteLine(ex.Message);
+            }
+
+
         }
     }
 }
