@@ -34,7 +34,14 @@ namespace TicTacToe_Client.Models
 
         private static Socket CreateSocket(string IpAddress, int Port)
         {
-            ipAddress = IPAddress.Parse(IpAddress);
+            if(IpAddress != "127.0.0.1")
+            {
+                ipAddress = (Dns.GetHostEntry(IpAddress).AddressList[0]);
+            }
+            else
+            {
+                ipAddress = IPAddress.Parse(IpAddress);
+            }
             remoteEp = new IPEndPoint(ipAddress, Port);
             Socket clientSocket = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
             return clientSocket;
@@ -73,7 +80,8 @@ namespace TicTacToe_Client.Models
                     {
                         if (Game.ValidateMove(message.MoveMessage))
                         {
-                            if(message.MoveMessage.PossibleWin)
+                            Game.CurrentBoard.SaveNewMove(message.MoveMessage);
+                            if (message.MoveMessage.PossibleWin)
                             {
                                 if(Game.CurrentBoard.IsWinner() == "serveur")
                                 {
@@ -81,7 +89,6 @@ namespace TicTacToe_Client.Models
                                     SendMessage(new Message("ValidateWin"));
                                 }
                             }
-                            Game.CurrentBoard.SaveNewMove(message.MoveMessage);
                             Game.NextTurn();
                         }
                         else
@@ -107,7 +114,7 @@ namespace TicTacToe_Client.Models
                     //Égalitée
                     else if (message.Type == "Tied")
                     {
-                        Game.EndGame("Tie");
+                        Game.EndGame("Tied");
                     }
                     //Invitation de relancement de partie
                     else if (message.Type == "Redo?")

@@ -55,6 +55,11 @@ namespace TicTacToe_Server.Models
                 valid = false;
             }
 
+            if (CurrentBoard.Moves[move.coordX, move.coordY] != null)
+            {
+                valid =  false;
+            }
+
             if (valid)
             {
                 CurrentBoard.SaveNewMove(move);
@@ -135,17 +140,17 @@ namespace TicTacToe_Server.Models
                         break;
                     }
 
-                case "Lose":
+                case "Lost":
                     {
                         exclamation = "Dommage!!";
-                        status = "Vaous avez perdu cette partie de tic-tac-toe.";
+                        status = "Vous avez perdu cette partie de tic-tac-toe.";
                         message = "Meilleur chance la prochaine fois!";
                         color = new SolidColorBrush(Color.FromRgb(198, 198, 198));
                         ViewLink.SwitchReward(false);
                         break;
                     }
 
-                case "Tie":
+                case "Tied":
                     {
                         exclamation = "Bravo!!";
                         status = "La partie s'est terminée sur une égalité.";

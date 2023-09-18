@@ -83,14 +83,14 @@ namespace TicTacToe_Client.Models
                 case "Lose":
                     {
                         exclamation = "Dommage!!";
-                        status = "Vaous avez perdu cette partie de tic-tac-toe.";
+                        status = "Vous avez perdu cette partie de tic-tac-toe.";
                         message = "Meilleur chance la prochaine fois!";
                         color = new SolidColorBrush(Color.FromRgb(198, 198, 198));
                         ViewLink.SwitchReward(false);
                         break;
                     }
 
-                case "Tie":
+                case "Tied":
                     {
                         exclamation = "Bravo!!";
                         status = "La partie s'est terminée sur une égalité.";

@@ -166,7 +166,7 @@ namespace TicTacToe_Server.Models
             }
             else if (Moves[x - 1, y + 1] != null && Moves[x, y] != null && Moves[x + 1, y - 1] != null)
             {
-                if (Moves[x - 1, y - 1].IsClientMove == Moves[x, y].IsClientMove && Moves[x, y].IsClientMove == Moves[x + 1, y - 1].IsClientMove)
+                if (Moves[x - 1, y + 1].IsClientMove == Moves[x, y].IsClientMove && Moves[x, y].IsClientMove == Moves[x + 1, y - 1].IsClientMove)
                 {
                     if (Moves[x, y].IsClientMove)
                     {
