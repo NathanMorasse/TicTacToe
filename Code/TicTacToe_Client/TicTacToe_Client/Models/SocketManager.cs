@@ -12,6 +12,7 @@ using System.Text.Json;
 using Newtonsoft.Json;
 using System.Security.Cryptography;
 using TicTacToe_Client.ViewModels;
+using System.Windows;
 
 namespace TicTacToe_Client.Models
 {
@@ -58,77 +59,85 @@ namespace TicTacToe_Client.Models
                 byte[] moveMsg = Encoding.ASCII.GetBytes(Json);
                 int bytesSent = await clientSocket.SendAsync(moveMsg, SocketFlags.None);
                 WaitForOpponentMessage();
-            }catch(Exception ex)
+            }catch(SocketException Se)
             {
-                Console.WriteLine(ex.ToString());
-                Console.WriteLine(ex.Message);
+                MessageBox.Show(Se.Message, Se.ErrorCode.ToString(), MessageBoxButton.OK, MessageBoxImage.Error);
+                ViewLink.NavigateToConnection();
             }
         }
 
         public static async void WaitForOpponentMessage()
         {
-            while (true)
+            try
             {
-                byte[] bytes = null;
-                string data = null;
-                Message message;
-                bytes = new byte[1_024];
-                int bytesRec = await clientSocket.ReceiveAsync(bytes, SocketFlags.None);
-                data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
-                message = JsonConvert.DeserializeObject<Message>(data);
-                if(message != null)
+                while (true)
                 {
-                    //Move 
-                    if (message.Type == "Move")
+                    byte[] bytes = null;
+                    string data = null;
+                    Message message;
+                    bytes = new byte[1_024];
+                    int bytesRec = await clientSocket.ReceiveAsync(bytes, SocketFlags.None);
+                    data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
+                    message = JsonConvert.DeserializeObject<Message>(data);
+                    if (message != null)
                     {
-                        if (Game.ValidateMove(message.MoveMessage))
+                        //Move 
+                        if (message.Type == "Move")
                         {
-                            Game.CurrentBoard.SaveNewMove(message.MoveMessage);
-                            if (message.MoveMessage.PossibleWin)
+                            if (Game.ValidateMove(message.MoveMessage))
                             {
-                                if(Game.CurrentBoard.IsWinner() == "serveur")
+                                Game.CurrentBoard.SaveNewMove(message.MoveMessage);
+                                if (message.MoveMessage.PossibleWin)
                                 {
-                                    Game.EndGame("Lose");
-                                    SendMessage(new Message("ValidateWin"));
+                                    if (Game.CurrentBoard.IsWinner() == "serveur")
+                                    {
+                                        Game.EndGame("Lose");
+                                        SendMessage(new Message("ValidateWin"));
+                                    }
                                 }
+                                Game.NextTurn();
                             }
-                            Game.NextTurn();
+                            else
+                            {
+                                SendMessage(new Message("InvalidMove"));
+                            }
                         }
-                        else
+                        //Partie Commencée
+                        else if (message.Type == "GameStarted")
                         {
-                            SendMessage(new Message("InvalidMove"));
+                            Game.StartNewGame(message.IsClientTurn);
                         }
-                    }
-                    //Partie Commencée
-                    else if (message.Type == "GameStarted")
-                    {
-                        Game.StartNewGame(message.IsClientTurn);
-                    }
-                    //Move Invalide
-                    else if (message.Type == "InvalidMove")
-                    {
-                        Game.CurrentBoard.DeleteMove();
-                    }
-                    //Validation Gagnant
-                    else if (message.Type == "ValidateWin")
-                    {
-                        Game.EndGame("Win");
-                    }
-                    //Égalitée
-                    else if (message.Type == "Tied")
-                    {
-                        Game.EndGame("Tied");
-                    }
-                    //Invitation de relancement de partie
-                    else if (message.Type == "Redo?")
-                    {
-                        ViewLink.ToggleRestartButton();
-                    }
-                    else if (message.Type == "Quitting")
-                    {
-                        ViewLink.NavigateToConnection();
+                        //Move Invalide
+                        else if (message.Type == "InvalidMove")
+                        {
+                            Game.CurrentBoard.DeleteMove();
+                        }
+                        //Validation Gagnant
+                        else if (message.Type == "ValidateWin")
+                        {
+                            Game.EndGame("Win");
+                        }
+                        //Égalitée
+                        else if (message.Type == "Tied")
+                        {
+                            Game.EndGame("Tied");
+                        }
+                        //Invitation de relancement de partie
+                        else if (message.Type == "Redo?")
+                        {
+                            ViewLink.ToggleRestartButton();
+                        }
+                        else if (message.Type == "Quitting")
+                        {
+                            ViewLink.NavigateToConnection();
+                        }
                     }
                 }
+            }
+            catch(SocketException Se)
+            {
+                MessageBox.Show(Se.Message, Se.ErrorCode.ToString(), MessageBoxButton.OK, MessageBoxImage.Error);
+                ViewLink.NavigateToConnection();
             }
         }
 
