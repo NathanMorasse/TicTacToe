@@ -62,53 +62,65 @@ namespace TicTacToe_Server.Models
         {
             string data = null;
             byte[] bytes = null;
-
+            string response = "";
+            int x = 0;
             try
             {
                 while (true)
                 {
                     var buffer = new byte[1_024];
-                    var received = await handler.ReceiveAsync(buffer, SocketFlags.None);
+                    var received = await handler.ReceiveAsync(buffer, SocketFlags.None).WaitAsync(TimeSpan.FromSeconds(60));
                     data += Encoding.UTF8.GetString(buffer, 0, received);
-                    string response = data.Trim();
+                    response = data.Trim();
 
-                    if (response != null)
-                    {
-                        break;
-                    }
+                    break;
                 }
 
-                Message messageRecu = JsonConvert.DeserializeObject<Message>(data);
-
-                switch (messageRecu.Type)
+                if(response != "")
                 {
-                    case "Move":
-                        Game.ValidateMove(messageRecu.MoveMessage);
-                        break;
-                    case "InvalidMove":
-                        Game.CurrentBoard.DeleteMove();
-                        break;
-                    case "ValidateWin":
-                        Game.EndGame("Win");
-                        break;
-                    case "Tied":
-                        Game.EndGame("Tie");
-                        break;
-                    case "Redo!":
-                        Game.StartNewGame();
-                        break;
-                case "Quitted":
-                    socket.Close();
-                        WaitingForConnection();
-                        ViewLink.NavigateToWait();
-                        break;
-                    default:
-                        break;
+                    Message messageRecu = JsonConvert.DeserializeObject<Message>(data);
+
+                    switch (messageRecu.Type)
+                    {
+                        case "Move":
+                            Game.ValidateMove(messageRecu.MoveMessage);
+                            break;
+                        case "InvalidMove":
+                            Game.CurrentBoard.DeleteMove();
+                            break;
+                        case "ValidateWin":
+                            Game.EndGame("Win");
+                            break;
+                        case "Tied":
+                            Game.EndGame("Tie");
+                            break;
+                        case "Redo!":
+                            Game.StartNewGame();
+                            break;
+                        case "Quitted":
+                            socket.Close();
+                            WaitingForConnection();
+                            ViewLink.NavigateToWait();
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                else
+                {
+                    throw new Exception("Le message reçu était vide");
                 }
             }
             catch (SocketException Se)
             {
                 MessageBox.Show(Se.Message, Se.ErrorCode.ToString(), MessageBoxButton.OK, MessageBoxImage.Error);
+                CreateSocket();
+                ViewLink.NavigateToWait();
+                ViewLink.WaitingPage.Launch_Game.IsEnabled = false;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                 CreateSocket();
                 ViewLink.NavigateToWait();
                 ViewLink.WaitingPage.Launch_Game.IsEnabled = false;
@@ -199,6 +211,14 @@ namespace TicTacToe_Server.Models
                 string jsonMessage = JsonConvert.SerializeObject(message);
                 byte[] messageBytes = Encoding.UTF8.GetBytes(jsonMessage);
                 handler.Send(messageBytes);
+            }
+            catch (SocketException Se)
+            {
+                MessageBox.Show(Se.Message, Se.ErrorCode.ToString(), MessageBoxButton.OK, MessageBoxImage.Error);
+                CreateSocket();
+                ViewLink.NavigateToWait();
+                ViewLink.WaitingPage.Launch_Game.IsEnabled = false;
+            }
         }
 
         public static void SendQuit()
@@ -213,14 +233,6 @@ namespace TicTacToe_Server.Models
             ViewLink.NavigateToWait();
 
             WaitingForConnection();
-            }
-            catch (SocketException Se)
-            {
-                MessageBox.Show(Se.Message, Se.ErrorCode.ToString(), MessageBoxButton.OK, MessageBoxImage.Error);
-                CreateSocket();
-                ViewLink.NavigateToWait();
-                ViewLink.WaitingPage.Launch_Game.IsEnabled = false;
-            }
         }
 
         public static void SendQuittingMessage()
