@@ -97,8 +97,7 @@ namespace TicTacToe_Server.Models
                     case "Redo!":
                         Game.StartNewGame();
                         break;
-                case "Quitted":
-                    socket.Close();
+                    case "Quitting":
                         WaitingForConnection();
                         ViewLink.NavigateToWait();
                         break;
@@ -108,10 +107,35 @@ namespace TicTacToe_Server.Models
             }
             catch (SocketException Se)
             {
+<<<<<<< HEAD
+                case "Move":
+                    Game.ValidateMove(messageRecu.MoveMessage);
+                    break;
+                case "InvalidMove":
+                    Game.CurrentBoard.DeleteMove();
+                    break;
+                case "ValidateWin":
+                    Game.EndGame("Win");
+                    break;
+                case "Tied":
+                    Game.EndGame("Tie");
+                    break;
+                case "Redo!":
+                    Game.StartNewGame();
+                    break;
+                case "Quitted":
+                    socket.Close();
+                    WaitingForConnection();
+                    ViewLink.NavigateToWait();
+                    break;
+                default:
+                    break;
+=======
                 MessageBox.Show(Se.Message, Se.ErrorCode.ToString(), MessageBoxButton.OK, MessageBoxImage.Error);
                 CreateSocket();
                 ViewLink.NavigateToWait();
                 ViewLink.WaitingPage.Launch_Game.IsEnabled = false;
+>>>>>>> aa95dc85b441b9944066d402507fa2672c8dbea0
             }
         }
 
@@ -193,12 +217,11 @@ namespace TicTacToe_Server.Models
 
         public static void SendRedo()
         {
-            try
-            {
-                Message message = new Message("Redo?");
-                string jsonMessage = JsonConvert.SerializeObject(message);
-                byte[] messageBytes = Encoding.UTF8.GetBytes(jsonMessage);
-                handler.Send(messageBytes);
+<<<<<<< HEAD
+            Message message = new Message("Redo?");
+            string jsonMessage = JsonConvert.SerializeObject(message);
+            byte[] messageBytes = Encoding.UTF8.GetBytes(jsonMessage);
+            handler.Send(messageBytes);
         }
 
         public static void SendQuit()
@@ -213,6 +236,15 @@ namespace TicTacToe_Server.Models
             ViewLink.NavigateToWait();
 
             WaitingForConnection();
+=======
+            try
+            {
+                Message message = new Message("Redo?");
+                string jsonMessage = JsonConvert.SerializeObject(message);
+                byte[] messageBytes = Encoding.UTF8.GetBytes(jsonMessage);
+                handler.Send(messageBytes);
+
+                WaitForOpponentMessage();
             }
             catch (SocketException Se)
             {
@@ -221,6 +253,7 @@ namespace TicTacToe_Server.Models
                 ViewLink.NavigateToWait();
                 ViewLink.WaitingPage.Launch_Game.IsEnabled = false;
             }
+>>>>>>> aa95dc85b441b9944066d402507fa2672c8dbea0
         }
 
         public static void SendQuittingMessage()
