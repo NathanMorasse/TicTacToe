@@ -64,12 +64,19 @@ namespace TicTacToe_Client.ViewModels
 
         public static void NavigateToConnection()
         {
+            ResetConnectionPage();
+            ResetGamePage();
             PageHolder.Holder.NavigationService.Navigate(ConnectionPage);
         }
 
         public static void ResetGamePage()
         {
             _GamePage = new GamePage();
+        }
+
+        public static void ResetConnectionPage()
+        {
+            _ConnectionPage = new ConnectionPage();
         }
 
         public static void ToggleRestartButton()

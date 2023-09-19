@@ -43,6 +43,7 @@ namespace TicTacToe_Server.ViewModels
 
         public static void NavigateToWait()
         {
+            ResetWaitPage();
             ResetGamePage();
             _PageHolder.Holder.NavigationService.Navigate(_WaitingPage);
         }
@@ -74,21 +75,34 @@ namespace TicTacToe_Server.ViewModels
             _GamePage = new GamePage();
         }
 
+        public static void ResetWaitPage()
+        {
+            _WaitingPage = new WaitingPage();
+        }
+
         public static void UpdateTurn()
         {
             if (Game.IsMyTurn)
             {
                 GamePage.YourTurn_TextBlock.Text = "C'est à votre tour";
                 GamePage.YourSide_TextBlock.Text = "Vous jouez les X bleu";
+                GamePage.Side_Color.Foreground = new SolidColorBrush(Color.FromRgb(64, 172, 226));
                 GamePage.Instruction_TextBlock.Text = "Sélectionner un emplacement libre puis appuyer sur confirmer pour jouer votre coup.";
             }
             else
             {
                 GamePage.YourTurn_TextBlock.Text = "C'est au tour de votre adversaire";
                 GamePage.YourSide_TextBlock.Text = "Il joue les O rouge";
+                GamePage.Side_Color.Foreground = new SolidColorBrush(Color.FromRgb(239, 35, 60));
                 GamePage.Instruction_TextBlock.Text = "Patientez pendant que votre adversaire choisit un coup";
             }
             GamePage.Confirm_Move.IsEnabled = Game.IsMyTurn && GamePage.selected != null;
+        }
+
+        public static void ToggleRestartButton()
+        {
+            GamePage.Restart_Game.IsEnabled = false;
+            GamePage.Restart_Game.Content = "En attente...";
         }
     }
 }

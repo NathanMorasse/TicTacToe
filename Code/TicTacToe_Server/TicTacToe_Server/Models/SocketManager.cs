@@ -97,7 +97,8 @@ namespace TicTacToe_Server.Models
                     case "Redo!":
                         Game.StartNewGame();
                         break;
-                    case "Quitting":
+                case "Quitted":
+                    socket.Close();
                         WaitingForConnection();
                         ViewLink.NavigateToWait();
                         break;
@@ -198,8 +199,20 @@ namespace TicTacToe_Server.Models
                 string jsonMessage = JsonConvert.SerializeObject(message);
                 byte[] messageBytes = Encoding.UTF8.GetBytes(jsonMessage);
                 handler.Send(messageBytes);
+        }
 
-                WaitForOpponentMessage();
+        public static void SendQuit()
+        {
+            Message message = new Message("Quitted");
+            string jsonMessage = JsonConvert.SerializeObject(message);
+            byte[] messageBytes = Encoding.UTF8.GetBytes(jsonMessage);
+            handler.Send(messageBytes);
+
+            socket.Close();
+
+            ViewLink.NavigateToWait();
+
+            WaitingForConnection();
             }
             catch (SocketException Se)
             {

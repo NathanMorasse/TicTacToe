@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TicTacToe_Client.Views"
         mc:Ignorable="d"
-        Title="PageHolder" Height="1080" Width="1920"
+        Title="Tic-Tac_toe" Height="1080" Width="1920"
         MinHeight="540" MinWidth="960"
         WindowState="Maximized"
         Background="#8D99AE">
