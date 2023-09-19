@@ -62,13 +62,12 @@ namespace TicTacToe_Server.Views
         private void Restart_Game_Click(object sender, RoutedEventArgs e)
         {
             SocketManager.SendRedo();
+            ViewLink.ToggleRestartButton();
         }
 
         private void Quit_Game_Click(object sender, RoutedEventArgs e)
         {
-            SocketManager.SendQuittingMessage();
-            ViewLink.NavigateToWait();
-
+            SocketManager.SendQuit();
         }
     }
 }

@@ -79,7 +79,7 @@ namespace TicTacToe_Client.Views
 
         private void Quit_Game_Click(object sender, RoutedEventArgs e)
         {
-            SocketManager.SendQuittingMessage();
+            SocketManager.SendQuit();
         }
     }
 }

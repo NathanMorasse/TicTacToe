@@ -166,6 +166,7 @@ namespace TicTacToe_Server.Models
             }
 
             ViewLink.ApplyResult(exclamation, status, message, color);
+            SocketManager.WaitForOpponentMessage();
         }
     }
 }

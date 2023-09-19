@@ -47,6 +47,7 @@ namespace TicTacToe_Client.Models
 
             remoteEp = new IPEndPoint(ipAddress, Port);
             Socket clientSocket = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+            clientSocket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
             return clientSocket;
         }
 
@@ -124,8 +125,9 @@ namespace TicTacToe_Client.Models
                     {
                         ViewLink.ToggleRestartButton();
                     }
-                    else if (message.Type == "Quitting")
+                    else if (message.Type == "Quitted")
                     {
+                        clientSocket.Close();
                         ViewLink.NavigateToConnection();
                     }
                 }
@@ -152,6 +154,27 @@ namespace TicTacToe_Client.Models
                 Console.WriteLine(ex.ToString());
                 Console.WriteLine(ex.Message);
             }
+        }
+
+        public static void SendQuit()
+        {
+            Message message = new Message("Quitted");
+
+            try
+            {
+                string Json = JsonConvert.SerializeObject(message);
+                byte[] moveMsg = Encoding.ASCII.GetBytes(Json);
+                int bytesSent = clientSocket.Send(moveMsg);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                Console.WriteLine(ex.Message);
+            }
+
+            clientSocket.Close();
+
+            ViewLink.NavigateToConnection();
         }
 
         public static void SendQuittingMessage()
