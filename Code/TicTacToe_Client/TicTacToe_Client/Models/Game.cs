@@ -95,7 +95,7 @@ namespace TicTacToe_Client.Models
                         exclamation = "Bravo!!";
                         status = "La partie s'est terminée sur une égalité.";
                         message = "Vous l'aurez la prochaine fois!";
-                        color = new SolidColorBrush(Color.FromRgb(210, 255, 137);
+                        color = new SolidColorBrush(Color.FromRgb(210, 255, 137));
                         ViewLink.SwitchReward(false);
                         break;
                     }

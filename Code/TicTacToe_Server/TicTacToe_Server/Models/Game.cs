@@ -73,7 +73,6 @@ namespace TicTacToe_Server.Models
                             move.PossibleWin = true;
                             SocketManager.SendMove(move);
                             NextTurn();
-                            SocketManager.WaitForOpponentMessage();
                             break;
                         case "Tied":
                             SocketManager.SendTieMessage();
@@ -82,7 +81,6 @@ namespace TicTacToe_Server.Models
                         case "Aucun":
                             SocketManager.SendMove(move);
                             NextTurn();
-                            SocketManager.WaitForOpponentMessage();
                             break;
                         default:
                             break;

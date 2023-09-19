@@ -25,6 +25,7 @@ namespace TicTacToe_Server.Models
             try
             {
                 socket = new Socket(ip.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+                socket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
                 socket.Bind(endPoint);
                 socket.Listen(10);
                 handler = await socket.AcceptAsync();
@@ -41,6 +42,14 @@ namespace TicTacToe_Server.Models
             }
         }
 
+        private static void CreateSocket()
+        {
+            socket = new Socket(ip.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+            socket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+            socket.Bind(endPoint);
+            WaitingForConnection();
+        }
+
         public static void NotifyClientNewGame(bool isClientTurn)
         {
             Message message = new Message("GameStarted", isClientTurn);
@@ -54,96 +63,171 @@ namespace TicTacToe_Server.Models
             string data = null;
             byte[] bytes = null;
 
-            while (true)
+            try
             {
-                var buffer = new byte[1_024];
-                var received = await handler.ReceiveAsync(buffer, SocketFlags.None);
-                data += Encoding.UTF8.GetString(buffer, 0, received);
-                string response = data.Trim();
-
-                if (response != null)
+                while (true)
                 {
-                    break;
+                    var buffer = new byte[1_024];
+                    var received = await handler.ReceiveAsync(buffer, SocketFlags.None);
+                    data += Encoding.UTF8.GetString(buffer, 0, received);
+                    string response = data.Trim();
+
+                    if (response != null)
+                    {
+                        break;
+                    }
+                }
+
+                Message messageRecu = JsonConvert.DeserializeObject<Message>(data);
+
+                switch (messageRecu.Type)
+                {
+                    case "Move":
+                        Game.ValidateMove(messageRecu.MoveMessage);
+                        break;
+                    case "InvalidMove":
+                        Game.CurrentBoard.DeleteMove();
+                        break;
+                    case "ValidateWin":
+                        Game.EndGame("Win");
+                        break;
+                    case "Tied":
+                        Game.EndGame("Tie");
+                        break;
+                    case "Redo!":
+                        Game.StartNewGame();
+                        break;
+                    case "Quitting":
+                        WaitingForConnection();
+                        ViewLink.NavigateToWait();
+                        break;
+                    default:
+                        break;
                 }
             }
-            Message messageRecu = JsonConvert.DeserializeObject<Message>(data);
-
-            switch (messageRecu.Type)
+            catch (SocketException Se)
             {
-                case "Move":
-                    Game.ValidateMove(messageRecu.MoveMessage);
-                    break;
-                case "InvalidMove":
-                    Game.CurrentBoard.DeleteMove();
-                    break;
-                case "ValidateWin":
-                    Game.EndGame("Win");
-                    break;
-                case "Tied":
-                    Game.EndGame("Tie");
-                    break;
-                case "Redo!":
-                    Game.StartNewGame();
-                    break;
-                case "Quitting":
-                    WaitingForConnection();
-                    ViewLink.NavigateToWait();
-                    break;
-                default:
-                    break;
+                MessageBox.Show(Se.Message, Se.ErrorCode.ToString(), MessageBoxButton.OK, MessageBoxImage.Error);
+                CreateSocket();
+                ViewLink.NavigateToWait();
+                ViewLink.WaitingPage.Launch_Game.IsEnabled = false;
             }
         }
 
         public static void SendMove(Move move)
         {
-            Message moveMessage = new Message("Move", move);
-            string jsonMove = JsonConvert.SerializeObject(moveMessage);
-            byte[] moveBytes = Encoding.UTF8.GetBytes(jsonMove);
-            handler.Send(moveBytes);
+            try
+            {
+                Message moveMessage = new Message("Move", move);
+                string jsonMove = JsonConvert.SerializeObject(moveMessage);
+                byte[] moveBytes = Encoding.UTF8.GetBytes(jsonMove);
+                handler.Send(moveBytes);
+                WaitForOpponentMessage();
+            }
+            catch(SocketException Se)
+            {
+                MessageBox.Show(Se.Message, Se.ErrorCode.ToString(), MessageBoxButton.OK, MessageBoxImage.Error);
+                CreateSocket();
+                ViewLink.NavigateToWait();
+                ViewLink.WaitingPage.Launch_Game.IsEnabled = false;
+            }
         }
 
         public static void SendInvalidMoveMessage()
         {
-            Message message = new Message("InvalidMove");
-            string jsonMessage = JsonConvert.SerializeObject(message);
-            byte[] messageBytes = Encoding.UTF8.GetBytes(jsonMessage);
-            handler.Send(messageBytes);
+            try
+            {
+                Message message = new Message("InvalidMove");
+                string jsonMessage = JsonConvert.SerializeObject(message);
+                byte[] messageBytes = Encoding.UTF8.GetBytes(jsonMessage);
+                handler.Send(messageBytes);
+                WaitForOpponentMessage();
+            }
+            catch (SocketException Se)
+            {
+                MessageBox.Show(Se.Message, Se.ErrorCode.ToString(), MessageBoxButton.OK, MessageBoxImage.Error);
+                CreateSocket();
+                ViewLink.NavigateToWait();
+                ViewLink.WaitingPage.Launch_Game.IsEnabled = false;
+            }
         }
 
         public static void ValidateOpponentWin()
         {
-            Message message = new Message("ValidateWin");
-            string jsonMessage = JsonConvert.SerializeObject(message);
-            byte[] messageBytes = Encoding.UTF8.GetBytes(jsonMessage);
-            handler.Send(messageBytes);
+            try
+            {
+                Message message = new Message("ValidateWin");
+                string jsonMessage = JsonConvert.SerializeObject(message);
+                byte[] messageBytes = Encoding.UTF8.GetBytes(jsonMessage);
+                handler.Send(messageBytes);
+                WaitForOpponentMessage();
+            }
+            catch (SocketException Se)
+            {
+                MessageBox.Show(Se.Message, Se.ErrorCode.ToString(), MessageBoxButton.OK, MessageBoxImage.Error);
+                CreateSocket();
+                ViewLink.NavigateToWait();
+                ViewLink.WaitingPage.Launch_Game.IsEnabled = false;
+            }
         }
 
         public static void SendTieMessage()
         {
-            Message message = new Message("Tied");
-            string jsonMessage = JsonConvert.SerializeObject(message);
-            byte[] messageBytes = Encoding.UTF8.GetBytes(jsonMessage);
-            handler.Send(messageBytes);
+            try
+            {
+                Message message = new Message("Tied");
+                string jsonMessage = JsonConvert.SerializeObject(message);
+                byte[] messageBytes = Encoding.UTF8.GetBytes(jsonMessage);
+                handler.Send(messageBytes);
+                WaitForOpponentMessage();
+            }
+            catch (SocketException Se)
+            {
+                MessageBox.Show(Se.Message, Se.ErrorCode.ToString(), MessageBoxButton.OK, MessageBoxImage.Error);
+                CreateSocket();
+                ViewLink.NavigateToWait();
+                ViewLink.WaitingPage.Launch_Game.IsEnabled = false;
+            }
         }
 
         public static void SendRedo()
         {
-            Message message = new Message("Redo?");
-            string jsonMessage = JsonConvert.SerializeObject(message);
-            byte[] messageBytes = Encoding.UTF8.GetBytes(jsonMessage);
-            handler.Send(messageBytes);
+            try
+            {
+                Message message = new Message("Redo?");
+                string jsonMessage = JsonConvert.SerializeObject(message);
+                byte[] messageBytes = Encoding.UTF8.GetBytes(jsonMessage);
+                handler.Send(messageBytes);
 
-            WaitForOpponentMessage();
+                WaitForOpponentMessage();
+            }
+            catch (SocketException Se)
+            {
+                MessageBox.Show(Se.Message, Se.ErrorCode.ToString(), MessageBoxButton.OK, MessageBoxImage.Error);
+                CreateSocket();
+                ViewLink.NavigateToWait();
+                ViewLink.WaitingPage.Launch_Game.IsEnabled = false;
+            }
         }
 
         public static void SendQuittingMessage()
         {
-            Message message = new Message("Quitting");
-            string jsonMessage = JsonConvert.SerializeObject(message);
-            byte[] messageBytes = Encoding.UTF8.GetBytes(jsonMessage);
-            handler.Send(messageBytes);
+            try
+            {
+                Message message = new Message("Quitting");
+                string jsonMessage = JsonConvert.SerializeObject(message);
+                byte[] messageBytes = Encoding.UTF8.GetBytes(jsonMessage);
+                handler.Send(messageBytes);
 
-            WaitForOpponentMessage();
+                WaitForOpponentMessage();
+            }
+            catch (SocketException Se)
+            {
+                MessageBox.Show(Se.Message, Se.ErrorCode.ToString(), MessageBoxButton.OK, MessageBoxImage.Error);
+                CreateSocket();
+                ViewLink.NavigateToWait();
+                ViewLink.WaitingPage.Launch_Game.IsEnabled = false;
+            }
         }
     }
 }
