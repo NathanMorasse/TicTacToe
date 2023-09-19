@@ -66,17 +66,18 @@ namespace TicTacToe_Server.Models
             int x = 0;
             try
             {
-                while (true)
-                {
-                    var buffer = new byte[1_024];
-                    var received = await handler.ReceiveAsync(buffer, SocketFlags.None).WaitAsync(TimeSpan.FromSeconds(60));
-                    data += Encoding.UTF8.GetString(buffer, 0, received);
-                    response = data.Trim();
+                //while (true)
+                //{
 
-                    break;
-                }
 
-                if(response != "")
+                //break;
+                //}
+                var buffer = new byte[1_024];
+                var received = await handler.ReceiveAsync(buffer, SocketFlags.None).WaitAsync(TimeSpan.FromSeconds(60));
+                data += Encoding.UTF8.GetString(buffer, 0, received);
+                response = data.Trim();
+
+                if (response != "")
                 {
                     Message messageRecu = JsonConvert.DeserializeObject<Message>(data);
 

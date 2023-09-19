@@ -128,11 +128,13 @@ namespace TicTacToe_Client.Models
                         {
                             ViewLink.ToggleRestartButton();
                         }
-                    else if (message.Type == "Quitted")
+                        else if (message.Type == "Quitted")
                         {
-                        clientSocket.Close();
+                            clientSocket.Close();
                             ViewLink.NavigateToConnection();
                         }
+
+                        break;
                     }
                 }
             }
