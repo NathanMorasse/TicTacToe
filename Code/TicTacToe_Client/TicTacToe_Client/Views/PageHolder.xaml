@@ -1,0 +1,15 @@
+﻿<Window x:Class="TicTacToe_Client.Views.PageHolder"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TicTacToe_Client.Views"
+        mc:Ignorable="d"
+        Title="Tic-Tac_toe" Height="1080" Width="1920"
+        MinHeight="540" MinWidth="960"
+        WindowState="Maximized"
+        Background="#8D99AE">
+    <Grid>
+        <Frame NavigationUIVisibility="Hidden" x:Name="Holder"></Frame>
+    </Grid>
+</Window>
